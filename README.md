@@ -1,7 +1,7 @@
-# SimpleOfficeInstaller
-![SimpleOfficeInstaller-Image](https://github.com/user-attachments/assets/9d1d1529-5eea-4d20-a9c7-a9a770603cf5)
+# Simple Office Installer
+![SimpleOfficeInstaller-App-Image](https://github.com/user-attachments/assets/9d1d1529-5eea-4d20-a9c7-a9a770603cf5)
 
-SimpleOfficeInstaller is a user-friendly program that allows you to download various versions of Microsoft Office for free, including:
+Simple Office Installer is a user-friendly program that allows you to download various versions of Microsoft Office for free, including:
 
 **Office 365** (Not activated), **Office 2024**, **Office 2021**, **Office 2019** and **Office 2016**
 
@@ -52,7 +52,7 @@ SimpleOfficeInstaller is a user-friendly program that allows you to download var
 
 ## Download
 
-Download the [SimpleOfficeInstaller](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/) from the releases section.
+Download the [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/latest) from the releases section.
 
 ## How it Works
 #### When Launch Office Installer button pressed
