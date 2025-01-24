@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Office Installer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/icon.ico">
+</head>
+<body>  
+    <nav>
+        <div class="left-nav">
+            <img src="images/icon.ico" class="icon" alt="App Icon">
+            <h3>Simple Office Installer</h3>
+        </div>
+        <div class="right-nav">
+            <div class="theme-container">
+                <div class="icon-container">
+                    <img id="theme-toggle" src="images/sun-icon.png" alt="Toggle theme" title="Toggle theme" id='themeicon' class="theme-icon">
+                </div>
+            </div>
+            <span class="nav-minimize" id='minimize' alt="Minimize" title="Minimize">&minus;</span>
+            <span class="nav-close" id='close-app' alt="Close" title="Close">&#10006;</span>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="padding">
+            <div class="container">
+                <div class="vedit-wrapper">
+                    <div id="version-options" class="vedit">
+                        <div class="form-group">
+                            <label for="version"><img src="images/ver.png" id="iconver">Office Version</label>
+                            <select id="version" onchange="updateEditions()" class="vedit">
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="office-365">Office 365</option>
+                                <option value="office-2024">Office 2024 - Activated</option>
+                                <option value="office-2021">Office 2021 - Activated</option>
+                                <option value="office-2019">Office 2019 - Activated</option>
+                                <option value="office-2016">Office 2016 - Activated</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="edition-options" class="vedit">
+                        <div class="form-group">
+                            <label for="edition"><img src="images/edit.png" id="iconed">Edition<img src="images/info.png" title="VL - Volume License
+RL - Retail License" id="iconinf"></label>
+                            <select id="edition" disabled class="vedit">
+                                <option value="" disabled selected>-- Select --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><img src="images/apps.png" id="iconapps"> Apps</label>
+                    <div class="checkbox-group" id="apps">
+                        <div class="boxes" id="boxes">
+                            <label><input type="checkbox" id="accessCheckbox" disabled=""><img src="images/access.png"> Access</label>
+                            <label><input type="checkbox" id="excelCheckbox" disabled=""><img src="images/excel.png"> Excel</label>
+                            <label><input type="checkbox" id="grooveCheckbox" disabled=""><img src="images/groove.png"> Groove</label>
+                            <label><input type="checkbox" id="lyncCheckbox" disabled=""><img src="images/lync.png"> Lync</label>
+                            <label><input type="checkbox" id="onedriveCheckbox" disabled=""><img src="images/onedrive.png"> OneDrive</label>
+                            <label><input type="checkbox" id="onenoteCheckbox" disabled=""><img src="images/onenote.png"> OneNote</label>
+                            <label><input type="checkbox" id="outlookCheckbox" disabled=""><img src="images/outlook.png"> Outlook</label>
+                            <label><input type="checkbox" id="powerpointCheckbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
+                            <label><input type="checkbox" id="publisherCheckbox" disabled=""><img src="images/publisher.png"> Publisher</label>
+                            <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" disabled=""><img src="images/project.png"> Project</label>
+                            <label id="officeteams" style="display: none;"><input type="checkbox" id="offteamscheck" disabled=""><img src="images/teams.png"> Teams</label>
+                            <label id="teams"><input type="checkbox" id="teamsCheckbox" disabled=""><img src="images/teams.png"> Teams</label>
+                            <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" disabled=""><img src="images/visio.png"> Visio</label>
+                            <label><input type="checkbox" id="wordCheckbox" disabled=""><img src="images/word.png"> Word</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-options-wrapper">
+                    <div id="project-options" class="sub-options">
+                        <div class="form-group">
+                            <label for="project-edition"><img src="images/project.png"> Project Edition</label>
+                            <select id="project-edition" disabled>
+                                <option value="" disabled selected>-- Select --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="visio-options" class="sub-options">
+                        <div class="form-group">
+                            <label for="visio-edition"><img src="images/visio.png"> Visio Edition</label>
+                            <select id="visio-edition" disabled>
+                                <option value="" disabled selected>-- Select --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="primary-language"><img src="images/lang.png" id="iconpr"> Primary Language</label>
+                    <select id="primary-language">
+                        <option value="" disabled selected>-- Select --</option>
+                        <option value="MatchOS">Match Operating System</option>
+                        <option value="ar-sa">Arabic (Saudi Arabia)</option>
+                        <option value="bg-bg">Bulgarian (Bulgaria)</option>
+                        <option value="zh-cn">Chinese (Simplified, China)</option>
+                        <option value="zh-tw">Chinese (Traditional, Taiwan)</option>
+                        <option value="hr-hr">Croatian (Croatia)</option>
+                        <option value="cs-cz">Czech (Czech Republic)</option>
+                        <option value="da-dk">Danish (Denmark)</option>
+                        <option value="nl-nl">Dutch (Netherlands)</option>
+                        <option value="en-gb">English (United Kingdom)</option>
+                        <option value="en-us">English (United States)</option>
+                        <option value="et-ee">Estonian (Estonia)</option>
+                        <option value="fi-fi">Finnish (Finland)</option>
+                        <option value="fr-ca">French (Canada)</option>
+                        <option value="fr-fr">French (France)</option>
+                        <option value="de-de">German (Germany)</option>
+                        <option value="el-gr">Greek (Greece)</option>
+                        <option value="he-il">Hebrew (Israel)</option>
+                        <option value="hi-in">Hindi (India)</option>
+                        <option value="hu-hu">Hungarian (Hungary)</option>
+                        <option value="id-id">Indonesian</option>
+                        <option value="it-it">Italian (Italy)</option>
+                        <option value="ja-jp">Japanese (Japan)</option>
+                        <option value="kk-kz">Kazakh (Kazakhstan)</option>
+                        <option value="ko-kr">Korean</option>
+                        <option value="lv-lv">Latvian (Latvia)</option>
+                        <option value="lt-lt">Lithuanian (Lithuania)</option>
+                        <option value="ms-my">Malay (Malaysia)</option>
+                        <option value="nb-no">Norwegian Bokmål (Norway)</option>
+                        <option value="pl-pl">Polish (Poland)</option>
+                        <option value="pt-br">Portuguese (Brazil)</option>
+                        <option value="pt-pt">Portuguese (Portugal)</option>
+                        <option value="ro-ro">Romanian (Romania)</option>
+                        <option value="ru-ru">Russian (Russia)</option>
+                        <option value="sr-latn-rs">Serbian (Latin, Serbia)</option>
+                        <option value="sk-sk">Slovak (Slovakia)</option>
+                        <option value="sl-si">Slovenian (Slovenia)</option>
+                        <option value="es-mx">Spanish (Mexico)</option>
+                        <option value="es-es">Spanish (Spain, International Sort)</option>
+                        <option value="sv-se">Swedish (Sweden)</option>
+                        <option value="th-th">Thai (Thailand)</option>
+                        <option value="tr-tr">Turkish (Turkey)</option>
+                        <option value="uk-ua">Ukrainian (Ukraine)</option>
+                        <option value="vi-vn">Vietnamese (Vietnam)</option>
+                    </select> 
+                </div>
+                <div class="form-group">
+                    <label for="additional-languages-select"><img src="images/lang.png" id="iconad"> Additional Languages</label>
+                    <div class="language-dialog">
+                        <div class="language-list disabled" id="additional-languages">
+                            <div class="language-item"><label><input type="checkbox" value="MatchOS"> Match Operating System</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ar-sa"> Arabic (Saudi Arabia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="bg-bg"> Bulgarian (Bulgaria)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="zh-cn"> Chinese (Simplified, China)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="zh-tw"> Chinese (Traditional, Taiwan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="hr-hr"> Croatian (Croatia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="cs-cz"> Czech (Czech Republic)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="da-dk"> Danish (Denmark)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="nl-nl"> Dutch (Netherlands)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="en-gb"> English (United Kingdom)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="en-us"> English (United States)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="et-ee"> Estonian (Estonia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="fi-fi"> Finnish (Finland)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="fr-ca"> French (Canada)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="fr-fr"> French (France)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="de-de"> German (Germany)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="el-gr"> Greek (Greece)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="he-il"> Hebrew (Israel)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="hi-in"> Hindi (India)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="hu-hu"> Hungarian (Hungary)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="id-id"> Indonesian (Indonesia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="it-it"> Italian (Italy)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ja-jp"> Japanese (Japan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="kk-kz"> Kazakh (Kazakhstan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ko-kr"> Korean (Korea)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="lv-lv"> Latvian (Latvia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="lt-lt"> Lithuanian (Lithuania)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ms-my"> Malay (Malaysia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="nb-no"> Norwegian Bokmål (Norway)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="pl-pl"> Polish (Poland)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="pt-br"> Portuguese (Brazil)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="pt-pt"> Portuguese (Portugal)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ro-ro"> Romanian (Romania)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="ru-ru"> Russian (Russia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="sr-latn-rs"> Serbian (Latin, Serbia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="sk-sk"> Slovak (Slovakia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="sl-si"> Slovenian (Slovenia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="es-mx"> Spanish (Mexico)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="es-es"> Spanish (Spain, International Sort)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="sv-se"> Swedish (Sweden)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="th-th"> Thai (Thailand)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="tr-tr"> Turkish (Turkey)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="uk-ua"> Ukrainian (Ukraine)</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="vi-vn"> Vietnamese (Vietnam)</label></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="additional-products">
+                    <div class="form-group">
+                        <label id="ap-text" for="additional-products"><img src="images/addi.png" id="iconadp"> Additional Products</label>
+                        <select id="additional-products" disabled>
+                            <option value="" selected>None</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="start-button">Launch Office Installer</div>
+                <a id="author">By MaximeriX</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/window.js" defer type="module"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+    -webkit-app-region: no-drag;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+    overflow-x: hidden;
+    transition: all 0.1s ease;
+}
+
+.main {
+    overflow-y: auto;
+}
+
+:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dadada;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8b8b8;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #acacac;
+    transition: background-color 0.3s ease;
+}
+
+.padding-error {
+    margin-top: 7px;
+}
+
+.error-text {
+    padding: 0 20px;
+}
+
+.error-text p {
+    margin-top: 1px;
+    margin-bottom: 7px;
+}
+
+.exit_bt {
+    display: block;
+    padding: 1.5%;
+    background-color: #0078d4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.exit_bt:hover {
+    background-color: #005a9e;
+}
+
+.boxes img {
+    padding-right: 4px;
+}
+
+img {
+    margin-bottom: 1px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+body {
+    background-color: #ffffff;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    flex-direction: column;
+    overflow-y: hidden;
+    
+}
+
+.padding {
+    padding-top: 0.6%;
+}
+
+.container {
+    min-width: 495px;
+    width: 75%;
+    margin: auto;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.container-error {
+    min-width: 395px;
+    width: 75%;
+    margin: auto;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.form-group label {
+    display: table;
+    padding-bottom: 3px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+select {
+    border: 1.5px solid black;
+    transition: border-color 0.2s ease;
+}
+
+select:disabled{
+    border: 1.5px solid #a5a5a5;
+    cursor: not-allowed;
+}
+
+.form-group select, .form-group input[type="checkbox"] {
+    border-radius: 5px;
+    width: 100%;
+    padding: 2.5% 2.7%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+}
+.form-group input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    border-radius: 4px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+
+.boxes label {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+#ap-text {
+    padding-bottom: 5px;
+}
+
+.aditionals-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+.aditionals-checkbox-group label {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.start-button {
+    display: block;
+    padding: 10px;
+    background-color: #0078d4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.start-button:hover {
+    background-color: #005a9e;
+}
+
+.start-button:disabled {
+    background-color: #00508d;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.start-button.disabled {
+    background-color: #00508d;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.vedit-wrapper img {
+    padding-right: 3px;
+}
+
+.vedit-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.vedit {
+    position: relative;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.vedit select {
+    position: relative;
+}
+
+#project-options {
+    padding-right: 7px;
+    width: 90%;
+}
+
+#visio-options {
+    padding-left: 7px;
+    width: 90%;
+}
+
+#version-options {
+    padding-right: 7px;
+    width: 90%;
+}
+
+#edition-options {
+    padding-left: 7px;
+    width: 90%;
+}
+
+.sub-options-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sub-options {
+    position: relative;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.sub-options select {
+    position: relative;
+}
+
+#disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#primary-language {
+    padding: 1.4% 1.6%;
+}
+
+#additional-products {
+    padding: 1.4% 1.6%;
+}
+
+.language-dialog {
+    margin-bottom: 2px;
+    
+}
+.language-dialog .language-list {
+    max-height: 115px;
+    border: 1.5px solid #555;
+    padding: 7px 10px;
+    padding-bottom: 0px;
+    border-radius: 4px;
+    
+}
+
+.additional-products {
+    padding-bottom: 6px;
+}
+
+.language-list.active {
+    border: 1px solid black;
+}
+
+.language-dialog .language-list .language-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    
+}
+
+.theme-container {
+    padding-right: 3px;
+}
+
+.icon-container {
+    border-radius: 50%;
+    min-height: 37px;
+    max-height: 37px;
+    min-width: 37px;
+    max-width: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: default;
+}
+
+.theme-icon {
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    padding: 3px;
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    cursor: pointer;
+}
+
+#icon-ver #iconed #iconapps #iconpr #iconad #iconadi #iconinf{
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+#iconinf {
+    margin-bottom: 2px;
+    padding-left: 4px;
+    width: 14px;
+    height: 14px;
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.icon-container:hover {
+    background-color: #3d3d3d;
+}
+
+#author {
+    font-size: 0.8rem;
+    color: #269af3;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#author:hover {
+    color: #0a87e7;
+}
+
+nav {
+    -webkit-app-region: drag;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 40px;
+    max-height: 40px;
+    
+    background-color: #040405;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+
+    overflow: hidden;
+}
+
+.nav-minimize, .nav-close {
+    -webkit-app-region: no-drag;
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-minimize:hover {
+    background-color: #3d3d3d;
+    color: white;
+}
+
+.nav-close:hover {
+    background-color: #e81123;
+    color: white;
+}
+
+body.light-theme {
+    background-color: #ffffff;
+    color: #0c0c0e;
+}
+
+body.dark-theme {
+    background-color: #0c0c0e;
+    color: #ffffff;
+    
+}
+
+body.dark-theme .form-group select {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+body.dark-theme .language-item label {
+    color: #ffffff;
+}
+
+body.dark-theme .language-dialog .language-list {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+body.dark-theme .checkbox-group {
+    border: 1.5px solid #555; 
+}
+
+body.dark-theme .checkbox-group label {
+    color: #ffffff; 
+}
+
+body.dark-theme ::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+body.dark-theme ::-webkit-scrollbar-track {
+    background: #151515; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+    background: #222223; 
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: #373738;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb:active {
+    background: #3f3f41;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .start-button {
+    background-color: #0078d4;
+    color: white; 
+}
+
+body.dark-theme .start-button:hover {
+    background-color: #005a9e;
+}
+
+body.dark-theme .language-item .language-list {
+    background-color: #ffffff;
+    color: #ffffff;
+}
+
+body.dark-theme .language-item label {
+    color: #ffffff;
+}
+
+body.dark-theme .language-item input[type="checkbox"] {
+    accent-color: #0078d4; 
+}
+
+body.dark-theme .language-item input[type="checkbox"]:checked {
+    background-color: #0078d4;
+    border-color: #005a9e;
+}
+
+.left-nav {
+    -webkit-app-region: drag;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 1.3rem;
+    cursor: default;
+    font-family: Consolas;
+}
+
+.left-nav h3 {
+    -webkit-app-region: drag;
+    font-size: 1.0rem;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+
+.right-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.icon {
+    -webkit-app-region: drag;
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+    cursor: default;
+}
