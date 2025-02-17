@@ -13,6 +13,8 @@ const PR_LANG = document.getElementById("iconpr");
 const AD_LANG = document.getElementById("iconad");
 const iconadp = document.getElementById("iconadp");
 const iconinf = document.getElementById("iconinf");
+const iconinf2 = document.getElementById("iconinftwo");
+const iconinf3 = document.getElementById("iconinfthr");
 
 THEME_TOGGLE.addEventListener("click", toggleTheme);
 MINUS.addEventListener("click", minimize);
@@ -21,6 +23,16 @@ CLOSE_APP.addEventListener("click", close_app);
 document.getElementById('author').addEventListener('click', (event) => {
     event.preventDefault();
     window.electron.openExternal('https://linktr.ee/MaximeriX');
+});
+
+document.getElementById('appver').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.1');
+});
+
+document.getElementById('github').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller');
 });
 
 function applySystemTheme() {
@@ -35,10 +47,12 @@ function applySystemTheme() {
         AD_LANG.src = isDarkTheme ? 'images/lang-light.png' : 'images/lang.png';
         iconadp.src = isDarkTheme ? 'images/addi-light.png' : 'images/addi.png';
         iconinf.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconinf2.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconinf3.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         THEME_TOGGLE.style.opacity = 1;
         document.body.classList.toggle('dark-theme', isDarkTheme);
         document.body.classList.toggle('light-theme', !isDarkTheme);
-    }, 300);
+    }, 305);
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
@@ -58,8 +72,10 @@ function toggleTheme() {
         AD_LANG.src = isDarkTheme ? 'images/lang-light.png' : 'images/lang.png';
         iconadp.src = isDarkTheme ? 'images/addi-light.png' : 'images/addi.png';
         iconinf.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconinf2.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconinf3.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         THEME_TOGGLE.style.opacity = 1;
-    }, 300);
+    }, 280);
     isDarkTheme = !isDarkTheme;
     document.body.classList.toggle("light-theme", !isDarkTheme);
     document.body.classList.toggle("dark-theme", isDarkTheme);

@@ -1,0 +1,75 @@
+{
+  "toggletheme": "Toggle theme",
+  "switchTo": "Switch to",
+  "langname": "English",
+  "minimize": "Minimize",
+  "close": "Close",
+
+  "officeVersion": "Office Version",
+  "edition": "Edition",
+  "infoEdition" : "VL - Volume License\nRL - Retail License",
+  "apps": "Apps",
+  "projectEdition": "Project Edition",
+  "visioEdition": "Visio Edition",
+  "primaryLang": "Primary Language",
+  "additionalLang": "Additional Languages",
+  "matchOS": "Match Operating System",
+  "additionalProducts": "Additional Products",
+
+  "startButton": "Launch Office Installer",
+  "startButtonTeams": "Teams Installer has started...",
+  "startButtonOffice": "Office Installer has started...",
+
+  "author": "By MaximeriX",
+
+  "select": "-- Select --",
+
+  "office365": "Office 365",
+  "office2024": "Office 2024 - Activated",
+  "office2021": "Office 2021 - Activated",
+  "office2019": "Office 2019 - Activated",
+  "office2016": "Office 2016 - Activated",
+
+  "enterprise": "Enterprise",  
+  "enterpriseNoTeams": "Enterprise (no Teams)",  
+  "business": "Business",  
+  "businessNoTeams": "Business (no Teams)",  
+  "ltscProPlusVl": "LTSC Professional Plus - VL",  
+  "proPlusVl": "Professional Plus - VL",  
+  "proVl": "Professional - VL",  
+  "ltscStandVl": "LTSC Standard - VL",  
+  "standVl": "Standard - VL",  
+
+  "proPlusRl": "Professional Plus - RL",  
+  "proRl": "Professional - RL",  
+  "standRl": "Standard - RL",
+
+  "projectOnlineDesktopClient": "Project Online Desktop Client",
+  "projectPro2024Vl": "Professional 2024 - Activated, VL",
+  "projectStand2024Vl": "Standard 2024 - Activated, VL",
+  "projectPro2021Vl": "Professional 2021 - Activated, VL",
+  "projectStand2021Vl": "Standard 2021 - Activated, VL",
+  "projectPro2019Vl": "Professional 2019 - Activated, VL",
+  "projectStand2019Vl": "Standard 2019 - Activated, VL",
+  "projectPro2016Vl": "Professional 2016 - Activated, VL",
+  "projectStand2016Vl": "Standard 2016 - Activated, VL",
+
+  "visioPlan2": "Visio Plan 2",
+  "visioLtscPro2024Vl": "LTSC Professional 2024 - Activated, VL",
+  "visioLtscStand2024Vl": "LTSC Standard 2024 - Activated, VL",
+  "visioLtscPro2021Vl": "LTSC Professional 2021 - Activated, VL",
+  "visioLtscStand2021Vl": "LTSC Standard 2021 - Activated, VL",
+  "visioLtscPro2019Vl": "LTSC Professional 2019 - Activated, VL",
+  "visioLtscStand2019Vl": "LTSC Standard 2019 - Activated, VL",
+  "visioPro2016Vl": "Professional 2016 - Activated, VL",
+  "visioStand2016Vl": "Standard 2016 - Activated, VL",
+
+  "none": "None",
+  "languagePack": "Language Pack",
+  "officeRuntime": "Office 365 Access Runtime",
+  "skypeForBusinessBasic2019" : "Skype for Business Basic 2019",
+
+  "errorTitle": "Error",
+  "errorMessage": "This program needs to be started as an administrator.",
+  "exit": "Exit"
+}

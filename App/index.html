@@ -17,7 +17,12 @@
         <div class="right-nav">
             <div class="theme-container">
                 <div class="icon-container">
-                    <img id="theme-toggle" src="images/sun-icon.png" alt="Toggle theme" title="Toggle theme" id='themeicon' class="theme-icon">
+                    <img id="theme-toggle" src="images/sun-icon.png" alt="Toggle theme" title="Toggle theme" class="theme-icon">
+                </div>
+            </div>
+            <div class="lang-container">
+                <div class="icon-container">
+                    <img id="lang-toggle" src="images/lang-light.png" alt="Toggle Language" title="Toggle Language" class="theme-icon">
                 </div>
             </div>
             <span class="nav-minimize" id='minimize' alt="Minimize" title="Minimize">&minus;</span>
@@ -30,7 +35,7 @@
                 <div class="vedit-wrapper">
                     <div id="version-options" class="vedit">
                         <div class="form-group">
-                            <label for="version"><img src="images/ver.png" id="iconver">Office Version</label>
+                            <label for="version"><img src="images/ver.png" id="iconver"><text id="offiTR">Office Version</text></label>
                             <select id="version" onchange="updateEditions()" class="vedit">
                                 <option value="" disabled selected>-- Select --</option>
                                 <option value="office-365">Office 365</option>
@@ -43,7 +48,7 @@
                     </div>
                     <div id="edition-options" class="vedit">
                         <div class="form-group">
-                            <label for="edition"><img src="images/edit.png" id="iconed">Edition<img src="images/info.png" title="VL - Volume License
+                            <label for="edition"><img src="images/edit.png" id="iconed"><text id="editTR">Edition</text><img src="images/info.png" title="VL - Volume License
 RL - Retail License" id="iconinf"></label>
                             <select id="edition" disabled class="vedit">
                                 <option value="" disabled selected>-- Select --</option>
@@ -52,7 +57,7 @@ RL - Retail License" id="iconinf"></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label><img src="images/apps.png" id="iconapps"> Apps</label>
+                    <label><img src="images/apps.png" id="iconapps"><text id="appsTR">Apps</text></label>
                     <div class="checkbox-group" id="apps">
                         <div class="boxes" id="boxes">
                             <label><input type="checkbox" id="accessCheckbox" disabled=""><img src="images/access.png"> Access</label>
@@ -75,7 +80,8 @@ RL - Retail License" id="iconinf"></label>
                 <div class="sub-options-wrapper">
                     <div id="project-options" class="sub-options">
                         <div class="form-group">
-                            <label for="project-edition"><img src="images/project.png"> Project Edition</label>
+                            <label for="project-edition"><img src="images/project.png"><text id="peTR">Project Edition</text><img src="images/info.png" title="VL - Volume License
+RL - Retail License" id="iconinftwo"></label>
                             <select id="project-edition" disabled>
                                 <option value="" disabled selected>-- Select --</option>
                             </select>
@@ -83,7 +89,8 @@ RL - Retail License" id="iconinf"></label>
                     </div>
                     <div id="visio-options" class="sub-options">
                         <div class="form-group">
-                            <label for="visio-edition"><img src="images/visio.png"> Visio Edition</label>
+                            <label for="visio-edition"><img src="images/visio.png"><text id="veTR">Visio Edition</text><img src="images/info.png" title="VL - Volume License
+RL - Retail License" id="iconinfthr"></label>
                             <select id="visio-edition" disabled>
                                 <option value="" disabled selected>-- Select --</option>
                             </select>
@@ -91,10 +98,10 @@ RL - Retail License" id="iconinf"></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="primary-language"><img src="images/lang.png" id="iconpr"> Primary Language</label>
+                    <label for="primary-language"><img src="images/lang.png" id="iconpr"><text id="plTR">Primary Language</text></label>
                     <select id="primary-language">
                         <option value="" disabled selected>-- Select --</option>
-                        <option value="MatchOS">Match Operating System</option>
+                        <option id="matchOSStTR" value="MatchOS">Match Operating System</option>
                         <option value="ar-sa">Arabic (Saudi Arabia)</option>
                         <option value="bg-bg">Bulgarian (Bulgaria)</option>
                         <option value="zh-cn">Chinese (Simplified, China)</option>
@@ -141,10 +148,10 @@ RL - Retail License" id="iconinf"></label>
                     </select> 
                 </div>
                 <div class="form-group">
-                    <label for="additional-languages-select"><img src="images/lang.png" id="iconad"> Additional Languages</label>
+                    <label for="additional-languages-select" ><img src="images/lang.png" id="iconad"><text id="alTR">Additional Languages</text></label>
                     <div class="language-dialog">
                         <div class="language-list disabled" id="additional-languages">
-                            <div class="language-item"><label><input type="checkbox" value="MatchOS"> Match Operating System</label></div>
+                            <div class="language-item"><label><input type="checkbox" value="MatchOS"><text id="matchOSTR">Match Operating System</text></label></div>
                             <div class="language-item"><label><input type="checkbox" value="ar-sa"> Arabic (Saudi Arabia)</label></div>
                             <div class="language-item"><label><input type="checkbox" value="bg-bg"> Bulgarian (Bulgaria)</label></div>
                             <div class="language-item"><label><input type="checkbox" value="zh-cn"> Chinese (Simplified, China)</label></div>
@@ -188,23 +195,31 @@ RL - Retail License" id="iconinf"></label>
                             <div class="language-item"><label><input type="checkbox" value="tr-tr"> Turkish (Turkey)</label></div>
                             <div class="language-item"><label><input type="checkbox" value="uk-ua"> Ukrainian (Ukraine)</label></div>
                             <div class="language-item"><label><input type="checkbox" value="vi-vn"> Vietnamese (Vietnam)</label></div>
-                            
                         </div>
                     </div>
                 </div>
                 <div class="additional-products">
                     <div class="form-group">
-                        <label id="ap-text" for="additional-products"><img src="images/addi.png" id="iconadp"> Additional Products</label>
+                        <label id="ap-text" for="additional-products"><img src="images/addi.png" id="iconadp"><text id="apTR">Additional Products</text></label>
                         <select id="additional-products" disabled>
                             <option value="" selected>None</option>
                         </select> 
                     </div>
                 </div>
-                <div class="start-button">Launch Office Installer</div>
-                <a id="author">By MaximeriX</a>
+                <div class="start-button" id="sbTR">Launch Office Installer</div>
+                <div class="links-wrapper">
+                    <div class="links">
+                        <a id="author">By MaximeriX</a>
+                        <div>
+                            <a id="appver">v1.0.1</a>
+                            <a id="github">GitHub</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="js/renderer.js"></script>
     <script src="js/window.js" defer type="module"></script>
     <script src="js/form.js"></script>
 </body>

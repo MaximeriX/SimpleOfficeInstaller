@@ -19,6 +19,7 @@ contextBridge.exposeInMainWorld('electron', {
     onDownloadFailed: (callback) => ipcRenderer.on('download-failed', (event, error) => callback(error)),
     send: (channel, data) => ipcRenderer.send(channel, data),
     receive: (channel, func) => ipcRenderer.on(channel, (event, ...args) => func(...args)),
+    sendTranslations: (callback) => ipcRenderer.on('translations', callback),
     fs: {
         writeFile: (filePath, data) => fs.writeFileSync(filePath, data),
         mkdir: (dirPath) => fs.mkdirSync(dirPath, { recursive: true }),
@@ -29,6 +30,7 @@ contextBridge.exposeInMainWorld('electron', {
     os: {
         tmpdir: () => require('os').tmpdir(),
     },
+    updateLanguageUI: (callback) => ipcRenderer.on('translations', callback),
     openExternal: (url) => shell.openExternal(url)
 });
 

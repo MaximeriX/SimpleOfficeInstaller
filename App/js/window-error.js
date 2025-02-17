@@ -1,5 +1,6 @@
 const isSystemDark = window.matchMedia 
 window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 let isDarkTheme = isSystemDark;
 
 const MINUS = document.getElementById("minimize");
@@ -20,7 +21,7 @@ function applySystemTheme() {
         THEME_TOGGLE.style.opacity = 1;
         document.body.classList.toggle('dark-theme', isDarkTheme);
         document.body.classList.toggle('light-theme', !isDarkTheme);
-    }, 350);
+    }, 305);
 }
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
@@ -31,11 +32,10 @@ applySystemTheme();
 
 function toggleTheme() {
     THEME_TOGGLE.style.opacity = 0;
-
     setTimeout(() => {
         THEME_TOGGLE.src = isDarkTheme ? 'images/moon-icon.png' : 'images/sun-icon.png';
         THEME_TOGGLE.style.opacity = 1;
-    }, 300);
+    }, 280);
     isDarkTheme = !isDarkTheme;
     document.body.classList.toggle("light-theme", !isDarkTheme);
     document.body.classList.toggle("dark-theme", isDarkTheme);
@@ -45,10 +45,10 @@ function minimize() {
     app.window.minimize();
 }
 
-function exit_bt() {
+function close_app() {
     app.window.close();
 }
 
-function close_app() {
+function exit_bt () {
     app.window.close();
 }

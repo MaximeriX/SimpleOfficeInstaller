@@ -1,3 +1,129 @@
+function loadTranslations() {
+    return new Promise((resolve) => {
+        const newTranslations = {};
+        resolve(newTranslations);
+    });
+}
+
+loadTranslations().then(newTranslations => {
+    window.translations = newTranslations;
+    updateEditions(newTranslations);
+});
+
+let currentLanguageIndex = 0;
+let supportedLanguages = [];
+let langloaded = 0;
+
+function loadSupportedLanguages() {
+    fetch('locales/list.json')
+        .then(response => response.json())
+        .then(data => {
+            supportedLanguages = data.supportedLanguages;
+            langloaded = 1;
+            updateLanguageUI();
+        })
+        .catch(error => console.error('Error loading languages:', error));
+}
+
+function updateLanguageUI() {
+    if (langloaded === 1) {
+        const currentLanguage = supportedLanguages[currentLanguageIndex];
+
+        setTimeout(() => {
+            resetForm();
+        }, 200);
+
+        setTimeout(() => {
+        fetch(`locales/${currentLanguage}.json`)
+            .then(response => response.json())
+            .then(translations => {
+                document.getElementById('theme-toggle').title = translations.toggletheme;
+                document.getElementById('minimize').title = translations.minimize;
+                document.getElementById('close-app').title = translations.close;
+                document.getElementById('offiTR').innerText = translations.officeVersion;
+                document.getElementById('editTR').innerText = translations.edition;
+                document.getElementById('iconinf').title = translations.infoEdition;
+                document.getElementById('iconinftwo').title = translations.infoEdition;
+                document.getElementById('iconinfthr').title = translations.infoEdition;
+                document.getElementById('appsTR').innerText = translations.apps;
+                document.getElementById('peTR').innerText = translations.projectEdition;
+                document.getElementById('veTR').innerText = translations.visioEdition;
+                document.getElementById('plTR').innerText = translations.primaryLang;
+                document.getElementById('alTR').innerText = translations.additionalLang;
+                document.getElementById('matchOSTR').innerText = translations.matchOS;
+                document.getElementById('matchOSStTR').innerText = translations.matchOS;
+                document.getElementById('apTR').innerText = translations.additionalProducts;
+                document.getElementById('sbTR').innerText = translations.startButton;
+                document.getElementById('author').innerText = translations.author;
+                const nextLanguageIndex = (currentLanguageIndex + 1) % supportedLanguages.length;
+                const nextLanguage = supportedLanguages[nextLanguageIndex];
+                const langToggle = document.getElementById('lang-toggle');
+
+                fetch(`locales/${nextLanguage}.json`)
+                    .then(response => response.json())
+                    .then(nextTranslations => {
+                        langToggle.title = `${nextTranslations.switchTo} ${nextTranslations.langname}`;
+                    })
+                    .catch(error => console.error('Error loading next language translations:', error));
+                    
+                    const versionSelect = document.getElementById('version');
+                    versionSelect.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+                    const options = [
+                        { value: 'office-365', text: translations.office365 },
+                        { value: 'office-2024', text: translations.office2024 },
+                        { value: 'office-2021', text: translations.office2021 },
+                        { value: 'office-2019', text: translations.office2019 },
+                        { value: 'office-2016', text: translations.office2016 }
+                    ];
+
+                    options.forEach(option => {
+                        const newOption = document.createElement('option');
+                        newOption.value = option.value;
+                        newOption.text = option.text;
+                        versionSelect.add(newOption);
+                    });
+
+                    const editionSelect = document.getElementById('edition');
+                    editionSelect.options[0].text = translations.select;
+                
+                    const projectEditionSelect = document.getElementById('project-edition');
+                    projectEditionSelect.options[0].text = translations.select;
+                
+                    const visioEditionSelect = document.getElementById('visio-edition');
+                    visioEditionSelect.options[0].text = translations.select;
+                
+                    const primaryLangSelect = document.getElementById('primary-language');
+                    primaryLangSelect.options[0].text = translations.select;
+                    
+                    const additionalProductsSelect = document.getElementById('additional-products');
+                    additionalProductsSelect.options[0].text = translations.none;
+                
+                    window.translations = translations;
+                })
+                .catch(error => console.error('Error loading translations:', error));
+        }, 200);
+    };
+};
+
+function updateLangIcon() {
+    const langToggle = document.getElementById('lang-toggle');
+    const currentLanguage = supportedLanguages[currentLanguageIndex];
+    langToggle.style.opacity = 0;
+
+    setTimeout(() => {
+        langToggle.src = `images/flags/${currentLanguage}.png`;
+        langToggle.style.opacity = 1;
+    }, 200);
+}
+
+document.getElementById('lang-toggle').addEventListener('click', () => {
+    currentLanguageIndex = (currentLanguageIndex + 1) % supportedLanguages.length;
+    updateLanguageUI();
+    updateLangIcon();
+});
+
+loadSupportedLanguages();
+
 function getOSArchitecture() {
     const userAgent = window.navigator.userAgent;
     if (userAgent.indexOf("WOW64") !== -1 || userAgent.indexOf("Win64") !== -1 || userAgent.indexOf("x64") !== -1) {
@@ -6,6 +132,18 @@ function getOSArchitecture() {
         return "32";
     }
 }
+
+function resetForm () {
+    document.getElementById('version').value = '';
+    document.getElementById('edition').value = '';
+    document.getElementById('project-edition').value = '';
+    document.getElementById('visio-edition').value = '';
+    document.getElementById('primary-language').value = '';
+    document.getElementById('additional-products').value = '';
+    const langlist = document.querySelector('.language-list');
+    langlist.classList.add("disabled");
+    updateEditions();
+};
 
 document.querySelector('.start-button').addEventListener('click', () => {
     const startButton = document.querySelector('.start-button');
@@ -18,10 +156,10 @@ document.querySelector('.start-button').addEventListener('click', () => {
         const isProjectSelected = document.getElementById('projectCheckbox').checked;
         const isVisioSelected = document.getElementById('visioCheckbox').checked;
         const projectEdition = document.getElementById('project-edition').value;
-        const visioEdition = document.getElementById('visio-edition').value;    
+        const visioEdition = document.getElementById('visio-edition').value;
         const isTeamsSelected = document.getElementById('teamsCheckbox').checked;
         const appsSelected = ['accessCheckbox', 'excelCheckbox', 'onedriveCheckbox', 'onenoteCheckbox', 'outlookCheckbox', 'powerpointCheckbox', 'publisherCheckbox', 'projectCheckbox', 'visioCheckbox', 'wordCheckbox'];
-        const isAnyAppSelected = appsSelected.some(appId => document.getElementById(appId).checked);    
+        const isAnyAppSelected = appsSelected.some(appId => document.getElementById(appId).checked);
         const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
         const configFilePath = window.electron.path.join(tempDir, 'config.xml');
         
@@ -47,6 +185,7 @@ document.querySelector('.start-button').addEventListener('click', () => {
                 productID = 'ProPlus2024Volume';
                 productKey = 'XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB';
             } else if (officeEdition === 'pro-plus-vl') {
+                updateChannel = 'Broad';
                 productID = 'ProPlus2024Retail';
                 productKey = 'HD4NY-QVXPH-VPXH8-YY4WV-R9GQV';
             } else if (officeEdition === 'ltsc-stand-vl') {
@@ -285,14 +424,15 @@ document.querySelector('.start-button').addEventListener('click', () => {
             const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
             const teamsSetupFilePath = window.electron.path.join(tempDir, 'MSTeamsSetup.exe');
 
-            startButton.textContent = "Teams Installer has started...";
+            startButton.textContent = `${translations.startButtonTeams}`;
 
             window.electron.fs.mkdir(tempDir);
 
             const url = 'https://statics.teams.cdn.office.net/evergreen-assets/DesktopClient/MSTeamsSetup.exe';
+            
             window.electron.downloadTeamsSetup(teamsSetupFilePath, url);
         } else {
-            startButton.textContent = "Office Installer has started...";
+            startButton.textContent = `${translations.startButtonOffice}`;
         }
         if (isAnyAppSelected) {
             const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
@@ -300,7 +440,7 @@ document.querySelector('.start-button').addEventListener('click', () => {
 
             window.electron.fs.mkdir(tempDir);
 
-            startButton.textContent = "Office Installer has started...";
+            startButton.textContent = `${translations.startButtonOffice}`;
 
             const urlODT = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_18129-20158.exe';
 
@@ -308,16 +448,16 @@ document.querySelector('.start-button').addEventListener('click', () => {
         }
 
         setTimeout(() => {
-            startButton.textContent = "Launch Office Installer";
+            startButton.textContent = `${translations.startButton}`;
             startButton.style.backgroundColor = "";
             startButton.style.color = "";
             startButton.classList.remove("disabled");
         }, 15000);
     } else {
-            startButton.textContent = "Launch Office Installer";
-            startButton.style.backgroundColor = "";
-            startButton.style.color = "";
-            startButton.classList.remove("disabled");
+        startButton.textContent = `${translations.startButton}`;
+        startButton.style.backgroundColor = "";
+        startButton.style.color = "";
+        startButton.classList.remove("disabled");
     }
 });
 
@@ -362,14 +502,14 @@ document.getElementById('edition').addEventListener('change', function() {
 
         if (VisioSelected) {
             projectEdition.disabled = true;
-            projectEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+            projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             projectEdition.disabled = false;
         }
 
         if (ProjectSelected) {
             visioEdition.disabled = true;
-            visioEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+            visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             visioEdition.disabled = false;
         }
@@ -460,8 +600,8 @@ function updateEditions() {
     const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
     const offteamscheck = document.getElementById('offteamscheck');
 
-    editionSelect.innerHTML = '<option value="" disabled selected>-- Select --</option>';
-    additionalProductsSelect.innerHTML = '<option value="" selected>None</option>';
+    editionSelect.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+    additionalProductsSelect.innerHTML = `<option value="" selected>${translations.none}</option>`;
 
     const selectedVersion = versionSelect.value;
     let editions = [];
@@ -472,52 +612,52 @@ function updateEditions() {
         offteamscheck.checked = false;
         offteamscheck.disabled = true;
         editions = [
-            { value: 'enterprise', text: 'Enterprise' },
-            { value: 'enterprise-no-teams', text: 'Enterprise (no Teams)' },
-            { value: 'business', text: 'Business' },
-            { value: 'business-no-teams', text: 'Business (no Teams)' }
+            { value: 'enterprise', text: `${translations.enterprise}` },
+            { value: 'enterprise-no-teams', text: `${translations.enterpriseNoTeams}` },
+            { value: 'business', text: `${translations.business}` },
+            { value: 'business-no-teams', text: `${translations.businessNoTeams}` },
         ];
         additionalProducts = [
-            { value: 'language-pack', text: 'Language Pack' },
-            { value: 'office-365-access-runtime', text: 'Office 365 Access Runtime' }
+            { value: 'language-pack', text: `${translations.languagePack}` },
+            { value: 'office-365-access-runtime', text: `${translations.officeRuntime}` }
         ];
     } else if (selectedVersion === 'office-2024') {
         editions = [
-            { value: 'ltsc-pro-plus-vl', text: 'LTSC Professional Plus - VL' },
-            { value: 'pro-plus-vl', text: 'Professional Plus - VL' },
-            { value: 'ltsc-stand-vl', text: 'LTSC Standard - VL' }
+            { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
+            { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
+            { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
         ];
         teamsCheckbox.disabled = false;
     } else if (selectedVersion === 'office-2021') {
         editions = [
-            { value: 'ltsc-pro-plus-vl', text: 'LTSC Professional Plus - VL' },
-            { value: 'pro-plus-vl', text: 'Professional Plus - VL' },
-            { value: 'pro-vl', text: 'Professional - VL' },
-            { value: 'ltsc-stand-vl', text: 'LTSC Standard - VL' },
-            { value: 'stand-vl', text: 'Standard - VL' }
+            { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
+            { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
+            { value: 'pro-vl', text: `${translations.proVl}` },
+            { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
+            { value: 'stand-vl', text: `${translations.standVl}` }
         ];
         teamsCheckbox.disabled = false;
         additionalProducts = [
-            { value: 'language-pack', text: 'Language Pack' },
-            { value: 'office-365-access-runtime', text: 'Office 365 Access Runtime' }
+            { value: 'language-pack', text: `${translations.languagePack}` },
+            { value: 'office-365-access-runtime', text: `${translations.officeRuntime}` }
         ];
     } else if (selectedVersion === 'office-2019') {
         editions = [
-            { value: 'pro-plus-vl', text: 'Professional Plus - VL' },
-            { value: 'pro-vl', text: 'Professional - VL' },
-            { value: 'stand-vl', text: 'Standard - VL' }
+            { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
+            { value: 'pro-vl', text: `${translations.proVl}` },
+            { value: 'stand-vl', text: `${translations.standVl}` }
         ];
         teamsCheckbox.disabled = false;
         additionalProducts = [
-            { value: 'language-pack', text: 'Language Pack' },
-            { value: 'office-365-access-runtime', text: 'Office 365 Access Runtime' },
-            { value: 'skype-for-business-basic-2019', text: 'Skype for Business Basic 2019' }
+            { value: 'language-pack', text: `${translations.languagePack}` },
+            { value: 'office-365-access-runtime', text: `${translations.officeRuntime}` },
+            { value: 'skype-for-business-basic-2019', text: `${translations.skypeForBusinessBasic2019}` }
         ];
     } else if (selectedVersion === 'office-2016') {
         editions = [
-            { value: 'pro-plus-rl', text: 'Professional Plus - RL' },
-            { value: 'pro-rl', text: 'Professional - RL' },
-            { value: 'stand-rl', text: 'Standard - RL' }
+            { value: 'pro-plus-vl', text: `${translations.proPlusRl}` },
+            { value: 'pro-vl', text: `${translations.proRl}` },
+            { value: 'stand-vl', text: `${translations.standRl}` }
         ];
         teamsCheckbox.disabled = false;
     }
@@ -550,19 +690,19 @@ function updateEditions() {
     
             document.getElementById('project-edition').disabled = true;
             document.getElementById('visio-edition').disabled = true;
-            document.getElementById('project-edition').innerHTML = '<option value="" disabled selected>-- Select --</option>';
-            document.getElementById('visio-edition').innerHTML = '<option value="" disabled selected>-- Select --</option>';
+            const ProjectSelect = document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            const VisioSelect = document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     
             if (ProjectSelected) {
                 projectEdition.disabled = true;
-                projectEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+                projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
             } else {
                 projectEdition.disabled = false;
             }
     
             if (VisioSelected) {
                 visioEdition.disabled = true;
-                visioEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+                visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
             } else {
                 visioEdition.disabled = false;
             }
@@ -585,25 +725,24 @@ document.getElementById('version').addEventListener('change', function() {
         const projectEdition = document.getElementById('projectCheckbox');
         const visioEdition = document.getElementById('visioCheckbox');
 
-        document.getElementById('project-edition').disabled = true;
-        document.getElementById('visio-edition').disabled = true;
-        document.getElementById('project-edition').innerHTML = '<option value="" disabled selected>-- Select --</option>';
-        document.getElementById('visio-edition').innerHTML = '<option value="" disabled selected>-- Select --</option>';
+        document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`.disabled = true;
+        document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`.disabled = true;
 
         if (VisioSelected) {
             projectEdition.disabled = true;
-            projectEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+            projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             projectEdition.disabled = false;
         }
 
         if (ProjectSelected) {
             visioEdition.disabled = true;
-            visioEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+            visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             visioEdition.disabled = false;
         }
     });
+    updateEditions();
 });
 
 document.getElementById('primary-language').addEventListener('change', function() {
@@ -653,45 +792,45 @@ function updateProjectEditions() {
     let options = [];
     if (version === 'office-365') {
         options = [
-            { value: 'project-online-desktop-client', text: 'Project Online Desktop Client' },
-            { value: 'pro-2024-vl', text: 'Professional 2024 - Activated, VL' },
-            { value: 'stand-2024-vl', text: 'Standard 2024 - Activated, VL' },
-            { value: 'pro-2021-vl', text: 'Professional 2021 - Activated, VL' },
-            { value: 'stand-2021-vl', text: 'Standard 2021 - Activated, VL' },
-            { value: 'pro-2019-vl', text: 'Professional 2019 - Activated, VL' },
-            { value: 'stand-2019-vl', text: 'Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'project-online-desktop-client', text: `${translations.projectOnlineDesktopClient}` },
+            { value: 'pro-2024-vl', text: `${translations.projectPro2024Vl}` },
+            { value: 'stand-2024-vl', text: `${translations.projectStand2024Vl}` },
+            { value: 'pro-2021-vl', text: `${translations.projectPro2021Vl}` },
+            { value: 'stand-2021-vl', text: `${translations.projectStand2021Vl}` },
+            { value: 'pro-2019-vl', text: `${translations.projectPro2019Vl}` },
+            { value: 'stand-2019-vl', text: `${translations.projectStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.projectPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.projectStand2016Vl}` }
         ];
     } else if (version === 'office-2024') {
         options = [
-            { value: 'pro-2024-vl', text: 'Professional 2024 - Activated, VL' },
-            { value: 'stand-2024-vl', text: 'Standard 2024 - Activated, VL' }
+            { value: 'pro-2024-vl', text: `${translations.projectPro2024Vl}` },
+            { value: 'stand-2024-vl', text: `${translations.projectStand2024Vl}` }
         ];
     } else if (version === 'office-2021') {
         options = [
-            { value: 'pro-2021-vl', text: 'Professional 2021 - Activated, VL' },
-            { value: 'stand-2021-vl', text: 'Standard 2021 - Activated, VL' },
-            { value: 'pro-2019-vl', text: 'Professional 2019 - Activated, VL' },
-            { value: 'stand-2019-vl', text: 'Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'pro-2021-vl', text: `${translations.projectPro2021Vl}` },
+            { value: 'stand-2021-vl', text: `${translations.projectStand2021Vl}` },
+            { value: 'pro-2019-vl', text: `${translations.projectPro2019Vl}` },
+            { value: 'stand-2019-vl', text: `${translations.projectStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.projectPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.projectStand2016Vl}` }
         ];
     } else if (version === 'office-2019') {
         options = [
-            { value: 'pro-2019-vl', text: 'Professional 2019 - Activated, VL' },
-            { value: 'stand-2019-vl', text: 'Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'pro-2019-vl', text: `${translations.projectPro2019Vl}` },
+            { value: 'stand-2019-vl', text: `${translations.projectStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.projectPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.projectStand2016Vl}` }
         ];
     } else if (version === 'office-2016') {
         options = [
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'pro-2016-vl', text: `${translations.projectPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.projectStand2016Vl}` }
         ];
     }
 
-    projectEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+    projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     
     options.forEach(option => {
         const opt = document.createElement('option');
@@ -709,45 +848,45 @@ function updateVisioEditions() {
     let options = [];
     if (version === 'office-365') {
         options = [
-            { value: 'visio-plan-2', text: 'Visio Plan 2' },
-            { value: 'ltsc-pro-2024-vl', text: 'LTSC Professional 2024 - Activated, VL' },
-            { value: 'ltsc-stand-2024-vl', text: 'LTSC Standard 2024 - Activated, VL' },
-            { value: 'ltsc-pro-2021-vl', text: 'LTSC Professional 2021 - Activated, VL' },
-            { value: 'ltsc-stand-2021-vl', text: 'LTSC Standard 2021 - Activated, VL' },
-            { value: 'ltsc-pro-2019-vl', text: 'LTSC Professional 2019 - Activated, VL' },
-            { value: 'ltsc-stand-2019-vl', text: 'LTSC Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'visio-plan-2', text: `${translations.visioPlan2}` },
+            { value: 'ltsc-pro-2024-vl', text: `${translations.visioLtscPro2024Vl}` },
+            { value: 'ltsc-stand-2024-vl', text: `${translations.visioLtscStand2024Vl}` },
+            { value: 'ltsc-pro-2021-vl', text: `${translations.visioLtscPro2021Vl}` },
+            { value: 'ltsc-stand-2021-vl', text: `${translations.visioLtscStand2021Vl}` },
+            { value: 'ltsc-pro-2019-vl', text: `${translations.visioLtscPro2019Vl}` },
+            { value: 'ltsc-stand-2019-vl', text: `${translations.visioLtscStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.visioPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.visioStand2016Vl}` }
         ];        
     } else if (version === 'office-2024') {
         options = [
-            { value: 'ltsc-pro-2024-vl', text: 'LTSC Professional 2024 - Activated, VL' },
-            { value: 'ltsc-stand-2024-vl', text: 'LTSC Standard 2024 - Activated, VL' }
+            { value: 'ltsc-pro-2024-vl', text: `${translations.visioLtscPro2024Vl}` },
+            { value: 'ltsc-stand-2024-vl', text: `${translations.visioLtscStand2024Vl}` }
         ];
     } else if (version === 'office-2021') {
         options = [
-            { value: 'ltsc-pro-2021-vl', text: 'LTSC Professional 2021 - Activated, VL' },
-            { value: 'ltsc-stand-2021-vl', text: 'LTSC Standard 2021 - Activated, VL' },
-            { value: 'ltsc-pro-2019-vl', text: 'LTSC Professional 2019 - Activated, VL' },
-            { value: 'ltsc-stand-2019-vl', text: 'LTSC Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'ltsc-pro-2021-vl', text: `${translations.visioLtscPro2021Vl}` },
+            { value: 'ltsc-stand-2021-vl', text: `${translations.visioLtscStand2021Vl}` },
+            { value: 'ltsc-pro-2019-vl', text: `${translations.visioLtscPro2019Vl}` },
+            { value: 'ltsc-stand-2019-vl', text: `${translations.visioLtscStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.visioPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.visioStand2016Vl}` }
         ];
     } else if (version === 'office-2019') {
         options = [
-            { value: 'ltsc-pro-2019-vl', text: 'LTSC Professional 2019 - Activated, VL' },
-            { value: 'ltsc-stand-2019-vl', text: 'LTSC Standard 2019 - Activated, VL' },
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'ltsc-pro-2019-vl', text: `${translations.visioLtscPro2019Vl}` },
+            { value: 'ltsc-stand-2019-vl', text: `${translations.visioLtscStand2019Vl}` },
+            { value: 'pro-2016-vl', text: `${translations.visioPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.visioStand2016Vl}` }
         ];
     } else if (version === 'office-2016') {
         options = [
-            { value: 'pro-2016-vl', text: 'Professional 2016 - Activated, VL' },
-            { value: 'stand-2016-vl', text: 'Standard 2016 - Activated, VL' }
+            { value: 'pro-2016-vl', text: `${translations.visioPro2016Vl}` },
+            { value: 'stand-2016-vl', text: `${translations.visioStand2016Vl}` }
         ];
     }
 
-    visioEdition.innerHTML = '<option value="" disabled selected>-- Select --</option>';
+    visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
 
     options.forEach(option => {
         const opt = document.createElement('option');
@@ -823,11 +962,16 @@ function validateForm() {
         checkboxgroup.style.border = "";
         checkboxgroup.style.borderRadius = "";
     }
-
     return isValid;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('version').addEventListener('change', updateEditions);
+    document.getElementById('primary-language').addEventListener('change', enableAdditionalLanguages);
+    updateEditions();
+    loadTranslations();
+    loadSupportedLanguages();
+    updateLanguageUI();
     const versionSelect = document.getElementById('version');
     versionSelect.addEventListener('change', () => {
         updateProjectEditions();
@@ -835,15 +979,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateEditions();
-    document.getElementById('version').addEventListener('change', updateEditions);
-    document.getElementById('primary-language').addEventListener('change', enableAdditionalLanguages);
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxGroup = document.getElementById('apps');
-
     const checkboxes = document.querySelectorAll('#apps input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {

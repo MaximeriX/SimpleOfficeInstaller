@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Office Installer</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="icon.ico">
+    <link rel="icon" href="images/icon.ico">
 </head>
-<body>
+<body>  
     <nav>
         <div class="left-nav">
             <img src="images/icon.ico" class="icon" alt="App Icon">
@@ -17,22 +17,31 @@
         <div class="right-nav">
             <div class="theme-container">
                 <div class="icon-container">
-                    <img id="theme-toggle" src="images/sun-icon.png" alt="Toggle theme" title="Toggle theme" id='themeicon' class="theme-icon">
+                    <img id="theme-toggle" src="images/sun-icon.png" alt="Toggle theme" title="Toggle theme" class="theme-icon">
+                </div>
+            </div>
+            <div class="lang-container">
+                <div class="icon-container">
+                    <img id="lang-toggle" src="images/lang-light.png" alt="Toggle Language" title="Toggle Language" class="theme-icon">
                 </div>
             </div>
             <span class="nav-minimize" id='minimize' alt="Minimize" title="Minimize">&minus;</span>
             <span class="nav-close" id='close-app' alt="Close" title="Close">&#10006;</span>
         </div>
     </nav>
-    <div class="padding-error">
-        <div class="container-error">
-            <div class="error-text">
-                <h1>Error</h1>
-                <p>This program needs to be started as an administrator.</p>
-                <div id="exit_bt" class="exit_bt">Exit</div>
+    <div class="main">
+        <div class="padding-error">
+            <div class="container-error">
+                <div class="error-text">
+                    <h1 id="error-title">Error</h1>
+                    <p id="error-message">This program needs to be started as an administrator.</p>
+                    <div id="exit_bt" class="exit_bt">Exit</div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="js/renderer-error.js"></script>
     <script src="js/window-error.js" defer type="module"></script>
+    <script src="js/form-error.js"></script>
 </body>
 </html>

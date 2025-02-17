@@ -1,0 +1,75 @@
+{
+  "toggletheme": "Змінити тему",
+  "switchTo": "Переключитися на",
+  "langname": "Українську",
+  "minimize": "Згорнути",
+  "close": "Закрити",
+
+  "officeVersion": "Версія Office",
+  "edition": "Видання",
+  "infoEdition": "КЛ - Корпоративна ліцензія\nРЛ - Роздрібна ліцензія",
+  "apps": "Програми",
+  "projectEdition": "Видання Project",
+  "visioEdition": "Видання Visio",
+  "primaryLang": "Основна мова",
+  "additionalLang": "Додаткові мови",
+  "matchOS": "Відповідати Операційній Системі",
+  "additionalProducts": "Додаткові продукти",
+
+  "startButton": "Запустити Інсталятор Office",
+  "startButtonTeams": "Інсталятор Teams запущено...",
+  "startButtonOffice": "Інсталятор Office запущено...",
+
+  "author": "Від MaximeriX",
+
+  "select": "-- Виберіть --",
+
+  "office365": "Office 365",
+  "office2024": "Office 2024 - Активовано",
+  "office2021": "Office 2021 - Активовано",
+  "office2019": "Office 2019 - Активовано",
+  "office2016": "Office 2016 - Активовано",
+
+  "enterprise": "Enterprise",
+  "enterpriseNoTeams": "Enterprise (без Teams)",
+  "business": "Business",
+  "businessNoTeams": "Business (без Teams)",
+  "ltscProPlusVl": "LTSC Professional Plus - КЛ",
+  "proPlusVl": "Professional Plus - КЛ",
+  "proVl": "Professional - КЛ",
+  "ltscStandVl": "LTSC Standard - КЛ",
+  "standVl": "Standard - КЛ",  
+
+  "proPlusRl": "Professional Plus - РЛ",  
+  "proRl": "Professional - РЛ",  
+  "standRl": "Standard - РЛ",
+
+  "projectOnlineDesktopClient": "Project Online Desktop Client",
+  "projectPro2024Vl": "Professional 2024 - Активовано, КЛ",
+  "projectStand2024Vl": "Standard 2024 - Активовано, КЛ",
+  "projectPro2021Vl": "Professional 2021 - Активовано, КЛ",
+  "projectStand2021Vl": "Standard 2021 - Активовано, КЛ",
+  "projectPro2019Vl": "Professional 2019 - Активовано, КЛ",
+  "projectStand2019Vl": "Standard 2019 - Активовано, КЛ",
+  "projectPro2016Vl": "Professional 2016 - Активовано, КЛ",
+  "projectStand2016Vl": "Standard 2016 - Активовано, КЛ",
+
+  "visioPlan2": "Visio Plan 2",
+  "visioLtscPro2024Vl": "LTSC Professional 2024 - Активовано, КЛ",
+  "visioLtscStand2024Vl": "LTSC Standard 2024 - Активовано, КЛ",
+  "visioLtscPro2021Vl": "LTSC Professional 2021 - Активовано, КЛ",
+  "visioLtscStand2021Vl": "LTSC Standard 2021 - Активовано, КЛ",
+  "visioLtscPro2019Vl": "LTSC Professional 2019 - Активовано, КЛ",
+  "visioLtscStand2019Vl": "LTSC Standard 2019 - Активовано, КЛ",
+  "visioPro2016Vl": "Professional 2016 - Активовано, КЛ",
+  "visioStand2016Vl": "Standard 2016 - Активовано, КЛ",
+
+  "none": "Ніякі",
+  "languagePack": "Мовний пакет",
+  "officeRuntime": "Office 365 Access Runtime",
+  "skypeForBusinessBasic2019": "Skype для Business Basic 2019",
+
+  "errorTitle": "Помилка",
+  "errorMessage": "Цю програму потрібно запускати від імені адміністратора.",
+  "exit": "Вийти"
+}

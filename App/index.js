@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const axios = require('axios');
 const os = require("os");
 const path = require('path');
 const fs = require('fs');
@@ -21,6 +22,110 @@ function isAdmin() {
             resolve(true);
         }
     });
+}
+
+async function checkForUpdates() {
+    const currentVersion = '1.0.1';
+    const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
+
+    try {
+        const response = await fetch(updateUrl);
+        const updateInfo = await response.json();
+
+        console.log(updateInfo, currentVersion)
+
+        if (updateInfo.appVersion !== currentVersion) {
+            const userResponse = await dialog.showMessageBox({
+                type: 'info',
+                buttons: ['Yes', 'No'],
+                title: 'New Update Available',
+                message: `A v${updateInfo.appVersion} update is available!\nDo you want to download it?`
+            });
+
+            if (userResponse.response === 0) {
+                downloadUpdate(updateInfo.updateLink);
+            }
+        }
+    } catch (error) {
+        console.error('Error checking for updates:', error);
+    }
+}
+
+async function downloadUpdate(updateLink) {
+    const downloadsDir = path.join(app.getPath('downloads'));
+
+    if (!fs.existsSync(downloadsDir)) {
+        fs.mkdirSync(downloadsDir, { recursive: true });
+    }
+
+    let appVersion;
+    try {
+        const response = await axios.get('https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json');
+        appVersion = response.data.appVersion;
+    } catch (error) {
+        console.error('Error fetching app version:', error.message);
+        return;
+    }
+
+    const filePath = path.join(downloadsDir, `SimpleOfficeInstaller_${appVersion}.exe`);
+
+    try {
+        const response = await axios({
+            method: 'get',
+            url: updateLink,
+            responseType: 'stream'
+        });
+
+        const writer = fs.createWriteStream(filePath);
+        response.data.pipe(writer);
+
+        writer.on('finish', () => {
+            const userResponse = dialog.showMessageBox({
+                type: 'info',
+                message: `Update downloaded successfully to:\n${filePath}`
+            });
+
+            exec(`"${filePath}"`, (error) => {
+                if (error) {
+                    console.error('Error opening the update file:', error);
+                } else {
+                    console.log('Update file opened successfully.');
+                }
+            });
+
+            setTimeout(() => {
+                app.quit();
+            }, 10000);
+        });
+
+        writer.on('error', (err) => {
+            console.error('Error writing file:', err.message);
+        });
+    } catch (error) {
+        console.error('Error downloading the file:', error.message);
+    }
+}
+
+const supportedLanguagesPath = path.join(__dirname, 'locales', 'list.json');
+let supportedLanguages = [];
+
+try {
+    const supportedLangFile = fs.readFileSync(supportedLanguagesPath);
+    supportedLanguages = JSON.parse(supportedLangFile).supportedLanguages;
+} catch (error) {
+    console.error('Error loading supported languages file:', error);
+}
+
+let language = 'en_us';
+
+const langFilePath = path.join(__dirname, 'locales', `${language}.json`);
+let translations = {};
+
+try {
+    const langFile = fs.readFileSync(langFilePath);
+    translations = JSON.parse(langFile);
+} catch (error) {
+    console.error('Error loading language file:', error);
 }
 
 async function createWindow() {
@@ -50,6 +155,10 @@ async function createWindow() {
     });
 
     mainWindow.loadFile('index.html');
+
+    mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow.webContents.send('translations', translations);
+    });
 }
 
 function showErrorAndQuit() {
@@ -65,7 +174,7 @@ function showErrorAndQuit() {
         resizable: true,
         fullscreenable: false,
         webPreferences: {
-            preload: path.join(__dirname, 'js/preload-error.js'),
+            preload: path.join(__dirname, 'js/preload.js'),
             nodeIntegration: true,
             contextIsolation: true,
             enableRemoteModule: false,
@@ -271,6 +380,9 @@ app.whenReady().then(async () => {
         showErrorAndQuit();
     } else {
         createWindow();
+        setTimeout(() => {
+            checkForUpdates();
+        }, 800);
     }
 });
 

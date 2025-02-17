@@ -10,6 +10,48 @@
     cursor: default;
     overflow-x: hidden;
     transition: all 0.1s ease;
+    transform: all 0.1s ease;
+    -webkit-text-size-adjust: auto;
+    text-size-adjust: auto;
+}
+
+@media screen and (min-width: 530px) {
+    body {
+        font-size: 1rem;
+    }
+    body h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 630px) {
+    * {
+        font-size: 1.05rem;
+    }
+}
+
+@media screen and (min-width: 730px) {
+    * {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (min-width: 830px) {
+    * {
+        font-size: 1.15rem;
+    }
+}
+
+@media screen and (min-width: 930px) {
+    * {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (min-width: 1030px) {
+    * {
+        font-size: 1.25rem;
+    }
 }
 
 .main {
@@ -232,27 +274,6 @@ select:disabled{
     opacity: 1;
 }
 
-.vedit-wrapper img {
-    padding-right: 3px;
-}
-
-.vedit-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.vedit {
-    position: relative;
-    flex: 1;
-    box-sizing: border-box;
-}
-
-.vedit select {
-    position: relative;
-}
-
 #project-options {
     padding-right: 7px;
     width: 90%;
@@ -273,21 +294,25 @@ select:disabled{
     width: 90%;
 }
 
-.sub-options-wrapper {
+.sub-options-wrapper, .vedit-wrapper {
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.sub-options {
+.sub-options, .vedit {
     position: relative;
     flex: 1;
     box-sizing: border-box;
 }
 
-.sub-options select {
+.sub-options select, .vedit select {
     position: relative;
+}
+
+.vedit-wrapper img {
+    padding-right: 3px;
 }
 
 #disabled {
@@ -345,8 +370,13 @@ disabled {
     
 }
 
-.theme-container {
-    padding-right: 3px;
+.lang-icon {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.theme-container, .lang-container {
+    padding-right: 4px;
 }
 
 .icon-container {
@@ -374,11 +404,11 @@ disabled {
     cursor: pointer;
 }
 
-#icon-ver #iconed #iconapps #iconpr #iconad #iconadi #iconinf{
+#icon-ver, #iconed, #iconapps, #iconpr, #iconad, #iconadi, #iconinf, #iconinftwo, #iconinfthr {
     transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 
-#iconinf {
+#iconinf, #iconinftwo, #iconinfthr {
     margin-bottom: 2px;
     padding-left: 4px;
     width: 14px;
@@ -390,14 +420,32 @@ disabled {
     background-color: #3d3d3d;
 }
 
-#author {
+#appsTR, #peTR, #veTR, #alTR, #plTR, #matchOSTR, #apTR {
+    margin-left: 3.5px;
+}
+
+.links-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.links a {
+    position: relative;
+}
+#author, #github, #appver {
     font-size: 0.8rem;
     color: #269af3;
     display: inline-block;
     cursor: pointer;
 }
 
-#author:hover {
+#author:hover, #github:hover {
     color: #0a87e7;
 }
 
@@ -431,6 +479,7 @@ nav {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    overflow: none;
 }
 
 .nav-minimize:hover {
@@ -552,6 +601,7 @@ body.dark-theme .language-item input[type="checkbox"]:checked {
 
 
 .right-nav {
+    -webkit-app-region: drag;
     display: flex;
     align-items: center;
     position: relative;
