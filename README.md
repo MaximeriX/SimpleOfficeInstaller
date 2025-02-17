@@ -1,5 +1,5 @@
 # Simple Office Installer
-![SimpleOfficeInstaller-App-Image](https://github.com/user-attachments/assets/9d1d1529-5eea-4d20-a9c7-a9a770603cf5)
+![SimpleOfficeInstaller-App-Image](https://github.com/user-attachments/assets/d54f5c82-3e13-4bdd-a08a-36c4d19f5cce)
 
 Simple Office Installer is a user-friendly program that allows you to download various versions of Microsoft Office for free, including:
 
