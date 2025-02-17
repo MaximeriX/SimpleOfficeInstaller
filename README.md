@@ -52,7 +52,7 @@ Simple Office Installer is a user-friendly program that allows you to download v
 
 ## Download
 
-Download the [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/latest) from the releases section.
+Download the [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/1.0.0) from the releases section.
 
 ## How it Works
 #### When Launch Office Installer button pressed
