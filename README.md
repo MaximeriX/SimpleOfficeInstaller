@@ -63,7 +63,7 @@ Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378
 *Note*: Every file that the program downloads/generates is located in `%TEMP%\OfficeSetupFiles`
 
 ## 🌟 Contribution
-### 🐞 Bug
+### 🐞 Bugs
   If you find a bug, you can post it in the [Issues](https://github.com/MaximeriX/SimpleOfficeInstaller/issues/new) section. If you can fix it, open a [Pull Request](https://github.com/MaximeriX/SimpleOfficeInstaller/pulls).
 ### 💡 Ideas
   If you have an idea for an app, you can post it on [Discussions](https://github.com/MaximeriX/SimpleOfficeInstaller/discussions/new?category=ideas)
