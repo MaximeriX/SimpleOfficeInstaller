@@ -191,7 +191,7 @@
 <tr><td>se-se</td><td>Sami (Lule) (Sweden)</td></tr>
 <tr><td>se-se</td><td>Sami (Southern) (Sweden)</td></tr>
 <tr><td>sk</td><td>Slovak</td></tr>
-<tr><td>sk-sk</td>Slovak (Slovakia)</td></tr>
+<tr><td>sk-sk</td><td>Slovak (Slovakia)</td></tr>
 <tr><td>sl</td><td>Slovenian</td></tr>
 <tr><td>sl-si</td><td>Slovenian (Slovenia)</td></tr>
 <tr><td>sq</td><td>Albanian</td></tr>
