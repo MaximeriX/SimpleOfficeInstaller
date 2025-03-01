@@ -1,3 +1,5 @@
+<h3>Update v1.0.2 will be available in ~30 minutes</h3>
+
 # <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="27vw" height="27vw"> Simple Office Installer
 ![SimpleOfficeInstaller-App-Image](https://github.com/user-attachments/assets/d54f5c82-3e13-4bdd-a08a-36c4d19f5cce)
 
