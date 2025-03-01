@@ -1,6 +1,6 @@
 {
   "name": "SimpleOfficeInstaller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "devDependencies": {
     "electron": "^33.2.1",

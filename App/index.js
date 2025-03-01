@@ -6,10 +6,12 @@ const fs = require('fs');
 const https = require('https');
 const { exec } = require('child_process');
 
+console.log(`Debug info:`);
+
 let mainWindow;
 
 function isAdmin() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         if (os.platform() === 'win32') {
             exec('net session', (error) => {
                 if (error) {
@@ -25,14 +27,14 @@ function isAdmin() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.1';
+    const currentVersion = '1.0.2';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
         const response = await fetch(updateUrl);
         const updateInfo = await response.json();
 
-        console.log(updateInfo, currentVersion)
+        console.log(`UpdateJson: ${updateInfo.appVersion}, ${updateInfo.updateLink}\nCurrent version: ${currentVersion}`)
 
         if (updateInfo.appVersion !== currentVersion) {
             const userResponse = await dialog.showMessageBox({
@@ -106,26 +108,31 @@ async function downloadUpdate(updateLink) {
     }
 }
 
-const supportedLanguagesPath = path.join(__dirname, 'locales', 'list.json');
-let supportedLanguages = [];
+function getSystemLanguage() {
+    const locale = app.getLocale();
+    const formattedLocale = locale.toLowerCase().replace('-', '_');
+    const langFilePath = path.join(__dirname, 'locales', 'supported.json');
 
-try {
-    const supportedLangFile = fs.readFileSync(supportedLanguagesPath);
-    supportedLanguages = JSON.parse(supportedLangFile).supportedLanguages;
-} catch (error) {
-    console.error('Error loading supported languages file:', error);
-}
+    let languageMapping = {};
 
-let language = 'en_us';
+    try {
+        const langFile = fs.readFileSync(langFilePath);
+        languageMapping = JSON.parse(langFile).supportedLanguages;
+    } catch (error) {
+        console.error('Error loading supported languages:', error);
+    }
 
-const langFilePath = path.join(__dirname, 'locales', `${language}.json`);
-let translations = {};
+    if (languageMapping[formattedLocale]) {
+        return formattedLocale;
+    }
 
-try {
-    const langFile = fs.readFileSync(langFilePath);
-    translations = JSON.parse(langFile);
-} catch (error) {
-    console.error('Error loading language file:', error);
+    for (const mainLang in languageMapping) {
+        if (languageMapping[mainLang].includes(formattedLocale)) {
+            return mainLang;
+        }
+    }
+
+    return 'en_us';
 }
 
 async function createWindow() {
@@ -156,6 +163,19 @@ async function createWindow() {
 
     mainWindow.loadFile('index.html');
 
+    const language = getSystemLanguage();
+    console.log(`App Language: ${language}`);
+
+    const langFilePath = path.join(__dirname, 'locales', `${language}.json`);
+    let translations = {};
+
+    try {
+        const langFile = fs.readFileSync(langFilePath);
+        translations = JSON.parse(langFile);
+    } catch (error) {
+        console.error('Error loading language file:', error);
+    }
+
     mainWindow.webContents.on('did-finish-load', () => {
         mainWindow.webContents.send('translations', translations);
     });
@@ -181,10 +201,23 @@ function showErrorAndQuit() {
         },
     });
 
-    errorWindow.loadFile(path.join(__dirname, 'error.html'));
+    errorWindow.loadFile('error.html');
 
-    errorWindow.on('closed', () => {
-        app.quit();
+    const language = getSystemLanguage();
+    console.log(`App Language: ${language}`);
+
+    const langFilePath = path.join(__dirname, 'locales', `${language}.json`);
+    let translations = {};
+
+    try {
+        const langFile = fs.readFileSync(langFilePath);
+        translations = JSON.parse(langFile);
+    } catch (error) {
+        console.error('Error loading language file:', error);
+    }
+
+    errorWindow.webContents.on('did-finish-load', () => {
+        errorWindow.webContents.send('translations', translations);
     });
 }
 
@@ -349,31 +382,6 @@ function isProcessRunning(processName, callback) {
     });
 }
 
-function waitForProcessToClose(processName, callback) {
-    const checkInterval = 1000;
-
-    const interval = setInterval(() => {
-        isProcessRunning(processName, (running) => {
-            if (!running) {
-                clearInterval(interval);
-                callback();
-            }
-        });
-    }, checkInterval);
-}
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
-
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
-});
-
 app.whenReady().then(async () => {
     const adminCheck = await isAdmin();
     if (!adminCheck) {
@@ -394,16 +402,3 @@ ipcMain.on("app/minimize", (event) => {
     const win = BrowserWindow.fromWebContents(event.sender);
     win.minimize();
 });
-
-ipcMain.on('start-installation', (event, formData) => {
-    if (validateForm(formData)) {
-        console.log('Form is valid. Proceeding with installation...');
-    } else {
-        console.error('Form validation failed.');
-        event.reply('installation-failed', 'Form validation failed.');
-    }
-});
-
-function validateForm(formData) {
-    return true;
-}

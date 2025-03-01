@@ -17,9 +17,8 @@ function loadSupportedLanguages() {
     fetch('locales/list.json')
         .then(response => response.json())
         .then(data => {
-            supportedLanguages = data.supportedLanguages;
+            supportedLanguages = data.list;
             langloaded = 1;
-            updateLanguageUI();
         })
         .catch(error => console.error('Error loading languages:', error));
 }
@@ -76,5 +75,4 @@ loadSupportedLanguages();
 document.addEventListener('DOMContentLoaded', () => {
     loadTranslations();
     loadSupportedLanguages();
-    updateLanguageUI();
 });

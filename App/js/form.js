@@ -18,12 +18,12 @@ function loadSupportedLanguages() {
     fetch('locales/list.json')
         .then(response => response.json())
         .then(data => {
-            supportedLanguages = data.supportedLanguages;
+            supportedLanguages = data.list;
             langloaded = 1;
-            updateLanguageUI();
         })
         .catch(error => console.error('Error loading languages:', error));
 }
+
 
 function updateLanguageUI() {
     if (langloaded === 1) {
@@ -140,8 +140,7 @@ function resetForm () {
     document.getElementById('visio-edition').value = '';
     document.getElementById('primary-language').value = '';
     document.getElementById('additional-products').value = '';
-    const langlist = document.querySelector('.language-list');
-    langlist.classList.add("disabled");
+    document.querySelector('.language-list').classList.add("disabled");
     updateEditions();
 };
 
@@ -971,7 +970,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEditions();
     loadTranslations();
     loadSupportedLanguages();
-    updateLanguageUI();
     const versionSelect = document.getElementById('version');
     versionSelect.addEventListener('change', () => {
         updateProjectEditions();
