@@ -60,7 +60,7 @@ Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378
 2. Downloads and runs `officedeploymenttool.exe` from [Microsoft's official site](https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_18227-20162.exe)
 3. Runs `setup.exe /Configure config.xml`
    
-*Note*: Every file that the program downloads/generates is located in `%TEMP%\OfficeSetupFiles`
+*Note*: Every file that the program downloads/generates during office installation is located in `%TEMP%\OfficeSetupFiles`
 
 ## 🌟 Contribution
 ### 🐞 Bugs
