@@ -33,7 +33,7 @@
 -----
 
 - **Office 2019 Professional Plus** - Activated, Volume License
-- **Office 2019 Professional** - Activated, Volume License
+- **Office 2019 Professional** - Activated, Retail License
 - **Office 2019 Standard** - Activated, Volume License
 - **Office 2019 Personal** - Activated, Retail License
 
