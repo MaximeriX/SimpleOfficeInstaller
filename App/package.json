@@ -1,6 +1,6 @@
 {
   "name": "SimpleOfficeInstaller",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "devDependencies": {
     "electron": "^33.2.1",
@@ -39,8 +39,7 @@
       "locales/**/",
       "locales/"
     ],
-    "asar": true,
-    "buildDependenciesFromSource": true
+    "asar": true
   },
   "keywords": [],
   "author": "MaximeriX",

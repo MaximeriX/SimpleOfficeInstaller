@@ -70,7 +70,7 @@ RL - Retail License" id="iconinf"></label>
                             <label><input type="checkbox" id="powerpointCheckbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
                             <label><input type="checkbox" id="publisherCheckbox" disabled=""><img src="images/publisher.png"> Publisher</label>
                             <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" disabled=""><img src="images/project.png"> Project</label>
-                            <label id="officeteams" style="display: none;"><input type="checkbox" id="offteamscheck" disabled=""><img src="images/teams.png"> Teams</label>
+                            <label id="officeteams365" style="display: none;"><input type="checkbox" id="offteamscheck365" disabled=""><img src="images/teams.png"> Teams</label>
                             <label id="teams"><input type="checkbox" id="teamsCheckbox" disabled=""><img src="images/teams.png"> Teams</label>
                             <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" disabled=""><img src="images/visio.png"> Visio</label>
                             <label><input type="checkbox" id="wordCheckbox" disabled=""><img src="images/word.png"> Word</label>
@@ -147,10 +147,10 @@ RL - Retail License" id="iconinfthr"></label>
                         <option value="vi-vn">Vietnamese (Vietnam)</option>
                     </select> 
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="cursor: not-allowed;" id="AdditionalLangCursor">
                     <label for="additional-languages-select" ><img src="images/lang.png" id="iconad"><text id="alTR">Additional Languages</text></label>
-                    <div class="language-dialog">
-                        <div class="language-list disabled" id="additional-languages">
+                    <div class="language-dialog disabled" id="additional-languages">
+                        <div class="language-list">
                             <div class="language-item"><label><input type="checkbox" value="MatchOS"><text id="matchOSTR">Match Operating System</text></label></div>
                             <div class="language-item"><label><input type="checkbox" value="ar-sa"> Arabic (Saudi Arabia)</label></div>
                             <div class="language-item"><label><input type="checkbox" value="bg-bg"> Bulgarian (Bulgaria)</label></div>
@@ -211,7 +211,7 @@ RL - Retail License" id="iconinfthr"></label>
                     <div class="links">
                         <a id="author">By MaximeriX</a>
                         <div>
-                            <a id="appver">v1.0.2</a>
+                            <a id="appver">v1.0.3</a>
                             <a id="github">GitHub</a>
                         </div>
                     </div>

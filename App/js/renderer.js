@@ -19,7 +19,6 @@ window.electron.sendTranslations((event, translations) => {
     document.getElementById('author').innerText = translations.author;
 
     const versionSelect = document.getElementById('version');
-
     versionSelect.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     
     const options = [

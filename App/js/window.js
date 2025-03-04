@@ -27,7 +27,7 @@ document.getElementById('author').addEventListener('click', (event) => {
 
 document.getElementById('appver').addEventListener('click', (event) => {
     event.preventDefault();
-    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.2');
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.3');
 });
 
 document.getElementById('github').addEventListener('click', (event) => {

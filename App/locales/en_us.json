@@ -1,4 +1,9 @@
 {
+  "updateTitle" : "New Update Available",
+  "updateMessage" : "A v${updateInfo.appVersion} update is available!\nDo you want to download it?",
+  "updateDownloaded": "Update downloaded successfully to:",
+  "restartingApp" : "Restarting the app...",
+
   "toggletheme": "Toggle theme",
   "switchTo": "Switch to",
   "langname": "English",
@@ -34,15 +39,16 @@
   "enterpriseNoTeams": "Enterprise (no Teams)",  
   "business": "Business",  
   "businessNoTeams": "Business (no Teams)",  
+
   "ltscProPlusVl": "LTSC Professional Plus - VL",  
   "proPlusVl": "Professional Plus - VL",  
-  "proVl": "Professional - VL",  
   "ltscStandVl": "LTSC Standard - VL",  
   "standVl": "Standard - VL",  
 
   "proPlusRl": "Professional Plus - RL",  
   "proRl": "Professional - RL",  
   "standRl": "Standard - RL",
+  "personalRl": "Personal - RL",
 
   "projectOnlineDesktopClient": "Project Online Desktop Client",
   "projectPro2024Vl": "Professional 2024 - Activated, VL",

@@ -1,4 +1,9 @@
 {
+  "updateTitle" : "Доступне Нове Оновлення",
+  "updateMessage" : "Доступне оновлення v${updateInfo.appVersion}!\nБажаєте завантажити його?",
+  "updateDownloaded": "Оновлення успішно завантажено до:",
+  "restartingApp" : "Перезапуск програми...",
+
   "toggletheme": "Змінити тему",
   "switchTo": "Переключитися на",
   "langname": "Українську",
@@ -34,15 +39,16 @@
   "enterpriseNoTeams": "Enterprise (без Teams)",
   "business": "Business",
   "businessNoTeams": "Business (без Teams)",
+
   "ltscProPlusVl": "LTSC Professional Plus - КЛ",
   "proPlusVl": "Professional Plus - КЛ",
-  "proVl": "Professional - КЛ",
   "ltscStandVl": "LTSC Standard - КЛ",
   "standVl": "Standard - КЛ",  
 
   "proPlusRl": "Professional Plus - РЛ",  
   "proRl": "Professional - РЛ",  
   "standRl": "Standard - РЛ",
+  "personalRl": "Personal - РЛ",
 
   "projectOnlineDesktopClient": "Project Online Desktop Client",
   "projectPro2024Vl": "Professional 2024 - Активовано, КЛ",

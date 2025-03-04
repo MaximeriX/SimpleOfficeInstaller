@@ -343,8 +343,16 @@ disabled {
 
 .language-dialog {
     margin-bottom: 2px;
-    
 }
+
+.language-dialog.disabled {
+    cursor: not-allowed;
+}
+
+.language-dialog disabled {
+    cursor: not-allowed;
+}
+
 .language-dialog .language-list {
     max-height: 115px;
     border: 1.5px solid #555;
@@ -445,7 +453,7 @@ disabled {
     cursor: pointer;
 }
 
-#author:hover, #github:hover {
+#author:hover, #github:hover, #appver:hover {
     color: #0a87e7;
 }
 
@@ -598,7 +606,6 @@ body.dark-theme .language-item input[type="checkbox"]:checked {
     text-align: center;
     flex-grow: 1;
 }
-
 
 .right-nav {
     -webkit-app-region: drag;

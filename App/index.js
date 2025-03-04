@@ -26,8 +26,22 @@ function isAdmin() {
     });
 }
 
+let translations = {}; // Define translations globally
+
+async function loadTranslations() {
+    const language = await getSystemLanguage();
+    const langFilePath = path.join(__dirname, 'locales', `${language}.json`);
+
+    try {
+        const langFile = fs.readFileSync(langFilePath);
+        translations = JSON.parse(langFile);
+    } catch (error) {
+        console.error('Error loading language file:', error);
+    }
+}
+
 async function checkForUpdates() {
-    const currentVersion = '1.0.2';
+    const currentVersion = '1.0.3';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
@@ -37,11 +51,12 @@ async function checkForUpdates() {
         console.log(`UpdateJson: ${updateInfo.appVersion}, ${updateInfo.updateLink}\nCurrent version: ${currentVersion}`)
 
         if (updateInfo.appVersion !== currentVersion) {
+            const UpdateMessage = translations.updateMessage.replace('${updateInfo.appVersion}', updateInfo.appVersion);
             const userResponse = await dialog.showMessageBox({
                 type: 'info',
                 buttons: ['Yes', 'No'],
-                title: 'New Update Available',
-                message: `A v${updateInfo.appVersion} update is available!\nDo you want to download it?`
+                title: translations.updateTitle,
+                message: UpdateMessage
             });
 
             if (userResponse.response === 0) {
@@ -82,9 +97,9 @@ async function downloadUpdate(updateLink) {
         response.data.pipe(writer);
 
         writer.on('finish', () => {
-            const userResponse = dialog.showMessageBox({
+            dialog.showMessageBox({
                 type: 'info',
-                message: `Update downloaded successfully to:\n${filePath}`
+                message: `${translations.updateDownloaded} ${filePath}\n${translations.restartingApp}`
             });
 
             exec(`"${filePath}"`, (error) => {
@@ -97,7 +112,7 @@ async function downloadUpdate(updateLink) {
 
             setTimeout(() => {
                 app.quit();
-            }, 10000);
+            }, 7500);
         });
 
         writer.on('error', (err) => {
@@ -158,6 +173,7 @@ async function createWindow() {
             nodeIntegration: true,
             contextIsolation: true,
             enableRemoteModule: false,
+            devTools: !app.isPackaged,
         },
     });
 
@@ -198,6 +214,7 @@ function showErrorAndQuit() {
             nodeIntegration: true,
             contextIsolation: true,
             enableRemoteModule: false,
+            devTools: !app.isPackaged,
         },
     });
 
@@ -387,6 +404,7 @@ app.whenReady().then(async () => {
     if (!adminCheck) {
         showErrorAndQuit();
     } else {
+        await loadTranslations();
         createWindow();
         setTimeout(() => {
             checkForUpdates();

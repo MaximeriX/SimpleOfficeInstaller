@@ -140,7 +140,8 @@ function resetForm () {
     document.getElementById('visio-edition').value = '';
     document.getElementById('primary-language').value = '';
     document.getElementById('additional-products').value = '';
-    document.querySelector('.language-list').classList.add("disabled");
+    document.getElementById('additional-languages').classList.add("disabled");
+    document.getElementById('AdditionalLangCursor').style.cursor = 'not-allowed';
     updateEditions();
 };
 
@@ -200,7 +201,7 @@ document.querySelector('.start-button').addEventListener('click', () => {
                 updateChannel = 'Broad';
                 productID = 'ProPlus2021Retail';
                 productKey = 'YNYDT-B8RMY-G8WJX-RPTY2-PG343';
-            } else if (officeEdition === 'pro-vl') {
+            } else if (officeEdition === 'pro-rl') {
                 updateChannel = 'Broad';
                 productID = 'Professional2021Retail';
                 productKey = 'G7R2D-6NQ7C-CX62B-9YR9J-DGRYH';
@@ -211,19 +212,27 @@ document.querySelector('.start-button').addEventListener('click', () => {
                 updateChannel = 'Broad';
                 productID = 'Standard2021Retail';
                 productKey = 'RXK2W-N42KP-FT9W3-Q7DG8-TRBHK';
+            } else if (officeEdition === 'personal-rl') {
+                updateChannel = 'Broad';
+                productID = 'Personal2021Retail';
+                productKey = 'WN2B7-QJPXV-93VY2-6WTH3-BHC6H';
             }
         } else if (officeVersion === 'office-2019') {
             updateChannel = 'PerpetualVL2019';
             if (officeEdition === 'pro-plus-vl') {
                 productID = 'ProPlus2019Volume';
                 productKey = 'XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB';
-            } else if (officeEdition === 'pro-vl') {
+            } else if (officeEdition === 'pro-rl') {
                 updateChannel = 'Broad';
                 productID = 'Professional2019Retail';
                 productKey = '7PND3-J7G8B-9M7V3-8VXHR-QGQYY';
             } else if (officeEdition === 'stand-vl') {
                 productID = 'Standard2019Volume';
                 productKey = '6NWWJ-YQWMR-QKGCB-6TMB3-9D9HK';
+            } else if (officeEdition === 'personal-rl') {
+                updateChannel = 'Broad';
+                productID = 'Personal2019Retail';
+                productKey = 'VQFTQ-GNRXK-HCVHQ-DWJDJ-JFJHV';
             }
         } else if (officeVersion === 'office-2016') {
             updateChannel = 'Broad';
@@ -236,6 +245,9 @@ document.querySelector('.start-button').addEventListener('click', () => {
             } else if (officeEdition === 'stand-rl') {
                 productID = 'StandardRetail';
                 productKey = 'PCCXN-7MKB3-F986V-V6HV4-CR4MR';
+            } else if (officeEdition === 'personal-rl') {
+                productID = 'PersonalRetail';
+                productKey = 'CJKFJ-WNWBK-29CW7-P9786-C9X7Y';
             }
         }
 
@@ -482,6 +494,8 @@ document.getElementById('edition').addEventListener('change', function() {
     const accessCheckbox = document.getElementById('accessCheckbox');
     const lyncCheckbox = document.getElementById('lyncCheckbox');
     const grooveCheckbox = document.getElementById('grooveCheckbox');
+    const onenoteCheckbox = document.getElementById('onenoteCheckbox');
+    const powerpointCheckbox = document.getElementById('powerpointCheckbox');
     const publisherCheckbox = document.getElementById('publisherCheckbox');
     const teamsCheckbox = document.getElementById('teamsCheckbox');
     const apps = document.getElementById('apps');
@@ -516,8 +530,8 @@ document.getElementById('edition').addEventListener('change', function() {
 
     const selectedOfficeVersion = document.getElementById('version').value;
     const selectedEdition = document.getElementById('edition').value;
-    const offteams = document.getElementById('officeteams');
-    const offteamscheck = document.getElementById('offteamscheck');
+    const offteamscheck365 = document.getElementById('offteamscheck365');
+    const offteams365 = document.getElementById('officeteams365');
     const teams = document.getElementById('teams');
 
     accessCheckbox.checked = false;
@@ -530,27 +544,31 @@ document.getElementById('edition').addEventListener('change', function() {
     publisherCheckbox.disabled = false;
     teamsCheckbox.disabled = false;
     teamsCheckbox.checked = false;
-    offteamscheck.checked = false;
-    offteamscheck.disabled = true;
-    offteams.style.display = 'none';
+    onenoteCheckbox.disabled = false;
+    onenoteCheckbox.checked = false;
+    powerpointCheckbox.disabled = false;
+    powerpointCheckbox.checked = false;
+    offteamscheck365.checked = false;
+    offteamscheck365.disabled = true;
+    offteams365.style.display = 'none';
     teams.style.display = '';
 
     if (selectedOfficeVersion === 'office-365') {
         grooveCheckbox.disabled = false;
         teamsCheckbox.disabled = true;
-        offteams.style.display = '';
+        offteams365.style.display = '';
         if (selectedEdition === 'enterprise') {
             teams.style.display = 'none';
-            offteamscheck.checked = true;
+            offteamscheck365.checked = true;
         } else if (selectedEdition === 'enterprise-no-teams') {
             teams.style.display = 'none';
-            offteamscheck.checked = false;
+            offteamscheck365.checked = false;
         } else if (selectedEdition === 'business') {
             teams.style.display = 'none';
-            offteamscheck.checked = true;
+            offteamscheck365.checked = true;
         } else if (selectedEdition === 'business-no-teams') {
             teams.style.display = 'none';
-            offteamscheck.checked = false;
+            offteamscheck365.checked = false;
         }
     } else if (selectedOfficeVersion === 'office-2024') {
         grooveCheckbox.disabled = true;
@@ -561,7 +579,7 @@ document.getElementById('edition').addEventListener('change', function() {
         }
     } else if (selectedOfficeVersion === 'office-2021') {
         grooveCheckbox.disabled = true;
-        if (selectedEdition === 'pro-vl') {
+        if (selectedEdition === 'pro-rl') {
             lyncCheckbox.disabled = true;
         } else if (selectedEdition === 'ltsc-stand-vl') {
             accessCheckbox.disabled = true;
@@ -569,24 +587,45 @@ document.getElementById('edition').addEventListener('change', function() {
         } else if (selectedEdition === 'stand-vl') {
             accessCheckbox.disabled = true;
             lyncCheckbox.disabled = true;
+        } else if (selectedEdition === 'personal-rl') {
+            accessCheckbox.disabled = true;
+            grooveCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
+            onenoteCheckbox.disabled = true;
+            powerpointCheckbox.disabled = true;
+            publisherCheckbox.disabled = true;
         }
     } else if (selectedOfficeVersion === 'office-2019') {
         grooveCheckbox.disabled = false;
-        if (selectedEdition === 'pro-vl') {
+        if (selectedEdition === 'pro-rl') {
             lyncCheckbox.disabled = true;
             grooveCheckbox.disabled = true;
         } else if (selectedEdition === 'stand-vl') {
             accessCheckbox.disabled = true;
             lyncCheckbox.disabled = true;
+        } else if (selectedEdition === 'personal-rl') {
+            accessCheckbox.disabled = true;
+            grooveCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
+            onenoteCheckbox.disabled = true;
+            powerpointCheckbox.disabled = true;
+            publisherCheckbox.disabled = true;
         }
     } else if (selectedOfficeVersion === 'office-2016') {
         grooveCheckbox.disabled = false;
-        if (selectedEdition === 'pro-vl') {
+        if (selectedEdition === 'pro-rl') {
             lyncCheckbox.disabled = true;
             grooveCheckbox.disabled = true;
         } else if (selectedEdition === 'stand-vl') {
             accessCheckbox.disabled = true;
             lyncCheckbox.disabled = true;
+        } else if (selectedEdition === 'personal-rl') {
+            accessCheckbox.disabled = true;
+            grooveCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
+            onenoteCheckbox.disabled = true;
+            powerpointCheckbox.disabled = true;
+            publisherCheckbox.disabled = true;
         }
     }
 });
@@ -597,7 +636,7 @@ function updateEditions() {
     const additionalProductsSelect = document.getElementById('additional-products');
     const teamsCheckbox = document.getElementById('teamsCheckbox');
     const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-    const offteamscheck = document.getElementById('offteamscheck');
+    const offteamscheck365 = document.getElementById('offteamscheck365');
 
     editionSelect.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     additionalProductsSelect.innerHTML = `<option value="" selected>${translations.none}</option>`;
@@ -608,8 +647,8 @@ function updateEditions() {
     if (selectedVersion === 'office-365') {
         teamsCheckbox.checked = false;
         teamsCheckbox.disabled = true;
-        offteamscheck.checked = false;
-        offteamscheck.disabled = true;
+        offteamscheck365.checked = false;
+        offteamscheck365.disabled = true;
         editions = [
             { value: 'enterprise', text: `${translations.enterprise}` },
             { value: 'enterprise-no-teams', text: `${translations.enterpriseNoTeams}` },
@@ -631,7 +670,8 @@ function updateEditions() {
         editions = [
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
-            { value: 'pro-vl', text: `${translations.proVl}` },
+            { value: 'pro-rl', text: `${translations.proRl}` },
+            { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
             { value: 'stand-vl', text: `${translations.standVl}` }
         ];
@@ -643,7 +683,8 @@ function updateEditions() {
     } else if (selectedVersion === 'office-2019') {
         editions = [
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
-            { value: 'pro-vl', text: `${translations.proVl}` },
+            { value: 'pro-rl', text: `${translations.proRl}` },
+            { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'stand-vl', text: `${translations.standVl}` }
         ];
         teamsCheckbox.disabled = false;
@@ -655,7 +696,8 @@ function updateEditions() {
     } else if (selectedVersion === 'office-2016') {
         editions = [
             { value: 'pro-plus-vl', text: `${translations.proPlusRl}` },
-            { value: 'pro-vl', text: `${translations.proRl}` },
+            { value: 'pro-rl', text: `${translations.proRl}` },
+            { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'stand-vl', text: `${translations.standRl}` }
         ];
         teamsCheckbox.disabled = false;
@@ -689,8 +731,8 @@ function updateEditions() {
     
             document.getElementById('project-edition').disabled = true;
             document.getElementById('visio-edition').disabled = true;
-            const ProjectSelect = document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
-            const VisioSelect = document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     
             if (ProjectSelected) {
                 projectEdition.disabled = true;
@@ -758,8 +800,8 @@ document.getElementById('visio-edition').addEventListener('change', function() {
 });
 
 function enableAdditionalLanguages() {
-    const additionalLanguages = document.getElementById('additional-languages');
-    additionalLanguages.classList.remove('disabled');
+    document.getElementById('additional-languages').classList.remove('disabled');
+    document.getElementById('AdditionalLangCursor').style.cursor = 'auto';
 }
 
 function toggleSubOptions(checkbox, subOptionsId) {
