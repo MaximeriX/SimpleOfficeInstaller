@@ -1,5 +1,5 @@
 # <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="27vw" height="27vw"> Simple Office Installer
-![SimpleOfficeInstaller-App-Image](https://github.com/MaximeriX/SimpleOfficeInstaller/blob/main/SimpleOfficeInstaller-Image.png)
+![SimpleOfficeInstaller-App-Image](https://github.com/MaximeriX/SimpleOfficeInstaller/blob/main/SimpleOfficeInstaller-Image.png?raw=true)
 
 <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer is a user-friendly program that allows you to download various versions of Microsoft Office for free, including:
 
@@ -25,21 +25,24 @@
 
 - **Office 2021 LTSC Professional Plus** - Activated, Volume License
 - **Office 2021 Professional Plus** - Activated, Volume License
-- **Office 2021 Professional** - Activated, Volume License
+- **Office 2021 Professional** - Activated, Retail License
 - **Office 2021 LTSC Standard** - Activated, Volume License
 - **Office 2021 Standard** - Activated, Volume License
+- **Office 2021 Personal** - Activated, Retail License
 
 -----
 
 - **Office 2019 Professional Plus** - Activated, Volume License
 - **Office 2019 Professional** - Activated, Volume License
 - **Office 2019 Standard** - Activated, Volume License
+- **Office 2019 Personal** - Activated, Retail License
 
 -----
 
 - **Office 2016 Professional Plus** - Activated, Retail License
 - **Office 2016 Professional** - Activated, Retail License
 - **Office 2016 Standard** - Activated, Retail License
+- **Office 2016 Personal** - Activated, Retail License
 
 -----
 
@@ -52,7 +55,7 @@
 
 ## 📥 Download
 
-Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.2) from the releases section.
+Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.3) from the releases section.
 
 ## 🔍 How it Works
 #### 🖱️ When Launch Office Installer button pressed
