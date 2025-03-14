@@ -35,7 +35,7 @@ contextBridge.exposeInMainWorld('electron', {
     },
     dialog: {
         showSaveDialog: (options) => ipcRenderer.invoke('dialog:showSaveDialog', options),
-        showOpenDialog: (options) => ipcRenderer.invoke('dialog:showOpenDialog', options) // Add this line
+        showOpenDialog: (options) => ipcRenderer.invoke('dialog:showOpenDialog', options)
     },
     updateLanguageUI: (callback) => ipcRenderer.on('translations', callback),
     openExternal: (url) => shell.openExternal(url)
