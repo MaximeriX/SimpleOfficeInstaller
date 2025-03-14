@@ -1,4 +1,4 @@
-const { ipcRenderer, contextBridge, shell } = require("electron");
+const { ipcRenderer, contextBridge, shell, dialog } = require("electron");
 const fs = require('fs');
 const path = require('path');
 
@@ -23,12 +23,19 @@ contextBridge.exposeInMainWorld('electron', {
     fs: {
         writeFile: (filePath, data) => fs.writeFileSync(filePath, data),
         mkdir: (dirPath) => fs.mkdirSync(dirPath, { recursive: true }),
+        copyFile: (source, destination, callback) => {
+            fs.copyFile(source, destination, callback);
+        },
     },
     path: {
         join: (...args) => path.join(...args),
     },
     os: {
         tmpdir: () => require('os').tmpdir(),
+    },
+    dialog: {
+        showSaveDialog: (options) => ipcRenderer.invoke('dialog:showSaveDialog', options),
+        showOpenDialog: (options) => ipcRenderer.invoke('dialog:showOpenDialog', options) // Add this line
     },
     updateLanguageUI: (callback) => ipcRenderer.on('translations', callback),
     openExternal: (url) => shell.openExternal(url)

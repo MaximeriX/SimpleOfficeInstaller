@@ -184,7 +184,43 @@ select:disabled{
     cursor: not-allowed;
 }
 
-.form-group select, .form-group input[type="checkbox"] {
+.custom-checkbox {
+    appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #212121;
+    border-radius: 4px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    position: relative;
+    transition: none;
+}
+
+.custom-checkbox:checked {
+    transition: none;
+    background-color: #0078d4;
+    border-color: #0078d4;
+}
+
+.custom-checkbox:checked::after {
+    transition: none;
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 0.5rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-checkbox:disabled {
+    border: 1px solid #6d6d6d;
+    opacity: 0.5;
+}
+
+.form-group select {
     border-radius: 5px;
     width: 100%;
     padding: 2.5% 2.7%;
@@ -192,9 +228,9 @@ select:disabled{
     transition: background-color 0.3s ease;
 }
 .form-group input[type="checkbox"] {
-    width: auto;
+    box-sizing: border-box;
     margin-right: 5px;
-    transition: background-color 0.3s ease;
+    transition: border 0.11s ease, background-color 0.11s ease;
 }
 .form-group input[type="checkbox"]:disabled {
     cursor: not-allowed;
@@ -245,9 +281,19 @@ select:disabled{
     transition: background-color 0.3s ease;
 }
 
-.start-button {
+.buttons {
+    display: flex;
+    width: 100%;
+}
+
+.imgbuttons {
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.start-button, .import, .export {
     display: block;
-    padding: 10px;
     background-color: #0078d4;
     border: none;
     border-radius: 5px;
@@ -256,22 +302,31 @@ select:disabled{
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
+    width: 90%;
 }
 
-.start-button:hover {
+.start-button:hover, .import:hover, .export:hover {
     background-color: #005a9e;
 }
 
-.start-button:disabled {
+.start-button.disabled, .import.disabled, .export.disabled {
     background-color: #00508d;
     cursor: not-allowed;
     opacity: 1;
 }
 
-.start-button.disabled {
-    background-color: #00508d;
-    cursor: not-allowed;
-    opacity: 1;
+.start-button {
+    padding: 10px;
+}
+
+.export, .import {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3px;
+    max-width: 50px;
+    width: 10%;
+    height: auto;
 }
 
 #project-options {
@@ -378,6 +433,14 @@ disabled {
     
 }
 
+.language-item {
+    white-space: nowrap;
+}
+
+.language-item input[type="checkbox"] {
+    margin-right: 7px;
+}
+
 .lang-icon {
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -428,7 +491,7 @@ disabled {
     background-color: #3d3d3d;
 }
 
-#appsTR, #peTR, #veTR, #alTR, #plTR, #matchOSTR, #apTR {
+#appsTR, #peTR, #veTR, #alTR, #plTR, #apTR {
     margin-left: 3.5px;
 }
 
@@ -474,6 +537,10 @@ nav {
     overflow: hidden;
 }
 
+.nav-minimize {
+    margin-bottom: 2.5px;
+}
+
 .nav-minimize, .nav-close {
     -webkit-app-region: no-drag;
     min-height: 40px;
@@ -511,6 +578,21 @@ body.dark-theme {
     
 }
 
+body.dark-theme .custom-checkbox {
+    background-color: #2d2d2d;
+    border: 1px solid #555555;
+}
+
+body.dark-theme .custom-checkbox:disabled {
+    border: 1px solid #555555;
+    background-color: #2e2e2e;
+}
+
+body.dark-theme .custom-checkbox:checked {
+    background-color: #0078d4;
+    border-color: #0078d4;
+}
+
 body.dark-theme .form-group select {
     background-color: #2e2e2e;
     color: #ffffff;
@@ -522,7 +604,7 @@ body.dark-theme .language-item label {
 }
 
 body.dark-theme .language-dialog .language-list {
-    background-color: #1e1e1e;
+    background-color: #262626;
     color: #ffffff;
     border: 1px solid #555;
 }
@@ -560,15 +642,6 @@ body.dark-theme ::-webkit-scrollbar-thumb:hover {
 body.dark-theme ::-webkit-scrollbar-thumb:active {
     background: #3f3f41;
     transition: background-color 0.3s ease;
-}
-
-body.dark-theme .start-button {
-    background-color: #0078d4;
-    color: white; 
-}
-
-body.dark-theme .start-button:hover {
-    background-color: #005a9e;
 }
 
 body.dark-theme .language-item .language-list {

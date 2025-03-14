@@ -26,7 +26,7 @@ function isAdmin() {
     });
 }
 
-let translations = {}; // Define translations globally
+let translations = {};
 
 async function loadTranslations() {
     const language = await getSystemLanguage();
@@ -41,7 +41,7 @@ async function loadTranslations() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.3';
+    const currentVersion = '1.0.4';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
@@ -69,13 +69,8 @@ async function checkForUpdates() {
 }
 
 async function downloadUpdate(updateLink) {
-    const downloadsDir = path.join(app.getPath('downloads'));
-
-    if (!fs.existsSync(downloadsDir)) {
-        fs.mkdirSync(downloadsDir, { recursive: true });
-    }
-
     let appVersion;
+
     try {
         const response = await axios.get('https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json');
         appVersion = response.data.appVersion;
@@ -84,7 +79,22 @@ async function downloadUpdate(updateLink) {
         return;
     }
 
-    const filePath = path.join(downloadsDir, `SimpleOfficeInstaller_${appVersion}.exe`);
+    const result = await dialog.showSaveDialog({
+        title: translations.downloadUpdateTo,
+        defaultPath: path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`), // Default filename with version
+        filters: [
+            { name: 'Executable Files', extensions: ['exe'] },
+            { name: 'All Files', extensions: ['*'] }
+        ]
+    });
+
+    let filePath;
+
+    if (result.canceled) {
+        filePath = path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`); // Default to downloads folder with version
+    } else {
+        filePath = result.filePath;
+    }
 
     try {
         const response = await axios({
@@ -99,7 +109,8 @@ async function downloadUpdate(updateLink) {
         writer.on('finish', () => {
             dialog.showMessageBox({
                 type: 'info',
-                message: `${translations.updateDownloaded} ${filePath}\n${translations.restartingApp}`
+                title: 'Simple Office Installer',
+                message: `${translations.updateDownloaded}\n${filePath}\n${translations.restartingApp}`
             });
 
             exec(`"${filePath}"`, (error) => {
@@ -165,7 +176,6 @@ async function createWindow() {
         minHeight: 657,
         autoHideMenuBar: true,
         frame: false,
-        backgroundColor: 'white',
         resizable: true,
         fullscreenable: false,
         webPreferences: {
@@ -206,7 +216,6 @@ function showErrorAndQuit() {
         minHeight: 200,
         autoHideMenuBar: true,
         frame: false,
-        backgroundColor: 'white',
         resizable: true,
         fullscreenable: false,
         webPreferences: {
@@ -408,7 +417,7 @@ app.whenReady().then(async () => {
         createWindow();
         setTimeout(() => {
             checkForUpdates();
-        }, 800);
+        }, 1000);
     }
 });
 
@@ -420,3 +429,16 @@ ipcMain.on("app/minimize", (event) => {
     const win = BrowserWindow.fromWebContents(event.sender);
     win.minimize();
 });
+
+
+ipcMain.handle('dialog:showSaveDialog', async (event, options) => {
+    const result = await dialog.showSaveDialog(options);
+    return result;
+});
+
+
+ipcMain.handle('dialog:showOpenDialog', async (event, options) => {
+    const result = await dialog.showOpenDialog(options);
+    return result;
+});
+

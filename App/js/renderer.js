@@ -16,6 +16,8 @@ window.electron.sendTranslations((event, translations) => {
     document.getElementById('matchOSStTR').innerText = translations.matchOS;
     document.getElementById('apTR').innerText = translations.additionalProducts;
     document.getElementById('sbTR').innerText = translations.startButton;
+    document.getElementById('exportTR').title = translations.exportTitle;
+    document.getElementById('importTR').title = translations.importTitle;
     document.getElementById('author').innerText = translations.author;
 
     const versionSelect = document.getElementById('version');
