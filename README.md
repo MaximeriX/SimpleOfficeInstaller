@@ -55,12 +55,12 @@
 
 ## 📥 Download
 
-Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.3) from the releases section.
+Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.4) from the releases section.
 
 ## 🔍 How it Works
 #### 🖱️ When Launch Office Installer button pressed
 1. Generates `config.xml`
-2. Downloads and runs `officedeploymenttool.exe` from [Microsoft's official site](https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_18227-20162.exe)
+2. Downloads and runs `officedeploymenttool.exe` from [Microsoft's official site](https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_18526-20146.exe)
 3. Runs `setup.exe /Configure config.xml`
    
 *Note*: Every file that the program downloads/generates during office installation is located in `%TEMP%\OfficeSetupFiles`
