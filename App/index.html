@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Office Installer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="images/icon.ico">
 </head>
 <body>  
@@ -60,20 +61,20 @@ RL - Retail License" id="iconinf"></label>
                     <label><img src="images/apps.png" id="iconapps"><text id="appsTR">Apps</text></label>
                     <div class="checkbox-group" id="apps">
                         <div class="boxes" id="boxes">
-                            <label><input type="checkbox" id="accessCheckbox" disabled=""><img src="images/access.png"> Access</label>
-                            <label><input type="checkbox" id="excelCheckbox" disabled=""><img src="images/excel.png"> Excel</label>
-                            <label><input type="checkbox" id="grooveCheckbox" disabled=""><img src="images/groove.png"> Groove</label>
-                            <label><input type="checkbox" id="lyncCheckbox" disabled=""><img src="images/lync.png"> Lync</label>
-                            <label><input type="checkbox" id="onedriveCheckbox" disabled=""><img src="images/onedrive.png"> OneDrive</label>
-                            <label><input type="checkbox" id="onenoteCheckbox" disabled=""><img src="images/onenote.png"> OneNote</label>
-                            <label><input type="checkbox" id="outlookCheckbox" disabled=""><img src="images/outlook.png"> Outlook</label>
-                            <label><input type="checkbox" id="powerpointCheckbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
-                            <label><input type="checkbox" id="publisherCheckbox" disabled=""><img src="images/publisher.png"> Publisher</label>
-                            <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" disabled=""><img src="images/project.png"> Project</label>
-                            <label id="officeteams365" style="display: none;"><input type="checkbox" id="offteamscheck365" disabled=""><img src="images/teams.png"> Teams</label>
-                            <label id="teams"><input type="checkbox" id="teamsCheckbox" disabled=""><img src="images/teams.png"> Teams</label>
-                            <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" disabled=""><img src="images/visio.png"> Visio</label>
-                            <label><input type="checkbox" id="wordCheckbox" disabled=""><img src="images/word.png"> Word</label>
+                            <label><input type="checkbox" id="accessCheckbox" class="custom-checkbox" disabled=""><img src="images/access.png"> Access</label>
+                            <label><input type="checkbox" id="excelCheckbox" class="custom-checkbox" disabled=""><img src="images/excel.png"> Excel</label>
+                            <label><input type="checkbox" id="grooveCheckbox" class="custom-checkbox" disabled=""><img src="images/groove.png"> Groove</label>
+                            <label><input type="checkbox" id="lyncCheckbox" class="custom-checkbox" disabled=""><img src="images/lync.png"> Lync</label>
+                            <label><input type="checkbox" id="onedriveCheckbox" class="custom-checkbox" disabled=""><img src="images/onedrive.png"> OneDrive</label>
+                            <label><input type="checkbox" id="onenoteCheckbox" class="custom-checkbox" disabled=""><img src="images/onenote.png"> OneNote</label>
+                            <label><input type="checkbox" id="outlookCheckbox" class="custom-checkbox" disabled=""><img src="images/outlook.png"> Outlook</label>
+                            <label><input type="checkbox" id="powerpointCheckbox" class="custom-checkbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
+                            <label><input type="checkbox" id="publisherCheckbox" class="custom-checkbox" disabled=""><img src="images/publisher.png"> Publisher</label>
+                            <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" class="custom-checkbox" disabled=""><img src="images/project.png"> Project</label>
+                            <label id="officeteams365" style="display: none;"><input type="checkbox" id="offteamscheck365" class="custom-checkbox" disabled=""><img src="images/teams.png"> Teams</label>
+                            <label id="teams"><input type="checkbox" id="teamsCheckbox" class="custom-checkbox" disabled=""><img src="images/teams.png"> Teams</label>
+                            <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" class="custom-checkbox" disabled=""><img src="images/visio.png"> Visio</label>
+                            <label><input type="checkbox" id="wordCheckbox" class="custom-checkbox" disabled=""><img src="images/word.png"> Word</label>
                         </div>
                     </div>
                 </div>
@@ -151,50 +152,50 @@ RL - Retail License" id="iconinfthr"></label>
                     <label for="additional-languages-select" ><img src="images/lang.png" id="iconad"><text id="alTR">Additional Languages</text></label>
                     <div class="language-dialog disabled" id="additional-languages">
                         <div class="language-list">
-                            <div class="language-item"><label><input type="checkbox" value="MatchOS"><text id="matchOSTR">Match Operating System</text></label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ar-sa"> Arabic (Saudi Arabia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="bg-bg"> Bulgarian (Bulgaria)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="zh-cn"> Chinese (Simplified, China)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="zh-tw"> Chinese (Traditional, Taiwan)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="hr-hr"> Croatian (Croatia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="cs-cz"> Czech (Czech Republic)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="da-dk"> Danish (Denmark)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="nl-nl"> Dutch (Netherlands)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="en-gb"> English (United Kingdom)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="en-us"> English (United States)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="et-ee"> Estonian (Estonia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="fi-fi"> Finnish (Finland)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="fr-ca"> French (Canada)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="fr-fr"> French (France)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="de-de"> German (Germany)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="el-gr"> Greek (Greece)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="he-il"> Hebrew (Israel)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="hi-in"> Hindi (India)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="hu-hu"> Hungarian (Hungary)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="id-id"> Indonesian (Indonesia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="it-it"> Italian (Italy)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ja-jp"> Japanese (Japan)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="kk-kz"> Kazakh (Kazakhstan)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ko-kr"> Korean (Korea)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="lv-lv"> Latvian (Latvia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="lt-lt"> Lithuanian (Lithuania)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ms-my"> Malay (Malaysia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="nb-no"> Norwegian Bokmål (Norway)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="pl-pl"> Polish (Poland)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="pt-br"> Portuguese (Brazil)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="pt-pt"> Portuguese (Portugal)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ro-ro"> Romanian (Romania)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="ru-ru"> Russian (Russia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="sr-latn-rs"> Serbian (Latin, Serbia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="sk-sk"> Slovak (Slovakia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="sl-si"> Slovenian (Slovenia)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="es-mx"> Spanish (Mexico)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="es-es"> Spanish (Spain, International Sort)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="sv-se"> Swedish (Sweden)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="th-th"> Thai (Thailand)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="tr-tr"> Turkish (Turkey)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="uk-ua"> Ukrainian (Ukraine)</label></div>
-                            <div class="language-item"><label><input type="checkbox" value="vi-vn"> Vietnamese (Vietnam)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="MatchOS"><text id="matchOSTR">Match Operating System</text></label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ar-sa">Arabic (Saudi Arabia)</text></label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="bg-bg">Bulgarian (Bulgaria)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="zh-cn">Chinese (Simplified, China)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="zh-tw">Chinese (Traditional, Taiwan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="hr-hr">Croatian (Croatia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="cs-cz">Czech (Czech Republic)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="da-dk">Danish (Denmark)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="nl-nl">Dutch (Netherlands)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="en-gb">English (United Kingdom)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="en-us">English (United States)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="et-ee">Estonian (Estonia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="fi-fi">Finnish (Finland)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="fr-ca">French (Canada)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="fr-fr">French (France)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="de-de">German (Germany)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="el-gr">Greek (Greece)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="he-il">Hebrew (Israel)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="hi-in">Hindi (India)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="hu-hu">Hungarian (Hungary)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="id-id">Indonesian (Indonesia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="it-it">Italian (Italy)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ja-jp">Japanese (Japan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="kk-kz">Kazakh (Kazakhstan)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ko-kr">Korean (Korea)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="lv-lv">Latvian (Latvia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="lt-lt">Lithuanian (Lithuania)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ms-my">Malay (Malaysia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="nb-no">Norwegian Bokmål (Norway)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="pl-pl">Polish (Poland)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="pt-br">Portuguese (Brazil)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="pt-pt">Portuguese (Portugal)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ro-ro">Romanian (Romania)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="ru-ru">Russian (Russia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="sr-latn-rs">Serbian (Latin, Serbia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="sk-sk">Slovak (Slovakia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="sl-si">Slovenian (Slovenia)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="es-mx">Spanish (Mexico)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="es-es">Spanish (Spain, International Sort)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="sv-se">Swedish (Sweden)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="th-th">Thai (Thailand)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="tr-tr">Turkish (Turkey)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="uk-ua">Ukrainian (Ukraine)</label></div>
+                            <div class="language-item"><label><input type="checkbox" class="custom-checkbox" value="vi-vn">Vietnamese (Vietnam)</label></div>
                         </div>
                     </div>
                 </div>
@@ -206,12 +207,16 @@ RL - Retail License" id="iconinfthr"></label>
                         </select> 
                     </div>
                 </div>
-                <div class="start-button" id="sbTR">Launch Office Installer</div>
+                <div class="buttons">
+                    <div class="start-button" id="sbTR">Launch Office Installer</div>
+                    <div class="import"><img id="importTR" class="imgbuttons" src="images/import.png" alt="Import" title="Import and Execute XML Configuration"></div>
+                    <div class="export"><img id="exportTR" class="imgbuttons" src="images/export.png" alt="Export" title="Export XML Configuration"></div>
+                </div>
                 <div class="links-wrapper">
                     <div class="links">
                         <a id="author">By MaximeriX</a>
                         <div>
-                            <a id="appver">v1.0.3</a>
+                            <a id="appver">v1.0.4</a>
                             <a id="github">GitHub</a>
                         </div>
                     </div>
