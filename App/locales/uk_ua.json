@@ -1,5 +1,6 @@
 {
   "updateTitle" : "Доступне Нове Оновлення",
+  "downloadUpdateTo" : "Завантажити оновлення до",
   "updateMessage" : "Доступне оновлення v${updateInfo.appVersion}!\nБажаєте завантажити його?",
   "updateDownloaded": "Оновлення успішно завантажено до:",
   "restartingApp" : "Перезапуск програми...",
@@ -24,6 +25,14 @@
   "startButton": "Запустити Інсталятор Office",
   "startButtonTeams": "Інсталятор Teams запущено...",
   "startButtonOffice": "Інсталятор Office запущено...",
+
+  "importTitle" : "Імпортувати та Запустити XML-конфігурацію",
+  "importFile" : "Імпортувати файл конфігурації",
+  "importError" : "Не вдалося імпортувати файл XML-конфігурації!",
+
+  "exportTitle" : "Експортувати XML-конфігурацію",
+  "exportFile" : "Експортувати файл конфігурації",
+  "exportError" : "Не вдалося експортувати файл XML-конфігурації!",
 
   "author": "Від MaximeriX",
 

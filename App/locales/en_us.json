@@ -1,5 +1,6 @@
 {
   "updateTitle" : "New Update Available",
+  "downloadUpdateTo" : "Download the update to",
   "updateMessage" : "A v${updateInfo.appVersion} update is available!\nDo you want to download it?",
   "updateDownloaded": "Update downloaded successfully to:",
   "restartingApp" : "Restarting the app...",
@@ -24,6 +25,14 @@
   "startButton": "Launch Office Installer",
   "startButtonTeams": "Teams Installer has started...",
   "startButtonOffice": "Office Installer has started...",
+  
+  "importTitle" : "Import and Execute XML Configuration",
+  "importFile" : "Import Configuration File",
+  "importError" : "Failed to import XML Configuration file!",
+
+  "exportTitle" : "Export XML Configuration",
+  "exportFile" : "Export Configuration File",
+  "exportError" : "Failed to export XML Configuration file!",
 
   "author": "By MaximeriX",
 
