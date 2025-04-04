@@ -62,16 +62,16 @@ RL - Retail License" id="iconinf"></label>
                     <div class="checkbox-group" id="apps">
                         <div class="boxes" id="boxes">
                             <label><input type="checkbox" id="accessCheckbox" class="custom-checkbox" disabled=""><img src="images/access.png"> Access</label>
+                            <label id="biTR" title="Background service for Microsoft Search in Bing"><input type="checkbox" id="bingCheckbox" class="custom-checkbox" disabled=""><img src="images/bing.png"> Bing</label>
                             <label><input type="checkbox" id="excelCheckbox" class="custom-checkbox" disabled=""><img src="images/excel.png"> Excel</label>
                             <label><input type="checkbox" id="grooveCheckbox" class="custom-checkbox" disabled=""><img src="images/groove.png"> Groove</label>
-                            <label><input type="checkbox" id="lyncCheckbox" class="custom-checkbox" disabled=""><img src="images/lync.png"> Lync</label>
+                            <label id="lyTR" title="Skype for Business"><input type="checkbox" id="lyncCheckbox" class="custom-checkbox" disabled=""><img src="images/lync.png"> Lync</label>
                             <label><input type="checkbox" id="onedriveCheckbox" class="custom-checkbox" disabled=""><img src="images/onedrive.png"> OneDrive</label>
                             <label><input type="checkbox" id="onenoteCheckbox" class="custom-checkbox" disabled=""><img src="images/onenote.png"> OneNote</label>
                             <label><input type="checkbox" id="outlookCheckbox" class="custom-checkbox" disabled=""><img src="images/outlook.png"> Outlook</label>
                             <label><input type="checkbox" id="powerpointCheckbox" class="custom-checkbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
                             <label><input type="checkbox" id="publisherCheckbox" class="custom-checkbox" disabled=""><img src="images/publisher.png"> Publisher</label>
                             <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" class="custom-checkbox" disabled=""><img src="images/project.png"> Project</label>
-                            <label id="officeteams365" style="display: none;"><input type="checkbox" id="offteamscheck365" class="custom-checkbox" disabled=""><img src="images/teams.png"> Teams</label>
                             <label id="teams"><input type="checkbox" id="teamsCheckbox" class="custom-checkbox" disabled=""><img src="images/teams.png"> Teams</label>
                             <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" class="custom-checkbox" disabled=""><img src="images/visio.png"> Visio</label>
                             <label><input type="checkbox" id="wordCheckbox" class="custom-checkbox" disabled=""><img src="images/word.png"> Word</label>
@@ -97,56 +97,80 @@ RL - Retail License" id="iconinfthr"></label>
                             </select>
                         </div>
                     </div>
+                    <div id="outlook-options" class="sub-options">
+                        <div class="form-group">
+                            <label for="outlook-type"><img src="images/outlook.png"><text id="ouTR">Outlook Type</text></label>
+                            <select id="outlook-type" disabled>
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="">Classic</option>
+                                <option value="">New</option>
+                                <option value="">Both</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="primary-language"><img src="images/lang.png" id="iconpr"><text id="plTR">Primary Language</text></label>
-                    <select id="primary-language">
-                        <option value="" disabled selected>-- Select --</option>
-                        <option id="matchOSStTR" value="MatchOS">Match Operating System</option>
-                        <option value="ar-sa">Arabic (Saudi Arabia)</option>
-                        <option value="bg-bg">Bulgarian (Bulgaria)</option>
-                        <option value="zh-cn">Chinese (Simplified, China)</option>
-                        <option value="zh-tw">Chinese (Traditional, Taiwan)</option>
-                        <option value="hr-hr">Croatian (Croatia)</option>
-                        <option value="cs-cz">Czech (Czech Republic)</option>
-                        <option value="da-dk">Danish (Denmark)</option>
-                        <option value="nl-nl">Dutch (Netherlands)</option>
-                        <option value="en-gb">English (United Kingdom)</option>
-                        <option value="en-us">English (United States)</option>
-                        <option value="et-ee">Estonian (Estonia)</option>
-                        <option value="fi-fi">Finnish (Finland)</option>
-                        <option value="fr-ca">French (Canada)</option>
-                        <option value="fr-fr">French (France)</option>
-                        <option value="de-de">German (Germany)</option>
-                        <option value="el-gr">Greek (Greece)</option>
-                        <option value="he-il">Hebrew (Israel)</option>
-                        <option value="hi-in">Hindi (India)</option>
-                        <option value="hu-hu">Hungarian (Hungary)</option>
-                        <option value="id-id">Indonesian</option>
-                        <option value="it-it">Italian (Italy)</option>
-                        <option value="ja-jp">Japanese (Japan)</option>
-                        <option value="kk-kz">Kazakh (Kazakhstan)</option>
-                        <option value="ko-kr">Korean</option>
-                        <option value="lv-lv">Latvian (Latvia)</option>
-                        <option value="lt-lt">Lithuanian (Lithuania)</option>
-                        <option value="ms-my">Malay (Malaysia)</option>
-                        <option value="nb-no">Norwegian Bokmål (Norway)</option>
-                        <option value="pl-pl">Polish (Poland)</option>
-                        <option value="pt-br">Portuguese (Brazil)</option>
-                        <option value="pt-pt">Portuguese (Portugal)</option>
-                        <option value="ro-ro">Romanian (Romania)</option>
-                        <option value="ru-ru">Russian (Russia)</option>
-                        <option value="sr-latn-rs">Serbian (Latin, Serbia)</option>
-                        <option value="sk-sk">Slovak (Slovakia)</option>
-                        <option value="sl-si">Slovenian (Slovenia)</option>
-                        <option value="es-mx">Spanish (Mexico)</option>
-                        <option value="es-es">Spanish (Spain, International Sort)</option>
-                        <option value="sv-se">Swedish (Sweden)</option>
-                        <option value="th-th">Thai (Thailand)</option>
-                        <option value="tr-tr">Turkish (Turkey)</option>
-                        <option value="uk-ua">Ukrainian (Ukraine)</option>
-                        <option value="vi-vn">Vietnamese (Vietnam)</option>
-                    </select> 
+                <div class="sub-options-wrapper">
+                    <div class="form-group" id="form-primary-language">
+                        <label for="primary-language"><img src="images/lang.png" id="iconpr"><text id="plTR">Primary Language</text></label>
+                        <select id="primary-language">
+                            <option value="" disabled selected>-- Select --</option>
+                            <option id="matchOSStTR" value="MatchOS">Match Operating System</option>
+                            <option value="ar-sa">Arabic (Saudi Arabia)</option>
+                            <option value="bg-bg">Bulgarian (Bulgaria)</option>
+                            <option value="zh-cn">Chinese (Simplified, China)</option>
+                            <option value="zh-tw">Chinese (Traditional, Taiwan)</option>
+                            <option value="hr-hr">Croatian (Croatia)</option>
+                            <option value="cs-cz">Czech (Czech Republic)</option>
+                            <option value="da-dk">Danish (Denmark)</option>
+                            <option value="nl-nl">Dutch (Netherlands)</option>
+                            <option value="en-gb">English (United Kingdom)</option>
+                            <option value="en-us">English (United States)</option>
+                            <option value="et-ee">Estonian (Estonia)</option>
+                            <option value="fi-fi">Finnish (Finland)</option>
+                            <option value="fr-ca">French (Canada)</option>
+                            <option value="fr-fr">French (France)</option>
+                            <option value="de-de">German (Germany)</option>
+                            <option value="el-gr">Greek (Greece)</option>
+                            <option value="he-il">Hebrew (Israel)</option>
+                            <option value="hi-in">Hindi (India)</option>
+                            <option value="hu-hu">Hungarian (Hungary)</option>
+                            <option value="id-id">Indonesian</option>
+                            <option value="it-it">Italian (Italy)</option>
+                            <option value="ja-jp">Japanese (Japan)</option>
+                            <option value="kk-kz">Kazakh (Kazakhstan)</option>
+                            <option value="ko-kr">Korean</option>
+                            <option value="lv-lv">Latvian (Latvia)</option>
+                            <option value="lt-lt">Lithuanian (Lithuania)</option>
+                            <option value="ms-my">Malay (Malaysia)</option>
+                            <option value="nb-no">Norwegian Bokmål (Norway)</option>
+                            <option value="pl-pl">Polish (Poland)</option>
+                            <option value="pt-br">Portuguese (Brazil)</option>
+                            <option value="pt-pt">Portuguese (Portugal)</option>
+                            <option value="ro-ro">Romanian (Romania)</option>
+                            <option value="ru-ru">Russian (Russia)</option>
+                            <option value="sr-latn-rs">Serbian (Latin, Serbia)</option>
+                            <option value="sk-sk">Slovak (Slovakia)</option>
+                            <option value="sl-si">Slovenian (Slovenia)</option>
+                            <option value="es-mx">Spanish (Mexico)</option>
+                            <option value="es-es">Spanish (Spain, International Sort)</option>
+                            <option value="sv-se">Swedish (Sweden)</option>
+                            <option value="th-th">Thai (Thailand)</option>
+                            <option value="tr-tr">Turkish (Turkey)</option>
+                            <option value="uk-ua">Ukrainian (Ukraine)</option>
+                            <option value="vi-vn">Vietnamese (Vietnam)</option>
+                        </select> 
+                    </div>
+                    <div id="teams-options" class="sub-options">
+                        <div class="form-group">
+                            <label for="teams-type"><img src="images/teams.png"><text id="teTR">Teams Type</text></label>
+                            <select id="teams-type" disabled>
+                                <option value="" disabled selected>-- Select --</option>
+                                <option value="addin">Add-in</option>
+                                <option value="builtin">Built-in</option>
+                                <option value="addinbuiltin">Both</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group" style="cursor: not-allowed;" id="AdditionalLangCursor">
                     <label for="additional-languages-select" ><img src="images/lang.png" id="iconad"><text id="alTR">Additional Languages</text></label>
@@ -216,7 +240,7 @@ RL - Retail License" id="iconinfthr"></label>
                     <div class="links">
                         <a id="author">By MaximeriX</a>
                         <div>
-                            <a id="appver">v1.0.4</a>
+                            <a id="appver">v1.0.5</a>
                             <a id="github">GitHub</a>
                         </div>
                     </div>
