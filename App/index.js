@@ -41,7 +41,7 @@ async function loadTranslations() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.4';
+    const currentVersion = '1.0.5';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
@@ -81,7 +81,7 @@ async function downloadUpdate(updateLink) {
 
     const result = await dialog.showSaveDialog({
         title: translations.downloadUpdateTo,
-        defaultPath: path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`), // Default filename with version
+        defaultPath: path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`),
         filters: [
             { name: 'Executable Files', extensions: ['exe'] },
             { name: 'All Files', extensions: ['*'] }
@@ -91,7 +91,7 @@ async function downloadUpdate(updateLink) {
     let filePath;
 
     if (result.canceled) {
-        filePath = path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`); // Default to downloads folder with version
+        filePath = path.join(app.getPath('downloads'), `SimpleOfficeInstaller_${appVersion}.exe`);
     } else {
         filePath = result.filePath;
     }
@@ -405,6 +405,89 @@ function isProcessRunning(processName, callback) {
         }
         const isRunning = stdout.toLowerCase().includes(processName.toLowerCase());
         callback(isRunning);
+    });
+}
+
+ipcMain.on('download-outlooknew-setup', (event, filePath, url) => {
+    const file = fs.createWriteStream(filePath);
+    https.get(url, (response) => {
+        if (response.statusCode === 200) {
+            response.pipe(file);
+            file.on('finish', () => {
+                file.close();
+                event.reply('download-complete', filePath);
+                startOutlookSetup(filePath);
+            });
+        } else {
+            console.error('Download failed with status code:', response.statusCode);
+            event.reply('download-failed', response.statusCode);
+        }
+    }).on('error', (err) => {
+        fs.unlink(filePath);
+        console.error('Error downloading the file:', err.message);
+        event.reply('download-failed', err.message);
+    });
+});
+
+function startOutlookSetup(filePath) {
+    const installerName = 'OutlookNewSetup.exe';
+    const processName = 'olk.exe';
+    let hasKilledOutlook = false;
+
+    exec(`taskkill /F /IM ${processName}`, (err) => {
+        if (err) {
+            console.error(`Error killing ${processName}: ${err.message}`);
+        } else {
+            console.log(`${processName} has been killed (if it was running).`);
+        }
+
+        setTimeout(() => {
+            const child = exec(`"${filePath}"`, (error) => {
+                if (error) {
+                    console.error(`Error executing Outlook New setup: ${error.message}`);
+                    return;
+                }
+            });
+            setTimeout(() => {
+                isProcessRunning(installerName, (running) => {
+                    if (running) {
+                        console.log(`${installerName} is running. Waiting for it to close...`);
+                        const checkInterval = setInterval(() => {
+                            isProcessRunning(installerName, (stillRunning) => {
+                                if (!stillRunning) {
+                                    clearInterval(checkInterval);
+                                    console.log(`${installerName} has closed. Deleting installer...`);
+                                    fs.unlink(filePath, (err) => {
+                                        if (err) {
+                                            console.error(`Error deleting ${filePath}: ${err.message}`);
+                                        } else {
+                                            console.log(`${filePath} deleted successfully.`);
+                                        }
+                                        const checkOutlookInterval = setInterval(() => {
+                                            isProcessRunning(processName, (outlookRunning) => {
+                                                if (outlookRunning && !hasKilledOutlook) {
+                                                    console.log(`${processName} is running. Killing the process...`);
+                                                    exec(`taskkill /F /IM ${processName}`, (err) => {
+                                                        if (err) {
+                                                            console.error(`Error killing ${processName}: ${err.message}`);
+                                                        } else {
+                                                            console.log(`${processName} has been killed.`);
+                                                            hasKilledOutlook = true;
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 3000);
+                                    });
+                                }
+                            });
+                        }, 1000);
+                    } else {
+                        console.log(`${installerName} is not running.`);
+                    }
+                });
+            }, 2000);
+        }, 1500);
     });
 }
 
