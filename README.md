@@ -48,6 +48,68 @@
 
 </details>
 
+<details>
+<summary>All included Project versions</summary>
+
+-----
+
+- **Project Online Desktop Client**
+
+-----
+
+- **Professional 2024** - Activated, Volume License
+- **Standard 2024** - Activated, Volume License
+  
+-----
+
+- **Professional 2021** - Activated, Volume License
+- **Standard 2021** - Activated, Volume License
+
+-----
+
+- **Professional 2019** - Activated, Volume License
+- **Standard 2019** - Activated, Volume License
+
+-----
+
+- **Professional 2016** - Activated, Volume License
+- **Standard 2016** - Activated, Volume License
+
+-----
+
+</details>
+
+<details>
+<summary>All included Visio versions</summary>
+
+-----
+
+- **Visio Plan 2**
+
+-----
+
+- **LTSC Professional 2024** - Activated, Volume License
+- **LTSC Standard 2024** - Activated, Volume License
+
+-----
+
+- **LTSC Professional 2021** - Activated, Volume License
+- **LTSC Standard 2021** - Activated, Volume License
+
+-----
+
+- **LTSC Professional 2019** - Activated, Volume License
+- **LTSC Standard 2019** - Activated, Volume License
+
+-----
+
+- **Professional 2016** - Activated, Volume License
+- **Standard 2016** - Activated, Volume License
+
+-----
+
+</details>
+
 ## 💻 System Requirements
 
 - Windows 10 or later
@@ -55,7 +117,7 @@
 
 ## 📥 Download
 
-Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.4) from the releases section.
+Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.5) from the releases section.
 
 ## 🔍 How it Works
 #### 🖱️ When Launch Office Installer button pressed
