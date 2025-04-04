@@ -17,12 +17,15 @@
   "apps": "Програми",
   "projectEdition": "Видання Project",
   "visioEdition": "Видання Visio",
+  "outlookType": "Тип Outlook",
+  "teamsType": "Тип Teams",
   "primaryLang": "Основна мова",
   "additionalLang": "Додаткові мови",
   "matchOS": "Відповідати Операційній Системі",
   "additionalProducts": "Додаткові продукти",
 
   "startButton": "Запустити Інсталятор Office",
+  "startButtonOutlook": "Інсталятор Outlook запущено...",
   "startButtonTeams": "Інсталятор Teams запущено...",
   "startButtonOffice": "Інсталятор Office запущено...",
 
@@ -78,6 +81,17 @@
   "visioLtscStand2019Vl": "LTSC Standard 2019 - Активовано, КЛ",
   "visioPro2016Vl": "Professional 2016 - Активовано, КЛ",
   "visioStand2016Vl": "Standard 2016 - Активовано, КЛ",
+
+  "bingTitle": "Фонова служба для Microsoft Search у Bing",
+  "lyncTitle": "Skype для Business",
+
+  "outlookClassic": "Класичний",
+  "outlookNew": "Новий",
+  "outlookBoth": "Обидва",
+
+  "teamsAddin": "Інтегрований",
+  "teamsBuiltin": "Вбудований",
+  "teamsBoth": "Обидва",
 
   "none": "Ніякі",
   "languagePack": "Мовний пакет",

@@ -17,12 +17,15 @@
   "apps": "Apps",
   "projectEdition": "Project Edition",
   "visioEdition": "Visio Edition",
+  "outlookType": "Outlook Type",
+  "teamsType": "Teams Type",
   "primaryLang": "Primary Language",
   "additionalLang": "Additional Languages",
   "matchOS": "Match Operating System",
   "additionalProducts": "Additional Products",
 
   "startButton": "Launch Office Installer",
+  "startButtonOutlook": "Outlook Installer has started...",
   "startButtonTeams": "Teams Installer has started...",
   "startButtonOffice": "Office Installer has started...",
   
@@ -78,6 +81,17 @@
   "visioLtscStand2019Vl": "LTSC Standard 2019 - Activated, VL",
   "visioPro2016Vl": "Professional 2016 - Activated, VL",
   "visioStand2016Vl": "Standard 2016 - Activated, VL",
+
+  "bingTitle": "Background service for Microsoft Search in Bing",
+  "lyncTitle": "Skype for Business",
+
+  "outlookClassic": "Classic",
+  "outlookNew": "New",
+  "outlookBoth": "Both",
+
+  "teamsAddin": "Add-in",
+  "teamsBuiltin": "Built-in",
+  "teamsBoth": "Both",
 
   "none": "None",
   "languagePack": "Language Pack",
