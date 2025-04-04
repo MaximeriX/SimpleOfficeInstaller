@@ -46,8 +46,12 @@ function updateLanguageUI() {
                 document.getElementById('iconinftwo').title = translations.infoEdition;
                 document.getElementById('iconinfthr').title = translations.infoEdition;
                 document.getElementById('appsTR').innerText = translations.apps;
+                document.getElementById('biTR').title = translations.bingTitle;
+                document.getElementById('lyTR').title = translations.lyncTitle;
                 document.getElementById('peTR').innerText = translations.projectEdition;
                 document.getElementById('veTR').innerText = translations.visioEdition;
+                document.getElementById('ouTR').innerText = translations.outlookType;
+                document.getElementById('teTR').innerText = translations.teamsType;
                 document.getElementById('plTR').innerText = translations.primaryLang;
                 document.getElementById('alTR').innerText = translations.additionalLang;
                 document.getElementById('matchOSTR').innerText = translations.matchOS;
@@ -93,6 +97,12 @@ function updateLanguageUI() {
                 
                     const visioEditionSelect = document.getElementById('visio-edition');
                     visioEditionSelect.options[0].text = translations.select;
+
+                    const outlookTypeSelect = document.getElementById('outlook-type');
+                    outlookTypeSelect.options[0].text = translations.select;
+                
+                    const teamsTypeSelect = document.getElementById('teams-type');
+                    teamsTypeSelect.options[0].text = translations.select;
                 
                     const primaryLangSelect = document.getElementById('primary-language');
                     primaryLangSelect.options[0].text = translations.select;
@@ -131,10 +141,15 @@ function resetForm () {
     document.getElementById('edition').value = '';
     document.getElementById('project-edition').value = '';
     document.getElementById('visio-edition').value = '';
+    document.getElementById('outlook-type').value = '';
+    document.getElementById('teams-type').value = '';
     document.getElementById('primary-language').value = '';
     document.getElementById('additional-products').value = '';
     document.getElementById('additional-languages').classList.add("disabled");
     document.getElementById('AdditionalLangCursor').style.cursor = 'not-allowed';
+    document.querySelectorAll('.language-list input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
     updateEditions();
 };
 
@@ -151,8 +166,9 @@ document.querySelector('.start-button').addEventListener('click', () => {
     const startButton = document.querySelector('.start-button');
     const importButton = document.querySelector('.import');
     if (validateForm()) {
-        const isTeamsSelected = document.getElementById('teamsCheckbox').checked;
-        const appsSelected = ['accessCheckbox', 'excelCheckbox', 'onedriveCheckbox', 'onenoteCheckbox', 'outlookCheckbox', 'powerpointCheckbox', 'publisherCheckbox', 'projectCheckbox', 'visioCheckbox', 'wordCheckbox'];
+        const isOutlookNewSelected = document.getElementById('outlook-type').value;
+        const isTeamsSelected = document.getElementById('teams-type').value;
+        const appsSelected = ['accessCheckbox', 'bingCheckbox','excelCheckbox', 'onedriveCheckbox', 'onenoteCheckbox', 'outlookCheckbox', 'powerpointCheckbox', 'publisherCheckbox', 'projectCheckbox', 'visioCheckbox', 'wordCheckbox'];
         const isAnyAppSelected = appsSelected.some(appId => document.getElementById(appId).checked);
         const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
         const configFilePath = window.electron.path.join(tempDir, 'config.xml');
@@ -170,20 +186,52 @@ document.querySelector('.start-button').addEventListener('click', () => {
         startButton.style.color = "#ffffff";
         startButton.classList.add("disabled");
 
-        if (isTeamsSelected) {
+        function downloadOutlookNew () {
+            const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
+            const outlookNewSetupFilePath = window.electron.path.join(tempDir, 'OutlookNewSetup.exe');
+
+            window.electron.fs.mkdir(tempDir);
+
+            const url = 'https://res.cdn.office.net/nativehost/5mttl/installer/v2/indirect/Setup.exe';
+            
+            startButton.textContent = `${translations.startButtonOutlook}`;
+            window.electron.downloadOutlookNewSetup(outlookNewSetupFilePath, url);
+        }
+
+        function downloadTeams () {
             const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
             const teamsSetupFilePath = window.electron.path.join(tempDir, 'MSTeamsSetup.exe');
-
-            startButton.textContent = `${translations.startButtonTeams}`;
 
             window.electron.fs.mkdir(tempDir);
 
             const url = 'https://statics.teams.cdn.office.net/evergreen-assets/DesktopClient/MSTeamsSetup.exe';
             
+            startButton.textContent = `${translations.startButtonTeams}`;
             window.electron.downloadTeamsSetup(teamsSetupFilePath, url);
+        }
+
+        if (isOutlookNewSelected === 'outlookNewI') {
+            downloadOutlookNew();
         } else {
             startButton.textContent = `${translations.startButtonOffice}`;
         }
+        if (isOutlookNewSelected === 'outlookBothI') {
+            downloadOutlookNew();
+        } else {
+            startButton.textContent = `${translations.startButtonOffice}`;
+        }
+
+        if (isTeamsSelected === 'teamsAddin') {
+            downloadTeams();
+        } else {
+            startButton.textContent = `${translations.startButtonOffice}`;
+        }
+        if (isTeamsSelected === 'teamsBoth') {
+            downloadTeams();
+        } else {
+            startButton.textContent = `${translations.startButtonOffice}`;
+        }
+
         if (isAnyAppSelected) {
             const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
             const odtSetupFilePath = window.electron.path.join(tempDir, 'officedeploymenttool.exe');
@@ -391,13 +439,33 @@ function generateXMLConfig() {
         xmlContent += `      <Language ID="${lang}" />\n`;
     });
 
-    const apps = ['Access', 'Excel', 'Groove', 'Lync', 'OneDrive', 'OneNote', 'Outlook', 'PowerPoint', 'Publisher', 'Word'];
+    const apps = ['Access', 'Bing', 'Excel', 'Groove', 'Lync', 'OneDrive', 'OneNote', 'PowerPoint', 'Publisher', 'Word'];
     apps.forEach(app => {
         const isChecked = document.getElementById(app.toLowerCase() + 'Checkbox').checked;
         if (!isChecked) {
             xmlContent += `      <ExcludeApp ID="${app}" />\n`;
         }
     });
+
+    const outlookTypeValue = document.getElementById('outlook-type').value;
+    if (outlookTypeValue === 'outlookClassic') {
+        xmlContent += `      <ExcludeApp ID="OutlookForWindows" />\n`;
+    }
+    if (outlookTypeValue === 'outlookNew') {
+        xmlContent += `      <ExcludeApp ID="Outlook" />\n`;
+    }
+    if (outlookTypeValue === '') {
+        xmlContent += `      <ExcludeApp ID="Outlook" />\n`;
+        xmlContent += `      <ExcludeApp ID="OutlookForWindows" />\n`;
+    }
+
+    const teamsTypeValue = document.getElementById('teams-type').value;
+    if (teamsTypeValue === 'teamsAddin') {
+        xmlContent += `      <ExcludeApp ID="Teams" />\n`;
+    }
+    if (teamsTypeValue === '') {
+        xmlContent += `      <ExcludeApp ID="Teams" />\n`;
+    }
     xmlContent += `    </Product>\n`;
 
     if (isProjectSelected) {
@@ -414,13 +482,26 @@ function generateXMLConfig() {
             xmlContent += `      <Language ID="${lang}" />\n`;
         });
 
-        const apps = ['Access', 'Excel', 'Groove', 'Lync', 'OneDrive', 'OneNote', 'Outlook', 'PowerPoint', 'Publisher', 'Word'];
+        const apps = ['Access', 'Bing', 'Excel', 'Groove', 'Lync', 'OneDrive', 'OneNote', 'PowerPoint', 'Publisher', 'Word'];
         apps.forEach(app => {
             const isChecked = document.getElementById(app.toLowerCase() + 'Checkbox').checked;
             if (!isChecked) {
                 xmlContent += `      <ExcludeApp ID="${app}" />\n`;
             }
         });
+
+        const outlookTypeValue = document.getElementById('outlook-type').value;
+        if (outlookTypeValue === 'outlookClassic') {
+            xmlContent += `      <ExcludeApp ID="OutlookForWindows" />\n`;
+        }
+        if (outlookTypeValue === 'outlookNew') {
+            xmlContent += `      <ExcludeApp ID="Outlook" />\n`;
+        }
+    
+        const teamsTypeValue = document.getElementById('teams-type').value;
+        if (teamsTypeValue === 'teamsAddin') {
+            xmlContent += `      <ExcludeApp ID="Teams" />\n`;
+        }
         xmlContent += `    </Product>\n`;
     }
 
@@ -438,13 +519,26 @@ function generateXMLConfig() {
             xmlContent += `      <Language ID="${lang}" />\n`;
         });
 
-        const apps = ['Access', 'Excel', 'Groove', 'OneDrive', 'OneNote', 'Outlook', 'PowerPoint', 'Publisher', 'Lync', 'Word'];
+        const apps = ['Access', 'Bing', 'Excel', 'Groove', 'Lync', 'OneDrive', 'OneNote', 'PowerPoint', 'Publisher', 'Word'];
         apps.forEach(app => {
             const isChecked = document.getElementById(app.toLowerCase() + 'Checkbox').checked;
             if (!isChecked) {
                 xmlContent += `      <ExcludeApp ID="${app}" />\n`;
             }
         });
+
+        const outlookTypeValue = document.getElementById('outlook-type').value;
+        if (outlookTypeValue === 'outlookClassic') {
+            xmlContent += `      <ExcludeApp ID="OutlookForWindows" />\n`;
+        }
+        if (outlookTypeValue === 'outlookNew') {
+            xmlContent += `      <ExcludeApp ID="Outlook" />\n`;
+        }
+    
+        const teamsTypeValue = document.getElementById('teams-type').value;
+        if (teamsTypeValue === 'teamsAddin') {
+            xmlContent += `      <ExcludeApp ID="Teams" />\n`;
+        }
         xmlContent += `    </Product>\n`;
     }
     if (additionalProducts === 'office-365-access-runtime') {
@@ -616,6 +710,7 @@ document.getElementById('edition').addEventListener('change', function() {
     this.style.border = "";
     const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
     const accessCheckbox = document.getElementById('accessCheckbox');
+    const bingCheckbox = document.getElementById('bingCheckbox');
     const lyncCheckbox = document.getElementById('lyncCheckbox');
     const grooveCheckbox = document.getElementById('grooveCheckbox');
     const onenoteCheckbox = document.getElementById('onenoteCheckbox');
@@ -627,39 +722,56 @@ document.getElementById('edition').addEventListener('change', function() {
     checkboxes.forEach(checkbox => {
         const ProjectSelected = document.getElementById('projectCheckbox').checked;
         const VisioSelected = document.getElementById('visioCheckbox').checked;
+        const OutlookSelected = document.getElementById('outlookCheckbox').checked;
+        const TeamsSelected = document.getElementById('teamsCheckbox').checked;
         checkbox.disabled = !this.value;
         checkbox.checked = false;
         const projectEdition = document.getElementById('projectCheckbox');
         const visioEdition = document.getElementById('visioCheckbox');
+        const outlookType = document.getElementById('outlookCheckbox');
+        const teamsType = document.getElementById('teamsCheckbox');
 
         document.getElementById('project-edition').disabled = true;
-        document.getElementById('project-edition').value = '';
         document.getElementById('visio-edition').disabled = true;
-        document.getElementById('visio-edition').value = '';
+        document.getElementById('outlook-type').disabled = true;
+        document.getElementById('teams-type').disabled = true;
 
-        if (VisioSelected) {
+        if (ProjectSelected) {
             projectEdition.disabled = true;
             projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             projectEdition.disabled = false;
         }
 
-        if (ProjectSelected) {
+        if (VisioSelected) {
             visioEdition.disabled = true;
             visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             visioEdition.disabled = false;
         }
+
+        if (OutlookSelected) {
+            outlookType.disabled = true;
+            outlookType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        } else {
+            outlookType.disabled = false;
+        }
+
+        if (TeamsSelected) {
+            teamsType.disabled = true;
+            teamsType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        } else {
+            teamsType.disabled = false;
+        }
     });
 
     const selectedOfficeVersion = document.getElementById('version').value;
     const selectedEdition = document.getElementById('edition').value;
-    const offteamscheck365 = document.getElementById('offteamscheck365');
-    const offteams365 = document.getElementById('officeteams365');
-    const teams = document.getElementById('teams');
 
     accessCheckbox.checked = false;
     accessCheckbox.disabled = false;
+    bingCheckbox.checked = false;
+    bingCheckbox.disabled = true;
     lyncCheckbox.checked = false;
     lyncCheckbox.disabled = false;
     grooveCheckbox.checked = false
@@ -672,28 +784,10 @@ document.getElementById('edition').addEventListener('change', function() {
     onenoteCheckbox.checked = false;
     powerpointCheckbox.disabled = false;
     powerpointCheckbox.checked = false;
-    offteamscheck365.checked = false;
-    offteamscheck365.disabled = true;
-    offteams365.style.display = 'none';
-    teams.style.display = '';
 
     if (selectedOfficeVersion === 'office-365') {
         grooveCheckbox.disabled = false;
-        teamsCheckbox.disabled = true;
-        offteams365.style.display = '';
-        if (selectedEdition === 'enterprise') {
-            teams.style.display = 'none';
-            offteamscheck365.checked = true;
-        } else if (selectedEdition === 'enterprise-no-teams') {
-            teams.style.display = 'none';
-            offteamscheck365.checked = false;
-        } else if (selectedEdition === 'business') {
-            teams.style.display = 'none';
-            offteamscheck365.checked = true;
-        } else if (selectedEdition === 'business-no-teams') {
-            teams.style.display = 'none';
-            offteamscheck365.checked = false;
-        }
+        bingCheckbox.disabled = false;
     } else if (selectedOfficeVersion === 'office-2024') {
         grooveCheckbox.disabled = true;
         publisherCheckbox.disabled = true;
@@ -758,9 +852,7 @@ function updateEditions() {
     const versionSelect = document.getElementById('version');
     const editionSelect = document.getElementById('edition');
     const additionalProductsSelect = document.getElementById('additional-products');
-    const teamsCheckbox = document.getElementById('teamsCheckbox');
     const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
-    const offteamscheck365 = document.getElementById('offteamscheck365');
 
     editionSelect.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     additionalProductsSelect.innerHTML = `<option value="" selected>${translations.none}</option>`;
@@ -769,10 +861,6 @@ function updateEditions() {
     let editions = [];
     let additionalProducts = [];
     if (selectedVersion === 'office-365') {
-        teamsCheckbox.checked = false;
-        teamsCheckbox.disabled = true;
-        offteamscheck365.checked = false;
-        offteamscheck365.disabled = true;
         editions = [
             { value: 'enterprise', text: `${translations.enterprise}` },
             { value: 'enterprise-no-teams', text: `${translations.enterpriseNoTeams}` },
@@ -789,7 +877,6 @@ function updateEditions() {
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
         ];
-        teamsCheckbox.disabled = false;
     } else if (selectedVersion === 'office-2021') {
         editions = [
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
@@ -799,7 +886,6 @@ function updateEditions() {
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
             { value: 'stand-vl', text: `${translations.standVl}` }
         ];
-        teamsCheckbox.disabled = false;
         additionalProducts = [
             { value: 'language-pack', text: `${translations.languagePack}` },
             { value: 'office-365-access-runtime', text: `${translations.officeRuntime}` }
@@ -811,7 +897,6 @@ function updateEditions() {
             { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'stand-vl', text: `${translations.standVl}` }
         ];
-        teamsCheckbox.disabled = false;
         additionalProducts = [
             { value: 'language-pack', text: `${translations.languagePack}` },
             { value: 'office-365-access-runtime', text: `${translations.officeRuntime}` },
@@ -824,7 +909,6 @@ function updateEditions() {
             { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'stand-vl', text: `${translations.standRl}` }
         ];
-        teamsCheckbox.disabled = false;
     }
 
     editions.forEach(edition => {
@@ -848,15 +932,23 @@ function updateEditions() {
         checkboxes.forEach(checkbox => {
             const ProjectSelected = document.getElementById('projectCheckbox').checked;
             const VisioSelected = document.getElementById('visioCheckbox').checked;
+            const OutlookSelected = document.getElementById('outlookCheckbox').checked;
+            const TeamsSelected = document.getElementById('teamsCheckbox').checked;
             checkbox.disabled = !this.value;
             checkbox.checked = false;
             const projectEdition = document.getElementById('projectCheckbox');
             const visioEdition = document.getElementById('visioCheckbox');
+            const outlookType = document.getElementById('outlookCheckbox');
+            const teamsType = document.getElementById('teamsCheckbox');
     
             document.getElementById('project-edition').disabled = true;
             document.getElementById('visio-edition').disabled = true;
+            document.getElementById('outlook-type').disabled = true;
+            document.getElementById('teams-type').disabled = true;
             document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
             document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            document.getElementById('outlook-type').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            document.getElementById('teams-type').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
     
             if (ProjectSelected) {
                 projectEdition.disabled = true;
@@ -870,6 +962,20 @@ function updateEditions() {
                 visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
             } else {
                 visioEdition.disabled = false;
+            }
+
+            if (OutlookSelected) {
+                outlookType.disabled = true;
+                outlookType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            } else {
+                outlookType.disabled = false;
+            }
+
+            if (TeamsSelected) {
+                teamsType.disabled = true;
+                teamsType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+            } else {
+                teamsType.disabled = false;
             }
         });
     }
@@ -885,26 +991,46 @@ document.getElementById('version').addEventListener('change', function() {
     checkboxes.forEach(checkbox => {
         const ProjectSelected = document.getElementById('projectCheckbox').checked;
         const VisioSelected = document.getElementById('visioCheckbox').checked;
+        const OutlookSelected = document.getElementById('outlookCheckbox').checked;
+        const TeamsSelected = document.getElementById('teamsCheckbox').checked;
         checkbox.disabled = !this.value;
         checkbox.checked = false;
         const projectEdition = document.getElementById('projectCheckbox');
         const visioEdition = document.getElementById('visioCheckbox');
+        const outlookType = document.getElementById('outlookCheckbox');
+        const teamsType = document.getElementById('teamsCheckbox');
 
-        document.getElementById('project-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`.disabled = true;
-        document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`.disabled = true;
+        document.getElementById('teams-type').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        document.getElementById('visio-edition').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        document.getElementById('outlook-type').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        document.getElementById('teams-type').innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
 
-        if (VisioSelected) {
+        if (ProjectSelected) {
             projectEdition.disabled = true;
             projectEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             projectEdition.disabled = false;
         }
 
-        if (ProjectSelected) {
+        if (VisioSelected) {
             visioEdition.disabled = true;
             visioEdition.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
         } else {
             visioEdition.disabled = false;
+        }
+
+        if (OutlookSelected) {
+            outlookType.disabled = true;
+            outlookType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        } else {
+            outlookType.disabled = false;
+        }
+
+        if (TeamsSelected) {
+            teamsType.disabled = true;
+            teamsType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+        } else {
+            teamsType.disabled = false;
         }
     });
     updateEditions();
@@ -920,6 +1046,14 @@ document.getElementById('project-edition').addEventListener('change', function()
 });
 
 document.getElementById('visio-edition').addEventListener('change', function() {
+    this.style.border = "";
+});
+
+document.getElementById('outlook-type').addEventListener('change', function() {
+    this.style.border = "";
+});
+
+document.getElementById('teams-type').addEventListener('change', function() {
     this.style.border = "";
 });
 
@@ -940,12 +1074,42 @@ function toggleSubOptions(checkbox, subOptionsId) {
 document.getElementById('projectCheckbox').addEventListener('change', function() {
     if (!this.checked) {
         document.getElementById('project-edition').value = "";
+        document.getElementById('project-edition').style.border = "";
     }
 });
 
 document.getElementById('visioCheckbox').addEventListener('change', function() {
     if (!this.checked) {
         document.getElementById('visio-edition').value = "";
+        document.getElementById('visio-edition').style.border = "";
+    }
+});
+
+document.getElementById('outlookCheckbox').addEventListener('change', function() {
+    if (!this.checked) {
+        document.getElementById('outlook-type').value = "";
+        document.getElementById('outlook-type').style.border = "";
+    }
+    const outlookType = document.getElementById('outlook-type');
+    if (this.checked) {
+        outlookType.disabled = false;
+    } else {
+        outlookType.value = "";
+        outlookType.disabled = true;
+    }
+});
+
+document.getElementById('teamsCheckbox').addEventListener('change', function() {
+    if (!this.checked) {
+        document.getElementById('teams-type').value = "";
+        document.getElementById('teams-type').style.border = "";
+    }
+    const teamsType = document.getElementById('teams-type');
+    if (this.checked) {
+        teamsType.disabled = false;
+    } else {
+        teamsType.value = "";
+        teamsType.disabled = true;
     }
 });
 
@@ -1061,6 +1225,64 @@ function updateVisioEditions() {
     });
 }
 
+function updateOutlookTypes() {
+    const versionSelect = document.getElementById('version');
+    const outlookType = document.getElementById('outlook-type');
+    const version = versionSelect.value;
+
+    let options = [];
+    if (version === 'office-365') {
+        options = [
+            { value: 'outlookClassic', text: `${translations.outlookClassic}` },
+            { value: 'outlookNew', text: `${translations.outlookNew}` },
+            { value: 'outlookBoth', text: `${translations.outlookBoth}` }
+        ];        
+    } else {
+        options = [
+            { value: 'outlookClassic', text: `${translations.outlookClassic}` },
+            { value: 'outlookNewI', text: `${translations.outlookNew}` },
+            { value: 'outlookBothI', text: `${translations.outlookBoth}` }
+        ];
+    }
+
+    outlookType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option.value;
+        opt.textContent = option.text;
+        outlookType.appendChild(opt);
+    });
+}
+
+function updateTeamsTypes() {
+    const versionSelect = document.getElementById('version');
+    const teamsType = document.getElementById('teams-type');
+    const version = versionSelect.value;
+
+    let options = [];
+    if (version === 'office-365') {
+        options = [
+            { value: 'teamsAddin', text: `${translations.teamsAddin}` },
+            { value: 'teamsBuiltin', text: `${translations.teamsBuiltin}` },
+            { value: 'teamsBoth', text: `${translations.teamsBoth}` }
+        ];        
+    } else {
+        options = [
+            { value: 'teamsAddin', text: `${translations.teamsAddin}` }
+        ];
+    }
+
+    teamsType.innerHTML = `<option value="" disabled selected>${translations.select}</option>`;
+
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option.value;
+        opt.textContent = option.text;
+        teamsType.appendChild(opt);
+    });
+}
+
 function validateForm() {
     const versionSelect = document.getElementById('version');
     const editionSelect = document.getElementById('edition');
@@ -1117,6 +1339,24 @@ function validateForm() {
         visioEdition.style.border = "";
     }
 
+    const outlookCheckbox = document.querySelector('input[type="checkbox"]#outlookCheckbox');
+    const outlookType = document.getElementById('outlook-type');
+    if (outlookCheckbox.checked && !outlookType.value) {
+        outlookType.style.border = "1.5px solid red";
+        isValid = false;
+    } else {
+        outlookType.style.border = "";
+    }
+
+    const teamsCheckbox = document.querySelector('input[type="checkbox"]#teamsCheckbox');
+    const teamsType = document.getElementById('teams-type');
+    if (teamsCheckbox.checked && !teamsType.value) {
+        teamsType.style.border = "1.5px solid red";
+        isValid = false;
+    } else {
+        teamsType.style.border = "";
+    }
+
     if (isValid) {
         versionSelect.style.border = "";
         editionSelect.style.border = "";
@@ -1124,6 +1364,8 @@ function validateForm() {
         checkboxgroup.style.border = "";
         projectEdition.style.border = "";
         visioEdition.style.border = "";
+        outlookType.style.border = "";
+        teamsType.style.border = "";
         checkboxgroup.style.border = "";
         checkboxgroup.style.borderRadius = "";
     }
@@ -1139,6 +1381,8 @@ document.addEventListener('DOMContentLoaded', () => {
     versionSelect.addEventListener('change', () => {
         updateProjectEditions();
         updateVisioEditions();
+        updateOutlookTypes();
+        updateTeamsTypes();
     });
 });
 
