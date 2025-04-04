@@ -15,6 +15,7 @@ contextBridge.exposeInMainWorld('electron', {
     onDownloadComplete: (callback) => ipcRenderer.on('download-complete', callback),
     onDownloadFailed: (callback) => ipcRenderer.on('download-failed', callback),
     downloadTeamsSetup: (filePath, url) => ipcRenderer.send('download-teams-setup', filePath, url),
+    downloadOutlookNewSetup: (filePath, url) => ipcRenderer.send('download-outlooknew-setup', filePath, url),
     onDownloadComplete: (callback) => ipcRenderer.on('download-complete', (event, filePath) => callback(filePath)),
     onDownloadFailed: (callback) => ipcRenderer.on('download-failed', (event, error) => callback(error)),
     send: (channel, data) => ipcRenderer.send(channel, data),

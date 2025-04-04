@@ -238,7 +238,7 @@ select:disabled{
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     transition: background-color 0.3s ease;
     border: 1.5px solid black;
     border-radius: 4px;
@@ -253,7 +253,7 @@ select:disabled{
 .boxes {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     transition: background-color 0.3s ease;
     margin-top: 3px;
     margin-left: 4px;
@@ -329,23 +329,27 @@ select:disabled{
     height: auto;
 }
 
-#project-options {
+#project-options, #visio-options {
     padding-right: 7px;
     width: 90%;
+    min-width: 187px;
 }
 
-#visio-options {
-    padding-left: 7px;
-    width: 90%;
+#project-options {
+    min-width: 188px;
+}
+
+#project-options select, #visio-options select, #outlook-options select, #primary-language, #teams-type {
+    min-height: 34px;
 }
 
 #version-options {
-    padding-right: 7px;
+    padding-right: 3.5px;
     width: 90%;
 }
 
 #edition-options {
-    padding-left: 7px;
+    padding-left: 3.5px;
     width: 90%;
 }
 
@@ -386,6 +390,12 @@ disabled {
     pointer-events: none;
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+#form-primary-language {
+    padding-right: 7px;
+    width: 70%;
+    min-width: 368px;
 }
 
 #primary-language {
@@ -491,7 +501,7 @@ disabled {
     background-color: #3d3d3d;
 }
 
-#appsTR, #peTR, #veTR, #alTR, #plTR, #apTR {
+#appsTR, #peTR, #veTR, #alTR, #plTR, #apTR, #ouTR, #teTR {
     margin-left: 3.5px;
 }
 

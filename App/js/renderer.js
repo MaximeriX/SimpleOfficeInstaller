@@ -8,8 +8,12 @@ window.electron.sendTranslations((event, translations) => {
     document.getElementById('iconinftwo').title = translations.infoEdition;
     document.getElementById('iconinfthr').title = translations.infoEdition;
     document.getElementById('appsTR').innerText = translations.apps;
+    document.getElementById('biTR').title = translations.bingTitle;
+    document.getElementById('lyTR').title = translations.lyncTitle;
     document.getElementById('peTR').innerText = translations.projectEdition;
     document.getElementById('veTR').innerText = translations.visioEdition;
+    document.getElementById('ouTR').innerText = translations.outlookType;
+    document.getElementById('teTR').innerText = translations.teamsType;
     document.getElementById('plTR').innerText = translations.primaryLang;
     document.getElementById('alTR').innerText = translations.additionalLang;
     document.getElementById('matchOSTR').innerText = translations.matchOS;
@@ -46,6 +50,12 @@ window.electron.sendTranslations((event, translations) => {
 
     const visioEditionSelect = document.getElementById('visio-edition');
     visioEditionSelect.options[0].text = translations.select;
+
+    const outlookTypeSelect = document.getElementById('outlook-type');
+    outlookTypeSelect.options[0].text = translations.select;
+
+    const teamsTypeSelect = document.getElementById('teams-type');
+    teamsTypeSelect.options[0].text = translations.select;
 
     const primaryLangSelect = document.getElementById('primary-language');
     primaryLangSelect.options[0].text = translations.select;
