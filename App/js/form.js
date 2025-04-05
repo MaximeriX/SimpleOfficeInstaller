@@ -310,7 +310,11 @@ function generateXMLConfig() {
         } else if (officeEdition === 'ltsc-stand-vl') {
             productID = 'Standard2024Volume';
             productKey = 'V28N4-JG22K-W66P8-VTMGK-H6HGR';
-        }
+        } else if (officeEdition === 'home-rl') {
+            updateChannel = 'Broad';
+            productID = 'Home2024Retail';
+            productKey = 'NHM39-W2C2G-6FXWB-KT7MM-QJ7KX';
+        }   
     } else if (officeVersion === 'office-2021') {
         updateChannel = 'PerpetualVL2021';
         if (officeEdition === 'ltsc-pro-plus-vl') {
@@ -335,6 +339,10 @@ function generateXMLConfig() {
             updateChannel = 'Broad';
             productID = 'Personal2021Retail';
             productKey = 'WN2B7-QJPXV-93VY2-6WTH3-BHC6H';
+        } else if (officeEdition === 'home-student-rl') {
+            updateChannel = 'Broad';
+            productID = 'HomeStudent2021Retail';
+            productKey = 'PB2D6-G4NJR-4CD7B-DF7RH-9BXFH';
         }
     } else if (officeVersion === 'office-2019') {
         updateChannel = 'PerpetualVL2019';
@@ -352,6 +360,10 @@ function generateXMLConfig() {
             updateChannel = 'Broad';
             productID = 'Personal2019Retail';
             productKey = 'VQFTQ-GNRXK-HCVHQ-DWJDJ-JFJHV';
+        } else if (officeEdition === 'home-student-rl') {
+            updateChannel = 'Broad';
+            productID = 'HomeStudent2019Retail';
+            productKey = 'NTMYR-DM4C3-MHK32-7QBRC-RVXB8';
         }
     } else if (officeVersion === 'office-2016') {
         updateChannel = 'Broad';
@@ -367,6 +379,10 @@ function generateXMLConfig() {
         } else if (officeEdition === 'personal-rl') {
             productID = 'PersonalRetail';
             productKey = 'CJKFJ-WNWBK-29CW7-P9786-C9X7Y';
+        } else if (officeEdition === 'home-student-rl') {
+            updateChannel = 'Broad';
+            productID = 'HomeStudentRetail';
+            productKey = 'RGNMP-V32H3-QBWXM-BF7XR-DJ3QD';
         }
     }
 
@@ -879,6 +895,9 @@ document.getElementById('edition').addEventListener('change', function() {
         if (selectedEdition === 'ltsc-stand-vl') {
             accessCheckbox.disabled = true;
             lyncCheckbox.disabled = true;
+        } else if (selectedEdition === 'home-rl') {
+            accessCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
         }
     } else if (selectedOfficeVersion === 'office-2021') {
         grooveCheckbox.disabled = true;
@@ -897,6 +916,9 @@ document.getElementById('edition').addEventListener('change', function() {
             onenoteCheckbox.disabled = true;
             powerpointCheckbox.disabled = true;
             publisherCheckbox.disabled = true;
+        } else if (selectedEdition === 'home-student-rl') {
+            accessCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
         }
     } else if (selectedOfficeVersion === 'office-2019') {
         grooveCheckbox.disabled = false;
@@ -913,6 +935,9 @@ document.getElementById('edition').addEventListener('change', function() {
             onenoteCheckbox.disabled = true;
             powerpointCheckbox.disabled = true;
             publisherCheckbox.disabled = true;
+        } else if (selectedEdition === 'home-student-rl') {
+            accessCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
         }
     } else if (selectedOfficeVersion === 'office-2016') {
         grooveCheckbox.disabled = false;
@@ -929,6 +954,9 @@ document.getElementById('edition').addEventListener('change', function() {
             onenoteCheckbox.disabled = true;
             powerpointCheckbox.disabled = true;
             publisherCheckbox.disabled = true;
+        } else if (selectedEdition === 'home-student-rl') {
+            accessCheckbox.disabled = true;
+            lyncCheckbox.disabled = true;
         }
     }
 });
@@ -964,15 +992,17 @@ function updateEditions() {
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
+            { value: 'home-rl', text: `${translations.homeRl}` }
         ];
     } else if (selectedVersion === 'office-2021') {
         editions = [
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
             { value: 'pro-rl', text: `${translations.proRl}` },
-            { value: 'personal-rl', text: `${translations.personalRl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
-            { value: 'stand-vl', text: `${translations.standVl}` }
+            { value: 'stand-vl', text: `${translations.standVl}` },
+            { value: 'home-student-rl', text: `${translations.homeStudentRl}` },
+            { value: 'personal-rl', text: `${translations.personalRl}` },
         ];
         additionalProducts = [
             { value: 'language-pack', text: `${translations.languagePack}` },
@@ -982,8 +1012,9 @@ function updateEditions() {
         editions = [
             { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
             { value: 'pro-rl', text: `${translations.proRl}` },
+            { value: 'stand-vl', text: `${translations.standVl}` },
+            { value: 'home-student-rl', text: `${translations.homeStudentRl}` },
             { value: 'personal-rl', text: `${translations.personalRl}` },
-            { value: 'stand-vl', text: `${translations.standVl}` }
         ];
         additionalProducts = [
             { value: 'language-pack', text: `${translations.languagePack}` },
@@ -992,10 +1023,11 @@ function updateEditions() {
         ];
     } else if (selectedVersion === 'office-2016') {
         editions = [
-            { value: 'pro-plus-vl', text: `${translations.proPlusRl}` },
+            { value: 'pro-plus-rl', text: `${translations.proPlusRl}` },
             { value: 'pro-rl', text: `${translations.proRl}` },
-            { value: 'personal-rl', text: `${translations.personalRl}` },
-            { value: 'stand-vl', text: `${translations.standRl}` }
+            { value: 'stand-vl', text: `${translations.standRl}` },
+            { value: 'home-student-rl', text: `${translations.homeStudentRl}` },
+            { value: 'personal-rl', text: `${translations.personalRl}` }
         ];
     }
 
