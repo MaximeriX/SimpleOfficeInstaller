@@ -48,9 +48,12 @@
   "office2016": "Office 2016 - Activated",
 
   "enterprise": "Enterprise",  
-  "enterpriseNoTeams": "Enterprise (no Teams)",  
+  "enterpriseNoTeams": "Enterprise (no Teams)", 
   "business": "Business",  
   "businessNoTeams": "Business (no Teams)",  
+  "smallBusiness": "Small Business Premium", 
+  "homePrem": "Home Premium",  
+  "educationPrem": "Education",  
 
   "ltscProPlusVl": "LTSC Professional Plus - VL",  
   "proPlusVl": "Professional Plus - VL",  

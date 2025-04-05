@@ -51,6 +51,9 @@
   "enterpriseNoTeams": "Enterprise (без Teams)",
   "business": "Business",
   "businessNoTeams": "Business (без Teams)",
+  "smallBusiness": "Small Business Premium", 
+  "homePrem": "Home Premium",  
+  "educationPrem": "Education",  
 
   "ltscProPlusVl": "LTSC Professional Plus - КЛ",
   "proPlusVl": "Professional Plus - КЛ",
