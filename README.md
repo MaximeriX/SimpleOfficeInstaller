@@ -14,6 +14,9 @@
 - **Office 365 for Enterprise** (no Teams)
 - **Office 365 for Business**
 - **Office 365 for Business** (no Teams)
+- **Office 365 for Small Business Premium**
+- **Office 365 for Home Premium**
+- **Office 365 for Education**
 
 -----
 
@@ -117,7 +120,7 @@
 
 ## 📥 Download
 
-Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.5) from the releases section.
+Download the [<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.6) from the releases section.
 
 ## 🔍 How it Works
 #### 🖱️ When Launch Office Installer button pressed
