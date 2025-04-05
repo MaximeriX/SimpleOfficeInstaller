@@ -41,7 +41,7 @@ async function loadTranslations() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.5';
+    const currentVersion = '1.0.6';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
