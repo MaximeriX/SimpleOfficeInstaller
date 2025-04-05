@@ -5,6 +5,7 @@ window.electron.sendTranslations((event, translations) => {
     document.getElementById('error-title').innerText = translations.errorTitle;
     document.getElementById('error-message').innerText = translations.errorMessage;
     document.getElementById('exit_bt').innerText = translations.exit;
+    document.getElementById('author').innerText = translations.author;
 
     window.translations = translations;
 });

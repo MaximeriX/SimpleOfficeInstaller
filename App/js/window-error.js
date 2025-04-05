@@ -13,6 +13,21 @@ MINUS.addEventListener("click", minimize);
 CLOSE_APP.addEventListener("click", close_app);
 EXIT_BT.addEventListener("click", exit_bt);
 
+document.getElementById('author').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.electron.openExternal('https://linktr.ee/MaximeriX');
+});
+
+document.getElementById('appver').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.7');
+});
+
+document.getElementById('github').addEventListener('click', (event) => {
+    event.preventDefault();
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller');
+});
+
 function applySystemTheme() {
     const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     THEME_TOGGLE.style.opacity = 0;

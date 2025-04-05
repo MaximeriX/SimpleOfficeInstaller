@@ -41,7 +41,7 @@ async function loadTranslations() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.6';
+    const currentVersion = '1.0.7';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
@@ -211,9 +211,9 @@ function showErrorAndQuit() {
     const errorWindow = new BrowserWindow({
         icon: path.join(__dirname, 'images/icon.ico'),
         width: 400,
-        height: 200,
+        height: 205,
         minWidth: 400,
-        minHeight: 200,
+        minHeight: 205,
         autoHideMenuBar: true,
         frame: false,
         resizable: true,

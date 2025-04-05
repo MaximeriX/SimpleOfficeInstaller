@@ -35,7 +35,8 @@ function updateLanguageUI() {
                 document.getElementById('close-app').title = translations.close;
                 document.getElementById('error-title').innerText = translations.errorTitle;
                 document.getElementById('error-message').innerText = translations.errorMessage;
-                document.getElementById('exit_bt').innerText = translations.exit;;
+                document.getElementById('exit_bt').innerText = translations.exit;
+                document.getElementById('author').innerText = translations.author;
                 
                 const nextLanguageIndex = (currentLanguageIndex + 1) % supportedLanguages.length;
                 const nextLanguage = supportedLanguages[nextLanguageIndex];
