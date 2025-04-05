@@ -1,7 +1,7 @@
 # <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="27vw" height="27vw"> Simple Office Installer
 ![Зображення-Програми-SimpleOfficeInstaller](https://github.com/user-attachments/assets/0952e51c-3b09-412e-858b-85ec16164fd7)
 
-<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer — це зручна програма, яка дозволяє безкоштовно завантажити різні версії Microsoft Office, включаючи:
+<img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> Simple Office Installer — це програма зі зручним інтерфейсом, яка дозволяє безкоштовно завантажити різні версії Microsoft Office, включаючи:
 
 **Office 365** (не активовано), **Office 2024**, **Office 2021**, **Office 2019** та **Office 2016**
 
@@ -32,7 +32,7 @@
 - **Office 2021 Professional** – Активовано, Роздрібна Ліцензія
 - **Office 2021 LTSC Standard** – Активовано, Корпоративна Ліцензія
 - **Office 2021 Standard** – Активовано, Корпоративна Ліцензія
-- **Office 2021 Home and Student** – Активовано, Роздрібна Ліцензія
+- **Office 2021 Home та Student** – Активовано, Роздрібна Ліцензія
 - **Office 2021 Personal** – Активовано, Роздрібна Ліцензія
 
 -----
@@ -48,7 +48,7 @@
 - **Office 2016 Professional Plus** – Активовано, Роздрібна Ліцензія
 - **Office 2016 Professional** – Активовано, Роздрібна Ліцензія
 - **Office 2016 Standard** – Активовано, Роздрібна Ліцензія
-- **Office 2016 Home and Student** – Активовано, Роздрібна Ліцензія
+- **Office 2016 Home та Student** – Активовано, Роздрібна Ліцензія
 - **Office 2016 Personal** – Активовано, Роздрібна Ліцензія
 
 -----
