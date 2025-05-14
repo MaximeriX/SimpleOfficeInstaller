@@ -243,6 +243,41 @@ select:disabled{
     border: 1.5px solid black;
     border-radius: 4px;
 }
+.addcheckbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    border-radius: 4px;
+}
+
+#addapps {
+    min-height: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    border-radius: 4px;
+}
+
+.addls {
+    width: 100%;
+    padding-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.additional-products {
+    width: 70%;
+    padding-right: 3.5px;
+}
+
+#addiform {
+    width: 35%;
+    padding-left: 3.5px;
+}
 
 .checkbox-group label {
     display: flex;
@@ -260,6 +295,21 @@ select:disabled{
 }
 
 .boxes label {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.addboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+
+.addboxes label {
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
@@ -339,7 +389,7 @@ select:disabled{
     min-width: 188px;
 }
 
-#project-options select, #visio-options select, #outlook-options select, #primary-language, #teams-type {
+#project-options select, #visio-options select, #outlook-options select, #primary-language, #teams-type, #additional-products {
     min-height: 34px;
 }
 
@@ -421,14 +471,10 @@ disabled {
 .language-dialog .language-list {
     max-height: 115px;
     border: 1.5px solid #555;
-    padding: 7px 10px;
+    padding: 7px 10px; 
     padding-bottom: 0px;
     border-radius: 4px;
     
-}
-
-.additional-products {
-    padding-bottom: 6px;
 }
 
 .language-list.active {
@@ -485,7 +531,7 @@ disabled {
     cursor: pointer;
 }
 
-#icon-ver, #iconed, #iconapps, #iconpr, #iconad, #iconadi, #iconinf, #iconinftwo, #iconinfthr {
+#icon-ver, #iconed, #iconapps, #iconpr, #iconad, #iconadi, #iconinf, #iconinftwo, #iconinfthr, #iconaddapps {
     transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -501,7 +547,7 @@ disabled {
     background-color: #3d3d3d;
 }
 
-#appsTR, #peTR, #veTR, #alTR, #plTR, #apTR, #ouTR, #teTR {
+#appsTR, #peTR, #veTR, #alTR, #plTR, #apTR, #ouTR, #teTR, #addapsTR {
     margin-left: 3.5px;
 }
 
@@ -623,7 +669,19 @@ body.dark-theme .checkbox-group {
     border: 1.5px solid #555; 
 }
 
+body.dark-theme .addcheckbox-group {
+    border: 1.5px solid #555; 
+}
+
+body.dark-theme #addapps {
+    border: 1.5px solid #555; 
+}
+
 body.dark-theme .checkbox-group label {
+    color: #ffffff; 
+}
+
+body.dark-theme .addcheckbox-group label {
     color: #ffffff; 
 }
 

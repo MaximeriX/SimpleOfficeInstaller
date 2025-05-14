@@ -15,6 +15,7 @@ const iconadp = document.getElementById("iconadp");
 const iconinf = document.getElementById("iconinf");
 const iconinf2 = document.getElementById("iconinftwo");
 const iconinf3 = document.getElementById("iconinfthr");
+const iconaddapps = document.getElementById("iconaddapps");
 
 THEME_TOGGLE.addEventListener("click", toggleTheme);
 MINUS.addEventListener("click", minimize);
@@ -27,7 +28,7 @@ document.getElementById('author').addEventListener('click', (event) => {
 
 document.getElementById('appver').addEventListener('click', (event) => {
     event.preventDefault();
-    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.7');
+    window.electron.openExternal('https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.8');
 });
 
 document.getElementById('github').addEventListener('click', (event) => {
@@ -49,6 +50,7 @@ function applySystemTheme() {
         iconinf.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         iconinf2.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         iconinf3.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconaddapps.src = isDarkTheme ? 'images/apps-light.png' : 'images/apps.png';
         THEME_TOGGLE.style.opacity = 1;
         document.body.classList.toggle('dark-theme', isDarkTheme);
         document.body.classList.toggle('light-theme', !isDarkTheme);
@@ -74,6 +76,7 @@ function toggleTheme() {
         iconinf.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         iconinf2.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
         iconinf3.src = isDarkTheme ? 'images/info-light.png' : 'images/info.png';
+        iconaddapps.src = isDarkTheme ? 'images/apps-light.png' : 'images/apps.png';
         THEME_TOGGLE.style.opacity = 1;
     }, 280);
     isDarkTheme = !isDarkTheme;
