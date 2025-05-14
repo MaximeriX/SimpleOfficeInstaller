@@ -62,7 +62,6 @@ RL - Retail License" id="iconinf"></label>
                     <div class="checkbox-group" id="apps">
                         <div class="boxes" id="boxes">
                             <label><input type="checkbox" id="accessCheckbox" class="custom-checkbox" disabled=""><img src="images/access.png"> Access</label>
-                            <label id="biTR" title="Background service for Microsoft Search in Bing"><input type="checkbox" id="bingCheckbox" class="custom-checkbox" disabled=""><img src="images/bing.png"> Bing</label>
                             <label><input type="checkbox" id="excelCheckbox" class="custom-checkbox" disabled=""><img src="images/excel.png"> Excel</label>
                             <label><input type="checkbox" id="grooveCheckbox" class="custom-checkbox" disabled=""><img src="images/groove.png"> Groove</label>
                             <label id="lyTR" title="Skype for Business"><input type="checkbox" id="lyncCheckbox" class="custom-checkbox" disabled=""><img src="images/lync.png"> Lync</label>
@@ -72,6 +71,7 @@ RL - Retail License" id="iconinf"></label>
                             <label><input type="checkbox" id="powerpointCheckbox" class="custom-checkbox" disabled=""><img src="images/powerpoint.png"> PowerPoint</label>
                             <label><input type="checkbox" id="publisherCheckbox" class="custom-checkbox" disabled=""><img src="images/publisher.png"> Publisher</label>
                             <label><input type="checkbox" id="projectCheckbox" onchange="toggleSubOptions(this, 'project-options')" class="custom-checkbox" disabled=""><img src="images/project.png"> Project</label>
+                            <label><input type="checkbox" id="swayCheckbox" class="custom-checkbox" disabled=""><img src="images/sway.png"> Sway</label>
                             <label id="teams"><input type="checkbox" id="teamsCheckbox" class="custom-checkbox" disabled=""><img src="images/teams.png"> Teams</label>
                             <label><input type="checkbox" id="visioCheckbox" onchange="toggleSubOptions(this, 'visio-options')" class="custom-checkbox" disabled=""><img src="images/visio.png"> Visio</label>
                             <label><input type="checkbox" id="wordCheckbox" class="custom-checkbox" disabled=""><img src="images/word.png"> Word</label>
@@ -223,12 +223,22 @@ RL - Retail License" id="iconinfthr"></label>
                         </div>
                     </div>
                 </div>
-                <div class="additional-products">
-                    <div class="form-group">
-                        <label id="ap-text" for="additional-products"><img src="images/addi.png" id="iconadp"><text id="apTR">Additional Products</text></label>
-                        <select id="additional-products" disabled>
-                            <option value="" selected>None</option>
-                        </select> 
+                <div class="addls">
+                    <div class="additional-products">
+                        <div class="form-group">
+                            <label id="ap-text" for="additional-products"><img src="images/addi.png" id="iconadp"><text id="apTR">Additional Products</text></label>
+                            <select id="additional-products" disabled>
+                                <option value="" selected>None</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="form-group" id="addiform">
+                        <label style="padding-bottom: 5px;"><img src="images/apps.png" id="iconaddapps"><text id="addapsTR">Additional Apps</text></label>
+                        <div class="addcheckbox-group" id="addapps">
+                            <div class="addboxes" id="addboxes">
+                                <label id="biTR" title="Background service for Microsoft Search in Bing"><input type="checkbox" id="bingCheckbox" class="custom-checkbox" disabled=""><img src="images/bing.png"> Bing</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="buttons">
@@ -240,7 +250,7 @@ RL - Retail License" id="iconinfthr"></label>
                     <div class="links">
                         <a id="author">By MaximeriX</a>
                         <div>
-                            <a id="appver">v1.0.7</a>
+                            <a id="appver">v1.0.8</a>
                             <a id="github">GitHub</a>
                         </div>
                     </div>
