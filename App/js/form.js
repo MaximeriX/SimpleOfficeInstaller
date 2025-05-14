@@ -57,6 +57,7 @@ function updateLanguageUI() {
                 document.getElementById('matchOSTR').innerText = translations.matchOS;
                 document.getElementById('matchOSStTR').innerText = translations.matchOS;
                 document.getElementById('apTR').innerText = translations.additionalProducts;
+                document.getElementById('addapsTR').innerText = translations.additionalApps;
                 document.getElementById('sbTR').innerText = translations.startButton;
                 document.getElementById('exportTR').title = translations.exportTitle;
                 document.getElementById('importTR').title = translations.importTitle;
@@ -168,6 +169,7 @@ document.querySelector('.start-button').addEventListener('click', () => {
     if (validateForm()) {
         const isOutlookNewSelected = document.getElementById('outlook-type').value;
         const isTeamsSelected = document.getElementById('teams-type').value;
+        const isSwaySelected = document.getElementById('swayCheckbox').checked;
         const appsSelected = ['accessCheckbox', 'bingCheckbox','excelCheckbox', 'onedriveCheckbox', 'onenoteCheckbox', 'outlookCheckbox', 'powerpointCheckbox', 'publisherCheckbox', 'projectCheckbox', 'visioCheckbox', 'wordCheckbox'];
         const isAnyAppSelected = appsSelected.some(appId => document.getElementById(appId).checked);
         const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
@@ -210,6 +212,17 @@ document.querySelector('.start-button').addEventListener('click', () => {
             window.electron.downloadTeamsSetup(teamsSetupFilePath, url);
         }
 
+        function downloadSway() {
+            const tempDir = window.electron.path.join(window.electron.os.tmpdir(), 'OfficeSetupFiles');
+            const swaySetupFilePath = window.electron.path.join(tempDir, 'SwaySetup.exe');
+            window.electron.fs.mkdir(tempDir);
+
+            const command = `powershell -Command "winget install -i -e --id=9WZDNCRD2G0J --source=msstore --accept-package-agreements --accept-source-agreements"`;
+
+            startButton.textContent = `${translations.startButtonSway}`;
+            window.electron.send('execute-command', command, swaySetupFilePath);
+        }
+
         if (isOutlookNewSelected === 'outlookNewI') {
             downloadOutlookNew();
         } else {
@@ -230,6 +243,10 @@ document.querySelector('.start-button').addEventListener('click', () => {
             downloadTeams();
         } else {
             startButton.textContent = `${translations.startButtonOffice}`;
+        }
+
+        if (isSwaySelected) {
+            downloadSway();
         }
 
         if (isAnyAppSelected) {
@@ -303,7 +320,7 @@ function generateXMLConfig() {
         if (officeEdition === 'ltsc-pro-plus-vl') {
             productID = 'ProPlus2024Volume';
             productKey = 'XJ2XN-FW8RK-P4HMP-DKDBV-GCVGB';
-        } else if (officeEdition === 'pro-plus-vl') {
+        } else if (officeEdition === 'pro-plus-rl') {
             updateChannel = 'Broad';
             productID = 'ProPlus2024Retail';
             productKey = 'HD4NY-QVXPH-VPXH8-YY4WV-R9GQV';
@@ -320,7 +337,7 @@ function generateXMLConfig() {
         if (officeEdition === 'ltsc-pro-plus-vl') {
             productID = 'ProPlus2021Volume';
             productKey = 'FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH';
-        } else if (officeEdition === 'pro-plus-vl') {
+        } else if (officeEdition === 'pro-plus-rl') {
             updateChannel = 'Broad';
             productID = 'ProPlus2021Retail';
             productKey = 'YNYDT-B8RMY-G8WJX-RPTY2-PG343';
@@ -331,7 +348,7 @@ function generateXMLConfig() {
         } else if (officeEdition === 'ltsc-stand-vl') {
             productID = 'Standard2021Volume';
             productKey = 'KDX7X-BNVR8-TXXGX-4Q7Y8-78VT3';
-        } else if (officeEdition === 'stand-vl') {
+        } else if (officeEdition === 'stand-rl') {
             updateChannel = 'Broad';
             productID = 'Standard2021Retail';
             productKey = 'RXK2W-N42KP-FT9W3-Q7DG8-TRBHK';
@@ -657,7 +674,9 @@ function generateXMLConfig() {
     xmlContent += `    <Property Name="FORCEAPPSHUTDOWN" Value="FALSE" />\n`;
     xmlContent += `    <Property Name="DeviceBasedLicensing" Value="0" />\n`;
     xmlContent += `    <Property Name="SCLCacheOverride" Value="0" />\n`;
-    xmlContent += `    <Property Name="AUTOACTIVATE" Value="1" />\n`;
+    if (officeVersion !== 'office-365') {
+        xmlContent += `    <Property Name="AUTOACTIVATE" Value="1" />\n`;
+    }
     xmlContent += `    <Updates Enabled="TRUE" />\n`;
     xmlContent += `    <AppSettings>\n`;
     xmlContent += `      <User Key="software\\microsoft\\office\\16.0\\excel\\options" Name="defaultformat" Value="51" Type="REG_DWORD" App="excel16" Id="L_SaveExcelfilesas" />\n`;
@@ -990,17 +1009,17 @@ function updateEditions() {
     } else if (selectedVersion === 'office-2024') {
         editions = [
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
-            { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
+            { value: 'pro-plus-rl', text: `${translations.proPlusRl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
             { value: 'home-rl', text: `${translations.homeRl}` }
         ];
     } else if (selectedVersion === 'office-2021') {
         editions = [
             { value: 'ltsc-pro-plus-vl', text: `${translations.ltscProPlusVl}` },
-            { value: 'pro-plus-vl', text: `${translations.proPlusVl}` },
+            { value: 'pro-plus-rl', text: `${translations.proPlusRl}` },
             { value: 'pro-rl', text: `${translations.proRl}` },
             { value: 'ltsc-stand-vl', text: `${translations.ltscStandVl}` },
-            { value: 'stand-vl', text: `${translations.standVl}` },
+            { value: 'stand-rl', text: `${translations.standVl}` },
             { value: 'home-student-rl', text: `${translations.homeStudentRl}` },
             { value: 'personal-rl', text: `${translations.personalRl}` },
         ];
@@ -1025,7 +1044,7 @@ function updateEditions() {
         editions = [
             { value: 'pro-plus-rl', text: `${translations.proPlusRl}` },
             { value: 'pro-rl', text: `${translations.proRl}` },
-            { value: 'stand-vl', text: `${translations.standRl}` },
+            { value: 'stand-rl', text: `${translations.standRl}` },
             { value: 'home-student-rl', text: `${translations.homeStudentRl}` },
             { value: 'personal-rl', text: `${translations.personalRl}` }
         ];
