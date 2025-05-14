@@ -41,7 +41,7 @@ async function loadTranslations() {
 }
 
 async function checkForUpdates() {
-    const currentVersion = '1.0.7';
+    const currentVersion = '1.0.8';
     const updateUrl = 'https://raw.githubusercontent.com/MaximeriX/SimpleOfficeInstaller/refs/heads/main/update.json';
 
     try {
@@ -332,6 +332,17 @@ ipcMain.on('download-teams-setup', (event, filePath, url) => {
         fs.unlink(filePath);
         console.error('Error downloading the file:', err.message);
         event.reply('download-failed', err.message);
+    });
+});
+
+ipcMain.on('execute-command', (event, command, filePath) => {
+    console.log(`Executing: ${command}`)
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing command: ${error}`);
+            return;
+        }
+        console.log(`Command output: ${stdout}`);
     });
 });
 
