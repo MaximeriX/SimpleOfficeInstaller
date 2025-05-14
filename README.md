@@ -21,17 +21,17 @@
 -----
 
 - **Office 2024 LTSC Professional Plus** - Activated, Volume License
-- **Office 2024 Professional Plus** - Activated, Volume License
+- **Office 2024 Professional Plus** - Activated, Retail License
 - **Office 2024 LTSC Standard** - Activated, Volume License
 - **Office 2024 Home** - Activated, Retail License
 
 -----
 
 - **Office 2021 LTSC Professional Plus** - Activated, Volume License
-- **Office 2021 Professional Plus** - Activated, Volume License
+- **Office 2021 Professional Plus** - Activated, Retail License
 - **Office 2021 Professional** - Activated, Retail License
 - **Office 2021 LTSC Standard** - Activated, Volume License
-- **Office 2021 Standard** - Activated, Volume License
+- **Office 2021 Standard** - Activated, Retail License
 - **Office 2021 Home and Student** - Activated, Retail License
 - **Office 2021 Personal** - Activated, Retail License
 
