@@ -23,10 +23,12 @@
   "additionalLang": "Additional Languages",
   "matchOS": "Match Operating System",
   "additionalProducts": "Additional Products",
+  "additionalApps": "Additional Apps",
 
   "startButton": "Launch Office Installer",
   "startButtonOutlook": "Outlook Installer has started...",
   "startButtonTeams": "Teams Installer has started...",
+  "startButtonSway": "Sway Installer has started...",
   "startButtonOffice": "Office Installer has started...",
   
   "importTitle" : "Import and Execute XML Configuration",

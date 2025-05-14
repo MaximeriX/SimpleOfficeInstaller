@@ -23,10 +23,12 @@
   "additionalLang": "Додаткові мови",
   "matchOS": "Відповідати Операційній Системі",
   "additionalProducts": "Додаткові продукти",
+  "additionalApps": "Додаткові прогр..",
 
   "startButton": "Запустити Інсталятор Office",
   "startButtonOutlook": "Інсталятор Outlook запущено...",
   "startButtonTeams": "Інсталятор Teams запущено...",
+  "startButtonSway": "Інсталятор Sway запущено...",
   "startButtonOffice": "Інсталятор Office запущено...",
 
   "importTitle" : "Імпортувати та Запустити XML-конфігурацію",
