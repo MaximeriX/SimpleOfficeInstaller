@@ -41,8 +41,7 @@
       ],
       "icon": "icon.ico",
       "requestedExecutionLevel": "asInvoker",
-      "legalTrademarks": "Simple Office Installer",
-      "fileDescription": "Simple Office Installer"
+      "legalTrademarks": "Simple Office Installer"
     },
     "portable": {
       "splashImage": "assets/splash.bmp"
