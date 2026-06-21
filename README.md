@@ -128,7 +128,7 @@ Espanol: [README-es_es.md](README-es_es.md) | Русский: [README-ru_ru.md](
 
 ## 📥 Download
 
-Download <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.8) from the Releases section.
+Download <img src="https://github.com/user-attachments/assets/54cb006d-1378-48d8-bf9d-cd232246d33a" width="15vw" height="15vw"> [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.1.0) from the Releases section.
 
 ## 🔍 How It Works
 

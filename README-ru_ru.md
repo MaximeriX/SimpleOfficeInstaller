@@ -128,7 +128,7 @@ English: [README.md](README.md) | Espanol: [README-es_es.md](README-es_es.md) | 
 
 ## 📥 Загрузка
 
-Скачайте [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.0.8) из раздела Releases.
+Скачайте [Simple Office Installer](https://github.com/MaximeriX/SimpleOfficeInstaller/releases/tag/v1.1.0) из раздела Releases.
 
 ## 🔍 Как это работает
 
