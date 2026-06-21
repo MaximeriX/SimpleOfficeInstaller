@@ -1,0 +1,176 @@
+{
+  "updates": {
+    "updateTitle": "Yeni güncelleme mevcut",
+    "downloadUpdateTo": "Güncellemeyi buraya indir",
+    "updateMessage": "v{{version}} güncellemesi mevcut.\nİndirmek ister misiniz?"
+  },
+  "nav": {
+    "themeToggle": "Temayı değiştir",
+    "langToggle": "Dili değiştir",
+    "minimize": "Küçült",
+    "close": "Kapat"
+  },
+  "form": {
+    "officeVersion": "Office sürümü",
+    "edition": "Sürüm",
+    "infoEdition": "TL - Toplu lisans\nPL - Perakende lisansı",
+    "apps": "Uygulamalar",
+    "projectEdition": "Project sürümü",
+    "visioEdition": "Visio sürümü",
+    "outlookType": "Outlook türü",
+    "teamsType": "Teams türü",
+    "primaryLang": "Birincil dil",
+    "additionalLang": "Ek diller",
+    "matchOS": "İşletim sistemiyle eşleştir",
+    "additionalProducts": "Ek ürünler"
+  },
+  "actions": {
+    "startButton": "Office yükleyicisini başlat",
+    "importTitle": "XML yapılandırmasını içe aktar ve çalıştır",
+    "importFile": "Yapılandırma dosyasını içe aktar",
+    "exportTitle": "XML yapılandırmasını dışa aktar",
+    "exportFile": "Yapılandırma dosyasını dışa aktar"
+  },
+  "common": {
+    "select": "-- Seçin --",
+    "none": "Yok"
+  },
+  "products": {
+    "office365": "Office 365",
+    "office2024": "Office 2024",
+    "office2021": "Office 2021",
+    "office2019": "Office 2019",
+    "office2016": "Office 2016",
+    "enterprise": "Enterprise",
+    "enterpriseNoTeams": "Enterprise (Teams olmadan)",
+    "business": "Business",
+    "businessNoTeams": "Business (Teams olmadan)",
+    "smallBusiness": "Small Business Premium",
+    "homePrem": "Home Premium",
+    "educationPrem": "Education",
+    "languagePack": "Dil paketi",
+    "officeRuntime": "Office 365 Access Runtime",
+    "skypeForBusinessBasic2019": "Skype for Business Basic 2019"
+  },
+  "editions": {
+    "ltscProPlusVl": "LTSC Professional Plus - TL, etkinleştirildi",
+    "proPlusVl": "Professional Plus - TL, etkinleştirildi",
+    "ltscStandVl": "LTSC Standard - TL, etkinleştirildi",
+    "standVl": "Standard - TL, etkinleştirildi",
+    "proPlusRl": "Professional Plus - PL",
+    "proRl": "Professional - PL",
+    "standRl": "Standard - PL",
+    "personalRl": "Personal - PL",
+    "homeStudentRl": "Home and Student - PL",
+    "homeRl": "Home - PL"
+  },
+  "project": {
+    "projectOnlineDesktopClient": "Project Online Desktop Client",
+    "projectPro2024Vl": "Professional 2024 - TL, etkinleştirildi",
+    "projectStand2024Vl": "Standard 2024 - TL, etkinleştirildi",
+    "projectPro2021Vl": "Professional 2021 - TL, etkinleştirildi",
+    "projectStand2021Vl": "Standard 2021 - TL, etkinleştirildi",
+    "projectPro2019Vl": "Professional 2019 - TL, etkinleştirildi",
+    "projectStand2019Vl": "Standard 2019 - TL, etkinleştirildi",
+    "projectPro2016Vl": "Professional 2016 - TL, etkinleştirildi",
+    "projectStand2016Vl": "Standard 2016 - TL, etkinleştirildi"
+  },
+  "visio": {
+    "visioPlan2": "Visio Plan 2",
+    "visioLtscPro2024Vl": "LTSC Professional 2024 - TL, etkinleştirildi",
+    "visioLtscStand2024Vl": "LTSC Standard 2024 - TL, etkinleştirildi",
+    "visioLtscPro2021Vl": "LTSC Professional 2021 - TL, etkinleştirildi",
+    "visioLtscStand2021Vl": "LTSC Standard 2021 - TL, etkinleştirildi",
+    "visioLtscPro2019Vl": "LTSC Professional 2019 - TL, etkinleştirildi",
+    "visioLtscStand2019Vl": "LTSC Standard 2019 - TL, etkinleştirildi",
+    "visioPro2016Vl": "Professional 2016 - TL, etkinleştirildi",
+    "visioStand2016Vl": "Standard 2016 - TL, etkinleştirildi"
+  },
+  "options": {
+    "lyncTooltip": "Skype for Business",
+    "grooveTooltip": "OneDrive for Business",
+    "outlookClassic": "Klasik",
+    "outlookNew": "Yeni",
+    "outlookBoth": "Her ikisi",
+    "teamsAddin": "Eklenti",
+    "teamsBuiltin": "Yerleşik",
+    "teamsBoth": "Her ikisi"
+  },
+  "messages": {
+    "installError": "Yükleyici başlatılamadı veya bir hatayla sonlandı.",
+    "importError": "XML yapılandırma dosyası içe aktarılamadı.",
+    "exportError": "XML yapılandırma dosyası dışa aktarılamadı.",
+    "busyPleaseWait": "Lütfen bekleyin...",
+    "installSuccess": "Office yükleyicisi başarıyla başlatıldı.\nUygulamayı kullandığınız için teşekkür ederiz.",
+    "operationActive": "Başka bir yükleme veya güncelleme işlemi zaten çalışıyor.",
+    "installerTitle": "Office yükleyicisi",
+    "noActionsSelected": "Hiçbir yükleyici işlemi seçilmedi",
+    "workflowCompleted": "Yükleyici akışı tamamlandı.",
+    "canceled": "İptal edildi.",
+    "importedTitle": "İçe aktarılan Office yapılandırması",
+    "importedCompleted": "İçe aktarılan yapılandırma tamamlandı.",
+    "updateLaunched": "Güncelleme başlatıldı.",
+    "updateCanceled": "Güncelleme indirme işlemi iptal edildi."
+  },
+  "update": {
+    "failedTitle": "Güncelleme indirilemedi",
+    "failedMsg": "Güncelleme indirilemedi.",
+    "progressTitle": "Güncelleme indiriliyor...",
+    "progressTitleVersion": "v{{version}} sürümü indiriliyor..."
+  },
+  "ui": {
+    "btnCancel": "İptal",
+    "canceling": "İptal ediliyor...",
+    "searchPrimary": "Birincil dili ara",
+    "searchAdditional": "Ek dilleri ara",
+    "clearSearch": "Aramayı temizle",
+    "languageLabel": "Dil",
+    "progressLabel": "İlerleme"
+  },
+  "files": {
+    "xmlFilesLabel": "XML dosyaları",
+    "allFilesLabel": "Tüm dosyalar",
+    "executableFilesLabel": "Yürütülebilir dosyalar"
+  },
+  "links": {
+    "author": "MaximeriX tarafından"
+  },
+  "admin": {
+    "accessTitle": "Yönetici erişimi gerekli",
+    "rightsExtract": "Office kurulum dosyalarını ayıklamak için yönetici izinleri gereklidir.",
+    "rightsInstall": "Microsoft Office yüklemek için yönetici izinleri gereklidir."
+  },
+  "progress": {
+    "downloadingOdt": "Office Deployment Tool indiriliyor",
+    "extractingOdt": "Office Deployment Tool ayıklanıyor...",
+    "preparingOffice": "Microsoft Office yükleyicisi hazırlanıyor...",
+    "installingOffice": "Microsoft Office yükleniyor...",
+    "downloadingTeams": "Microsoft Teams yükleyicisi indiriliyor",
+    "runningTeams": "Microsoft Teams yükleyicisi çalışıyor...",
+    "downloadingOutlook": "Windows için Outlook yükleyicisi indiriliyor",
+    "runningOutlook": "Windows için Outlook yükleyicisi çalışıyor...",
+    "preparingTask": "{{name}} hazırlanıyor...",
+    "preparing": "Hazırlanıyor...",
+    "canceling": "İptal ediliyor...",
+    "downloadingLabel": "{{label}} indiriliyor...",
+    "downloadedLabel": "{{label}} indirildi",
+    "followingRedirect": "{{label}} için yönlendirme izleniyor",
+    "retryingLaunch": "Başlatma yeniden deneniyor...",
+    "extractingOdtLog": "Office Deployment Tool ayıklanıyor",
+    "startingOffice": "Microsoft Office yükleyicisi başlatılıyor",
+    "startingTeams": "Microsoft Teams yükleyicisi başlatılıyor",
+    "startingOutlook": "Windows için Outlook yükleyicisi başlatılıyor",
+    "startingUpdate": "İndirilen güncelleme başlatılıyor",
+    "startingUpdateShort": "Güncelleme başlatılıyor...",
+    "stepFormat": "Adım {{index}}/{{total}}: {{name}}"
+  },
+  "tasks": {
+    "taskOffice": "Microsoft Office",
+    "taskTeams": "Microsoft Teams",
+    "taskOutlook": "Windows için Outlook"
+  },
+  "lang": {
+    "native": "Türkçe",
+    "english": "Turkish"
+  }
+}

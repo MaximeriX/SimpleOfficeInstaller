@@ -1,51 +1,84 @@
 {
   "name": "SimpleOfficeInstaller",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "main": "index.js",
+  "private": true,
+  "homepage": "https://maximerix.dev/soi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximeriX/SimpleOfficeInstaller.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaximeriX/SimpleOfficeInstaller/issues"
+  },
+  "funding": "https://maximerix.dev/donate",
   "devDependencies": {
-    "electron": "^33.4.4",
-    "electron-builder": "^25.1.8"
+    "clean-css": "^5.3.3",
+    "electron": "^34.5.8",
+    "electron-builder": "^26.15.3",
+    "eslint": "^9.39.4",
+    "html-minifier-terser": "^7.2.0",
+    "svgo": "^4.0.1",
+    "terser": "^5.48.0"
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "npm run minify && electron-builder --win --ia32 --projectDir build",
+    "minify": "node scripts/build.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "build": {
-    "appId": "net.maximerix.SimpleOfficeInstaller",
+    "appId": "dev.maximerix.SimpleOfficeInstaller",
     "productName": "Simple Office Installer",
+    "electronLanguages": ["en"],
     "win": {
       "target": [
         {
           "target": "portable",
-          "arch": [
-            "ia32"
-          ]
+          "arch": ["ia32"]
         }
       ],
-      "icon": "images/icon.ico"
+      "icon": "icon.ico",
+      "requestedExecutionLevel": "asInvoker",
+      "legalTrademarks": "Simple Office Installer",
+      "fileDescription": "Simple Office Installer"
+    },
+    "portable": {
+      "splashImage": "assets/splash.bmp"
     },
     "files": [
-      "index.html",
-      "error.html",
-      "styles.css",
-      "index.js",
-      "js/**/*",
-      "js/**/",
-      "js/",
-      "images/**/*",
-      "images/**/",
-      "images/",
-      "locales/**/*",
-      "locales/**/",
-      "locales/"
+      "build/**/*"
     ],
-    "asar": true
+    "asar": true,
+    "compression": "normal",
+    "removePackageScripts": true,
+    "removePackageKeywords": true,
+    "npmRebuild": false,
+    "buildDependenciesFromSource": false,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": true,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true
+    }
   },
-  "keywords": [],
-  "author": "MaximeriX",
+  "keywords": [
+    "office",
+    "office365",
+    "microsoft-office",
+    "office-installer",
+    "odt",
+    "office-deployment-tool",
+    "electron",
+    "windows"
+  ],
+  "author": {
+    "name": "MaximeriX",
+    "url": "https://maximerix.dev"
+  },
   "license": "MIT",
-  "description": "Simple Office Installer by MaximeriX",
-  "dependencies": {
-    "axios": "^1.7.9"
-  }
+  "description": "A Microsoft Office installer for Office 365, 2024, 2021, 2019, and 2016."
 }

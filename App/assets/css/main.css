@@ -1,0 +1,1065 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Segoe UI Variable", "Noto Sans", "Ubuntu", "Cantarell", "Arial", sans-serif;
+  -webkit-app-region: no-drag;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --theme-transition: 0.6s;
+  --ui-transition: 0.2s;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f6f7f9;
+  color: #111827;
+  font-size: 14px;
+  transition: background-color var(--theme-transition) ease, color var(--theme-transition) ease;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-app-region: no-drag;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #adadad;
+}
+
+html.dark body::-webkit-scrollbar-track,
+html.dark body *::-webkit-scrollbar-track {
+  background: #151515;
+}
+
+html.dark body::-webkit-scrollbar-thumb,
+html.dark body *::-webkit-scrollbar-thumb {
+  background: #222223;
+}
+
+html.dark body::-webkit-scrollbar-thumb:hover,
+html.dark body *::-webkit-scrollbar-thumb:hover {
+  background: #373738;
+}
+
+html.dark body::-webkit-scrollbar-thumb:active,
+html.dark body *::-webkit-scrollbar-thumb:active {
+  background: #3f3f41;
+}
+
+nav {
+  position: relative;
+  z-index: 40;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 12px;
+  background: #040405;
+  color: #ffffff;
+  -webkit-app-region: drag;
+}
+
+nav .icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  -webkit-app-region: drag;
+}
+
+nav p {
+  flex: 1;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-app-region: drag;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+
+.nav-actions > button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--ui-transition) ease;
+}
+
+.nav-actions > button:hover {
+  background: #3d3d3d;
+}
+
+.nav-actions > button:focus-visible {
+  outline: none;
+  background: #3d3d3d;
+}
+
+.nav-actions > button.theme-toggle:hover {
+  background: transparent;
+}
+
+.nav-actions > button.theme-toggle:focus-visible {
+  background: transparent;
+}
+
+.nav-actions > button.theme-toggle:hover svg {
+  background: #3d3d3d;
+}
+
+.nav-actions > button.theme-toggle:focus-visible svg {
+  background: #3d3d3d;
+}
+
+.nav-actions .theme-toggle svg {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 999px;
+  transition: background-color var(--ui-transition) ease, stroke var(--ui-transition) ease;
+}
+
+.nav-actions .window-close:hover {
+  background: #e81123;
+}
+
+.nav-actions .window-close:focus-visible {
+  background: #e81123;
+}
+
+.nav-actions > button svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-language .select-button {
+  width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border-color: #555;
+  background: #2e2e2e;
+  color: #ffffff;
+  justify-content: center;
+}
+
+.nav-language .lang-select-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  color: inherit !important;
+  border: 0 !important;
+}
+
+.nav-language .lang-select-button:hover:not(:disabled) {
+  background: transparent !important;
+}
+
+.nav-language .lang-select-button:focus-visible {
+  outline: none;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+.lang-button-face {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transition: background-color var(--ui-transition) ease;
+}
+
+.nav-language .lang-select-button:hover .lang-button-face {
+  background: #3d3d3d;
+}
+
+.nav-language .lang-select-button:focus-visible .lang-button-face {
+  background: #3d3d3d;
+}
+
+.lang-select-button .lang-button-icon {
+  width: 26px;
+  height: 26px;
+  transition: color var(--ui-transition) ease, stroke var(--ui-transition) ease;
+}
+
+.nav-language .select-button:hover:not(:disabled) {
+  background: #3d3d3d;
+}
+
+.nav-language .select-menu {
+  z-index: 60;
+  left: auto;
+  right: 0;
+  width: 172px;
+  max-height: 305px;
+  border-color: #555;
+}
+
+.nav-language .select-value,
+.nav-language .select-chevron {
+  display: none;
+}
+
+.flag-icon {
+  position: absolute;
+  left: 3px;
+  bottom: 5px;
+  width: 14px;
+  height: 10px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+main {
+  flex: 1;
+  min-height: 0;
+  padding: 2px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.form-section.office-version .field > label svg:first-child {
+  margin-top: 4px;
+}
+
+.form-section.apps,
+.form-section.additional-languages {
+  grid-template-columns: 1fr;
+}
+
+.form-section.product-options,
+.form-section.language-options {
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 2.5fr) minmax(0, 2fr);
+}
+
+.form-section.language-options .field.primary-language {
+  grid-column: 1 / span 2;
+}
+
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field > label {
+  min-height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.field.apps > label svg {
+  margin-top: 2px;
+}
+
+.field.outlook-type > label {
+  font-size: 15px;
+}
+
+.field > label svg,
+.field > label img {
+  width: 18px;
+  height: 18px;
+}
+
+.field > label .label-info {
+  margin-top: 4px;
+  width: 14px;
+  height: 14px;
+  cursor: help;
+}
+
+.select > select {
+  display: none;
+}
+
+.select {
+  position: relative;
+}
+
+.select-button {
+  appearance: none;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1.5px solid #1f2937;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+  transition: background-color var(--ui-transition) ease, border-color var(--ui-transition) ease, color var(--ui-transition) ease, box-shadow var(--ui-transition) ease;
+}
+
+.select-button:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.select-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #f6f7f9, 0 0 0 4px #0078d4;
+}
+
+.select-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select-chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  transition: transform 0.15s ease;
+}
+
+.select.open .select-chevron {
+  transform: rotate(180deg);
+}
+
+.select-menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 2px);
+  left: 0;
+  right: auto;
+  display: none;
+  min-width: 100%;
+  width: max-content;
+  max-width: min(400px, calc(100vw - 24px));
+  max-height: 185px;
+  overflow-y: auto;
+  border: 1.5px solid #1f2937;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transform-origin: top center;
+  transition: opacity var(--ui-transition) ease, transform var(--ui-transition) ease, visibility var(--ui-transition) ease, background-color var(--theme-transition) ease, border-color var(--theme-transition) ease, color var(--theme-transition) ease;
+}
+
+.select.open .select-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.select.drop-up .select-menu {
+  top: auto;
+  bottom: calc(100% + 2px);
+  transform: translateY(0px);
+  transform-origin: bottom center;
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.field.edition .select-menu {
+  left: auto;
+  right: 0;
+}
+
+.select-option {
+  appearance: none;
+  width: 100%;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  transition: background-color var(--ui-transition) ease, color var(--ui-transition) ease;
+}
+
+.nav-language .select-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-language .select-option img {
+  width: 20px;
+  height: 14px;
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+
+.select-option[hidden],
+.language-list label[hidden] {
+  display: none !important;
+}
+
+.select-search,
+.language-search {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 0 10px;
+  background: #e8f1fb;
+  border-bottom: 1px solid #1f2937;
+  transition: background-color var(--theme-transition) ease, border-color var(--theme-transition) ease, color var(--theme-transition) ease;
+}
+
+.select-search svg,
+.language-search svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: #4b5563;
+}
+
+.select-search input,
+.language-search input {
+  min-width: 0;
+  width: 100%;
+  padding: 7px 8px 7px 0;
+  border: 0;
+  outline: 0;
+  background: #e8f1fb;
+  color: #111827;
+  user-select: text;
+  transition: background-color var(--theme-transition) ease, color var(--theme-transition) ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select-search input::placeholder,
+.language-search input::placeholder {
+  color: #4b5563;
+}
+
+.language-search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-clear {
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+  border: 0;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--ui-transition) ease;
+}
+
+.search-clear:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1.5px #0078d4;
+}
+
+.search-clear svg {
+  width: 14px;
+  height: 14px;
+}
+
+.search-clear[hidden] {
+  display: none !important;
+}
+
+.select-option:hover,
+.select-option.selected {
+  background: #e8f1fb;
+}
+
+.select-option:focus-visible {
+  outline: none;
+  background: #e8f1fb;
+  box-shadow: inset 0 0 0 1.5px #0078d4;
+}
+
+.select.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.select.disabled .select-button {
+  cursor: not-allowed;
+}
+
+.select.invalid .select-button {
+  border-color: #ef4444;
+}
+
+.checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #171e29;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+  transition: background-color var(--ui-transition) ease, border-color var(--ui-transition) ease, box-shadow var(--ui-transition) ease;
+}
+
+.checkbox:hover:not(:disabled) {
+  border-color: #3b82f6;
+  background: #f0f7ff;
+}
+
+.checkbox:focus-visible {
+  outline: none;
+  border-color: #0078d4;
+  box-shadow: 0 0 0 2px #f6f7f9, 0 0 0 4px #0078d4;
+}
+
+.checkbox:checked {
+  border-color: #006ec2 !important;
+  background: #006ec2 !important;
+}
+
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='5'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 10px 10px no-repeat;
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.app-grid,
+.language-panel {
+  border: 1.5px solid #1f2937;
+  border-radius: 5px;
+  background: #ffffff;
+  padding: 4px 6px;
+  transition: background-color var(--theme-transition) ease, border-color var(--theme-transition) ease;
+}
+
+.app-grid {
+  display: flex;
+}
+
+.language-panel {
+  padding: 0;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.app-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.app-list label,
+.language-list label {
+  min-width: 0;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #111827;
+  font-size: 13px;
+}
+
+.app-list label {
+  cursor: pointer;
+}
+
+.app-entry-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.app-list label:has(.checkbox:disabled) {
+  cursor: not-allowed;
+}
+
+.app-list img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.language-panel.disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.language-panel:not(.disabled):has(.language-checkbox:focus-visible) {
+  border-color: #0078d4;
+  box-shadow: 0 0 0 2px #f6f7f9, 0 0 0 4px #0078d4;
+}
+
+.language-list {
+  min-height: auto;
+  padding: 6px 12px;
+  flex: 0 0 auto;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 2px 12px;
+  padding-right: 2px;
+}
+
+.actions {
+  margin-top: 4px;
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.start-button,
+.import-button,
+.export-button {
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+  background: #0078d4;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color var(--ui-transition) ease, opacity var(--ui-transition) ease;
+}
+
+.import-button svg {
+  transform: rotate(270deg);
+}
+
+.export-button svg {
+  transform: rotate(90deg);
+}
+
+.start-button {
+  flex: 1;
+  padding: 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--progress-percent, 0%);
+  background: #36a3ff;
+  opacity: 0;
+  transition: width var(--ui-transition) ease, opacity var(--ui-transition) ease;
+}
+
+.start-button.is-progress::before {
+  opacity: 0.42;
+}
+
+.start-button-label {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.import-button,
+.export-button {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-button:hover,
+.import-button:hover,
+.export-button:hover {
+  background: #005a9e;
+}
+
+.start-button:focus-visible,
+.import-button:focus-visible,
+.export-button:focus-visible,
+.progress-cancel:focus-visible,
+.links a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #f6f7f9, 0 0 0 4px #0078d4;
+}
+
+.links a:focus-visible {
+  border-radius: 4px;
+}
+
+.start-button.disabled,
+.import-button.disabled,
+.export-button.disabled {
+  background: #00508d;
+  cursor: not-allowed;
+}
+
+.action-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.actions.is-installer-progress .start-button {
+  flex: 1 1 100%;
+}
+
+.actions.is-installer-progress .import-button,
+.actions.is-installer-progress .export-button {
+  display: none;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.links div {
+  display: flex;
+  gap: 10px;
+}
+
+.links a {
+  color: #0078d4;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color var(--ui-transition) ease;
+}
+
+.links a:hover {
+  color: #005a9e;
+  text-decoration: underline;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 100;
+  max-width: 260px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: transform var(--ui-transition) ease, opacity var(--ui-transition) ease;
+  white-space: pre-line;
+}
+
+.tooltip.tooltip-top {
+  transform: translateY(4px);
+}
+
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.progress-panel {
+  width: 100%;
+  margin: auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: none;
+}
+
+.progress-panel[hidden] {
+  display: none !important;
+}
+
+.progress-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: inherit;
+}
+
+.progress-row {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 26px;
+  border: 1.5px solid #1f2937;
+  border-radius: 5px;
+  background: #e5edf7;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #0078d4;
+  transition: width var(--ui-transition) ease;
+}
+
+.progress-cancel {
+  height: 26px;
+  min-width: 76px;
+  padding: 0 12px;
+  border: 1.5px solid #1f2937;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+  transition: background-color var(--ui-transition) ease, color var(--ui-transition) ease, border-color var(--ui-transition) ease, opacity var(--ui-transition) ease;
+}
+
+.progress-cancel:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.progress-cancel:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+body.update-progress-active main {
+  padding-top: 0;
+  padding-bottom: 12px;
+  justify-content: center;
+}
+
+body.update-progress-active .main-content {
+  display: none;
+}
+
+html.dark body .field > label,
+html.dark body .field > label .office-icon,
+html.dark body .app-list label,
+html.dark body .language-list label {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+html.dark body .checkbox {
+  border-color: #666b75;
+  background: #1c1f25;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+html.dark body .select-button:hover:not(:disabled),
+html.dark body .select-option:hover,
+html.dark body .select-option.selected {
+  background: #3d3d3d;
+}
+
+html.dark body .checkbox:focus-visible,
+html.dark body .select-button:focus-visible,
+html.dark body .start-button:focus-visible,
+html.dark body .import-button:focus-visible,
+html.dark body .export-button:focus-visible,
+html.dark body .progress-cancel:focus-visible,
+html.dark body .links a:focus-visible {
+  box-shadow: 0 0 0 2px #0c0c0e, 0 0 0 4px #0078d4;
+}
+
+html.dark body .language-panel:not(.disabled):has(.language-checkbox:focus-visible) {
+  box-shadow: 0 0 0 2px #0c0c0e, 0 0 0 4px #0078d4;
+}
+
+html.dark body .nav-language .lang-select-button:focus-visible {
+  box-shadow: none;
+}
+
+html.dark body .select-option:focus-visible {
+  background: #3d3d3d;
+  box-shadow: inset 0 0 0 1.5px #0078d4;
+}
+
+html.dark body .select-search,
+html.dark body .language-search {
+  border-bottom-color: #555;
+}
+
+html.dark body {
+  background: #0c0c0e;
+  color: #ffffff;
+}
+
+html.dark body .select-button,
+html.dark body .select-menu,
+html.dark body .select-search,
+html.dark body .app-grid,
+html.dark body .language-search,
+html.dark body .language-panel {
+  border-color: #555;
+  background: #2e2e2e;
+  color: #ffffff;
+}
+
+html.dark body .app-grid,
+html.dark body .language-panel {
+  background: #262626;
+}
+
+html.dark body .select.disabled .select-button {
+  border-color: #555555;
+  background: #2e2e2e;
+  color: #ffffff;
+}
+
+html.dark body .checkbox:hover:not(:disabled) {
+  border-color: #8a93a3;
+  background: #252932;
+}
+
+html.dark body .checkbox:checked {
+  border-color: #4da3ff;
+  background: #0c7ae6;
+}
+
+html.dark body .checkbox:disabled {
+  border-color: #444850;
+  background: #16181c;
+  opacity: 0.7;
+}
+
+html.dark body .language-search input,
+html.dark body .select-search input {
+  background: #2e2e2e;
+  color: #ffffff;
+}
+
+html.dark body .search-clear {
+  color: #d1d5db;
+}
+
+html.dark body .select-search input::placeholder,
+html.dark body .language-search input::placeholder,
+html.dark body .select-search svg,
+html.dark body .language-search svg {
+  color: #d1d5db;
+}
+
+html.dark body .links a {
+  color: #269af3;
+}
+
+html.dark body .links a:hover {
+  color: #0a87e7;
+}
+
+html.dark body .tooltip {
+  background: #f9fafb;
+  color: #111827;
+}
+
+html.dark body .progress-panel,
+html.dark body .progress-cancel {
+  border-color: #555;
+  color: #ffffff;
+}
+
+html.dark body .progress-cancel {
+  background: #2e2e2e;
+}
+
+html.dark body .progress-bar {
+  border-color: #555;
+  background: #1f1f20;
+}
+
+html.dark body .progress-cancel:hover:not(:disabled) {
+  background: #3d3d3d;
+}

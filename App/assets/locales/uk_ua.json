@@ -1,0 +1,176 @@
+{
+  "updates": {
+    "updateTitle": "Доступне нове оновлення",
+    "downloadUpdateTo": "Завантажити оновлення до",
+    "updateMessage": "Доступне оновлення v{{version}}!\nБажаєте завантажити його?"
+  },
+  "nav": {
+    "themeToggle": "Змінити тему",
+    "langToggle": "Змінити мову",
+    "minimize": "Згорнути",
+    "close": "Закрити"
+  },
+  "form": {
+    "officeVersion": "Версія Office",
+    "edition": "Видання",
+    "infoEdition": "КЛ - Корпоративна ліцензія\nРЛ - Роздрібна ліцензія",
+    "apps": "Програми",
+    "projectEdition": "Видання Project",
+    "visioEdition": "Видання Visio",
+    "outlookType": "Тип Outlook",
+    "teamsType": "Тип Teams",
+    "primaryLang": "Основна мова",
+    "additionalLang": "Додаткові мови",
+    "matchOS": "Відповідати операційній системі",
+    "additionalProducts": "Додаткові продукти"
+  },
+  "actions": {
+    "startButton": "Запустити інсталятор Office",
+    "importTitle": "Імпортувати та запустити XML-конфігурацію",
+    "importFile": "Імпортувати файл конфігурації",
+    "exportTitle": "Експортувати XML-конфігурацію",
+    "exportFile": "Експортувати файл конфігурації"
+  },
+  "common": {
+    "select": "-- Виберіть --",
+    "none": "Немає"
+  },
+  "products": {
+    "office365": "Office 365",
+    "office2024": "Office 2024",
+    "office2021": "Office 2021",
+    "office2019": "Office 2019",
+    "office2016": "Office 2016",
+    "enterprise": "Enterprise",
+    "enterpriseNoTeams": "Enterprise (без Teams)",
+    "business": "Business",
+    "businessNoTeams": "Business (без Teams)",
+    "smallBusiness": "Small Business Premium",
+    "homePrem": "Home Premium",
+    "educationPrem": "Education",
+    "languagePack": "Мовний пакет",
+    "officeRuntime": "Office 365 Access Runtime",
+    "skypeForBusinessBasic2019": "Skype for Business Basic 2019"
+  },
+  "editions": {
+    "ltscProPlusVl": "LTSC Professional Plus - КЛ, активовано",
+    "proPlusVl": "Professional Plus - КЛ, активовано",
+    "ltscStandVl": "LTSC Standard - КЛ, активовано",
+    "standVl": "Standard - КЛ, активовано",
+    "proPlusRl": "Professional Plus - РЛ",
+    "proRl": "Professional - РЛ",
+    "standRl": "Standard - РЛ",
+    "personalRl": "Personal - РЛ",
+    "homeStudentRl": "Home and Student - РЛ",
+    "homeRl": "Home - РЛ"
+  },
+  "project": {
+    "projectOnlineDesktopClient": "Project Online Desktop Client",
+    "projectPro2024Vl": "Professional 2024 - КЛ, активовано",
+    "projectStand2024Vl": "Standard 2024 - КЛ, активовано",
+    "projectPro2021Vl": "Professional 2021 - КЛ, активовано",
+    "projectStand2021Vl": "Standard 2021 - КЛ, активовано",
+    "projectPro2019Vl": "Professional 2019 - КЛ, активовано",
+    "projectStand2019Vl": "Standard 2019 - КЛ, активовано",
+    "projectPro2016Vl": "Professional 2016 - КЛ, активовано",
+    "projectStand2016Vl": "Standard 2016 - КЛ, активовано"
+  },
+  "visio": {
+    "visioPlan2": "Visio Plan 2",
+    "visioLtscPro2024Vl": "LTSC Professional 2024 - КЛ, активовано",
+    "visioLtscStand2024Vl": "LTSC Standard 2024 - КЛ, активовано",
+    "visioLtscPro2021Vl": "LTSC Professional 2021 - КЛ, активовано",
+    "visioLtscStand2021Vl": "LTSC Standard 2021 - КЛ, активовано",
+    "visioLtscPro2019Vl": "LTSC Professional 2019 - КЛ, активовано",
+    "visioLtscStand2019Vl": "LTSC Standard 2019 - КЛ, активовано",
+    "visioPro2016Vl": "Professional 2016 - КЛ, активовано",
+    "visioStand2016Vl": "Standard 2016 - КЛ, активовано"
+  },
+  "options": {
+    "lyncTooltip": "Skype for Business",
+    "grooveTooltip": "OneDrive for Business",
+    "outlookClassic": "Класичний",
+    "outlookNew": "Новий",
+    "outlookBoth": "Обидва",
+    "teamsAddin": "Надбудова",
+    "teamsBuiltin": "Вбудований",
+    "teamsBoth": "Обидва"
+  },
+  "messages": {
+    "installError": "Не вдалося запустити інсталятор або він завершився з помилкою.",
+    "importError": "Не вдалося імпортувати XML-файл конфігурації!",
+    "exportError": "Не вдалося експортувати XML-файл конфігурації!",
+    "busyPleaseWait": "Зачекайте...",
+    "installSuccess": "Інсталятор Office успішно запущено!\nДякуємо за використання програми.",
+    "operationActive": "Інша операція інсталяції або оновлення вже виконується.",
+    "installerTitle": "Інсталятор Office",
+    "noActionsSelected": "Не вибрано жодної дії інсталятора",
+    "workflowCompleted": "Робочий процес інсталятора завершено.",
+    "canceled": "Скасовано.",
+    "importedTitle": "Імпортована конфігурація Office",
+    "importedCompleted": "Імпорт конфігурації завершено.",
+    "updateLaunched": "Оновлення запущено.",
+    "updateCanceled": "Завантаження оновлення скасовано."
+  },
+  "update": {
+    "failedTitle": "Не вдалося завантажити оновлення",
+    "failedMsg": "Не вдалося завантажити оновлення.",
+    "progressTitle": "Завантаження оновлення...",
+    "progressTitleVersion": "Завантаження версії v{{version}}..."
+  },
+  "ui": {
+    "btnCancel": "Скасувати",
+    "canceling": "Скасування...",
+    "searchPrimary": "Пошук основної мови",
+    "searchAdditional": "Пошук додаткових мов",
+    "clearSearch": "Очистити пошук",
+    "languageLabel": "Мова",
+    "progressLabel": "Прогрес"
+  },
+  "files": {
+    "xmlFilesLabel": "XML-файли",
+    "allFilesLabel": "Усі файли",
+    "executableFilesLabel": "Виконувані файли"
+  },
+  "links": {
+    "author": "Від MaximeriX"
+  },
+  "admin": {
+    "accessTitle": "Потрібен доступ адміністратора",
+    "rightsExtract": "Для розпакування файлів інсталяції Office потрібні права адміністратора.",
+    "rightsInstall": "Для інсталяції Microsoft Office потрібні права адміністратора."
+  },
+  "progress": {
+    "downloadingOdt": "Завантаження Office Deployment Tool",
+    "extractingOdt": "Розпакування Office Deployment Tool...",
+    "preparingOffice": "Підготовка інсталятора Microsoft Office...",
+    "installingOffice": "Інсталяція Microsoft Office...",
+    "downloadingTeams": "Завантаження інсталятора Microsoft Teams",
+    "runningTeams": "Інсталятор Microsoft Teams працює...",
+    "downloadingOutlook": "Завантаження інсталятора Outlook для Windows",
+    "runningOutlook": "Інсталятор Outlook для Windows працює...",
+    "preparingTask": "Підготовка {{name}}...",
+    "preparing": "Підготовка...",
+    "canceling": "Скасування...",
+    "downloadingLabel": "Завантаження {{label}}...",
+    "downloadedLabel": "Завантажено {{label}}",
+    "followingRedirect": "Переадресація для {{label}}",
+    "retryingLaunch": "Повторна спроба запуску...",
+    "extractingOdtLog": "Розпакування Office Deployment Tool",
+    "startingOffice": "Запуск інсталятора Microsoft Office",
+    "startingTeams": "Запуск інсталятора Microsoft Teams",
+    "startingOutlook": "Запуск інсталятора Outlook для Windows",
+    "startingUpdate": "Запуск завантаженого оновлення",
+    "startingUpdateShort": "Запуск оновлення...",
+    "stepFormat": "Крок {{index}}/{{total}}: {{name}}"
+  },
+  "tasks": {
+    "taskOffice": "Microsoft Office",
+    "taskTeams": "Microsoft Teams",
+    "taskOutlook": "Outlook для Windows"
+  },
+  "lang": {
+    "native": "Українська",
+    "english": "Ukrainian"
+  }
+}

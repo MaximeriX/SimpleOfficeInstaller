@@ -1,0 +1,82 @@
+{
+  "en_us": [
+    "en",
+    "en_au",
+    "en_bz",
+    "en_ca",
+    "en_cb",
+    "en_gb",
+    "en_ie",
+    "en_in",
+    "en_jm",
+    "en_my",
+    "en_nz",
+    "en_ph",
+    "en_sg",
+    "en_tt",
+    "en_us",
+    "en_za",
+    "en_zw"
+  ],
+  "de_de": [
+    "de",
+    "de_at",
+    "de_ch",
+    "de_de",
+    "de_li",
+    "de_lu"
+  ],
+  "es_es": [
+    "es",
+    "es_ar",
+    "es_bo",
+    "es_cl",
+    "es_co",
+    "es_cr",
+    "es_do",
+    "es_ec",
+    "es_es",
+    "es_gt",
+    "es_hn",
+    "es_mx",
+    "es_ni",
+    "es_pa",
+    "es_pe",
+    "es_pr",
+    "es_py",
+    "es_sv",
+    "es_us",
+    "es_uy",
+    "es_ve"
+  ],
+  "fr_fr": [
+    "fr",
+    "fr_be",
+    "fr_ca",
+    "fr_ch",
+    "fr_fr",
+    "fr_lu",
+    "fr_mc"
+  ],
+  "pl_pl": [
+    "pl",
+    "pl_pl"
+  ],
+  "ru_ru": [
+    "ru",
+    "ru_by",
+    "ru_kg",
+    "ru_kz",
+    "ru_md",
+    "ru_ru",
+    "ru_ua"
+  ],
+  "tr_tr": [
+    "tr",
+    "tr_tr"
+  ],
+  "uk_ua": [
+    "uk",
+    "uk_ua"
+  ]
+}

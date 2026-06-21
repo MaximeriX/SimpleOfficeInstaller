@@ -1,0 +1,176 @@
+{
+  "updates": {
+    "updateTitle": "Доступно новое обновление",
+    "downloadUpdateTo": "Скачать обновление в",
+    "updateMessage": "Доступно обновление v{{version}}!\nХотите скачать его?"
+  },
+  "nav": {
+    "themeToggle": "Сменить тему",
+    "langToggle": "Сменить язык",
+    "minimize": "Свернуть",
+    "close": "Закрыть"
+  },
+  "form": {
+    "officeVersion": "Версия Office",
+    "edition": "Редакция",
+    "infoEdition": "КЛ - Корпоративная лицензия\nРЛ - Розничная лицензия",
+    "apps": "Приложения",
+    "projectEdition": "Редакция Project",
+    "visioEdition": "Редакция Visio",
+    "outlookType": "Тип Outlook",
+    "teamsType": "Тип Teams",
+    "primaryLang": "Основной язык",
+    "additionalLang": "Дополнительные языки",
+    "matchOS": "Совпадать с языком системы",
+    "additionalProducts": "Дополнительные продукты"
+  },
+  "actions": {
+    "startButton": "Запустить установщик Office",
+    "importTitle": "Импортировать и запустить XML-конфигурацию",
+    "importFile": "Импортировать файл конфигурации",
+    "exportTitle": "Экспортировать XML-конфигурацию",
+    "exportFile": "Экспортировать файл конфигурации"
+  },
+  "common": {
+    "select": "-- Выберите --",
+    "none": "Нет"
+  },
+  "products": {
+    "office365": "Office 365",
+    "office2024": "Office 2024",
+    "office2021": "Office 2021",
+    "office2019": "Office 2019",
+    "office2016": "Office 2016",
+    "enterprise": "Enterprise",
+    "enterpriseNoTeams": "Enterprise (без Teams)",
+    "business": "Business",
+    "businessNoTeams": "Business (без Teams)",
+    "smallBusiness": "Small Business Premium",
+    "homePrem": "Home Premium",
+    "educationPrem": "Education",
+    "languagePack": "Языковой пакет",
+    "officeRuntime": "Office 365 Access Runtime",
+    "skypeForBusinessBasic2019": "Skype for Business Basic 2019"
+  },
+  "editions": {
+    "ltscProPlusVl": "LTSC Professional Plus - КЛ, активировано",
+    "proPlusVl": "Professional Plus - КЛ, активировано",
+    "ltscStandVl": "LTSC Standard - КЛ, активировано",
+    "standVl": "Standard - КЛ, активировано",
+    "proPlusRl": "Professional Plus - РЛ",
+    "proRl": "Professional - РЛ",
+    "standRl": "Standard - РЛ",
+    "personalRl": "Personal - РЛ",
+    "homeStudentRl": "Home and Student - РЛ",
+    "homeRl": "Home - РЛ"
+  },
+  "project": {
+    "projectOnlineDesktopClient": "Project Online Desktop Client",
+    "projectPro2024Vl": "Professional 2024 - КЛ, активировано",
+    "projectStand2024Vl": "Standard 2024 - КЛ, активировано",
+    "projectPro2021Vl": "Professional 2021 - КЛ, активировано",
+    "projectStand2021Vl": "Standard 2021 - КЛ, активировано",
+    "projectPro2019Vl": "Professional 2019 - КЛ, активировано",
+    "projectStand2019Vl": "Standard 2019 - КЛ, активировано",
+    "projectPro2016Vl": "Professional 2016 - КЛ, активировано",
+    "projectStand2016Vl": "Standard 2016 - КЛ, активировано"
+  },
+  "visio": {
+    "visioPlan2": "Visio Plan 2",
+    "visioLtscPro2024Vl": "LTSC Professional 2024 - КЛ, активировано",
+    "visioLtscStand2024Vl": "LTSC Standard 2024 - КЛ, активировано",
+    "visioLtscPro2021Vl": "LTSC Professional 2021 - КЛ, активировано",
+    "visioLtscStand2021Vl": "LTSC Standard 2021 - КЛ, активировано",
+    "visioLtscPro2019Vl": "LTSC Professional 2019 - КЛ, активировано",
+    "visioLtscStand2019Vl": "LTSC Standard 2019 - КЛ, активировано",
+    "visioPro2016Vl": "Professional 2016 - КЛ, активировано",
+    "visioStand2016Vl": "Standard 2016 - КЛ, активировано"
+  },
+  "options": {
+    "lyncTooltip": "Skype for Business",
+    "grooveTooltip": "OneDrive for Business",
+    "outlookClassic": "Классический",
+    "outlookNew": "Новый",
+    "outlookBoth": "Оба",
+    "teamsAddin": "Надстройка",
+    "teamsBuiltin": "Встроенный",
+    "teamsBoth": "Оба"
+  },
+  "messages": {
+    "installError": "Не удалось запустить установщик или он завершился с ошибкой.",
+    "importError": "Не удалось импортировать XML-файл конфигурации!",
+    "exportError": "Не удалось экспортировать XML-файл конфигурации!",
+    "busyPleaseWait": "Пожалуйста, подождите...",
+    "installSuccess": "Установщик Office успешно запущен!\nСпасибо за использование приложения.",
+    "operationActive": "Другая операция установки или обновления уже выполняется.",
+    "installerTitle": "Установщик Office",
+    "noActionsSelected": "Не выбрано ни одного действия установщика",
+    "workflowCompleted": "Рабочий процесс установщика завершён.",
+    "canceled": "Отменено.",
+    "importedTitle": "Импортированная конфигурация Office",
+    "importedCompleted": "Импорт конфигурации завершён.",
+    "updateLaunched": "Обновление запущено.",
+    "updateCanceled": "Загрузка обновления отменена."
+  },
+  "update": {
+    "failedTitle": "Не удалось скачать обновление",
+    "failedMsg": "Не удалось скачать обновление.",
+    "progressTitle": "Загрузка обновления...",
+    "progressTitleVersion": "Загрузка версии v{{version}}..."
+  },
+  "ui": {
+    "btnCancel": "Отменить",
+    "canceling": "Отмена...",
+    "searchPrimary": "Поиск основного языка",
+    "searchAdditional": "Поиск дополнительных языков",
+    "clearSearch": "Очистить поиск",
+    "languageLabel": "Язык",
+    "progressLabel": "Прогресс"
+  },
+  "files": {
+    "xmlFilesLabel": "XML-файлы",
+    "allFilesLabel": "Все файлы",
+    "executableFilesLabel": "Исполняемые файлы"
+  },
+  "links": {
+    "author": "От MaximeriX"
+  },
+  "admin": {
+    "accessTitle": "Требуются права администратора",
+    "rightsExtract": "Для распаковки файлов установки Office требуются права администратора.",
+    "rightsInstall": "Для установки Microsoft Office требуются права администратора."
+  },
+  "progress": {
+    "downloadingOdt": "Загрузка Office Deployment Tool",
+    "extractingOdt": "Распаковка Office Deployment Tool...",
+    "preparingOffice": "Подготовка установщика Microsoft Office...",
+    "installingOffice": "Установка Microsoft Office...",
+    "downloadingTeams": "Загрузка установщика Microsoft Teams",
+    "runningTeams": "Установщик Microsoft Teams выполняется...",
+    "downloadingOutlook": "Загрузка установщика Outlook для Windows",
+    "runningOutlook": "Установщик Outlook для Windows выполняется...",
+    "preparingTask": "Подготовка {{name}}...",
+    "preparing": "Подготовка...",
+    "canceling": "Отмена...",
+    "downloadingLabel": "Загрузка {{label}}...",
+    "downloadedLabel": "Загружено {{label}}",
+    "followingRedirect": "Переход по перенаправлению для {{label}}",
+    "retryingLaunch": "Повторная попытка запуска...",
+    "extractingOdtLog": "Распаковка Office Deployment Tool",
+    "startingOffice": "Запуск установщика Microsoft Office",
+    "startingTeams": "Запуск установщика Microsoft Teams",
+    "startingOutlook": "Запуск установщика Outlook для Windows",
+    "startingUpdate": "Запуск загруженного обновления",
+    "startingUpdateShort": "Запуск обновления...",
+    "stepFormat": "Шаг {{index}}/{{total}}: {{name}}"
+  },
+  "tasks": {
+    "taskOffice": "Microsoft Office",
+    "taskTeams": "Microsoft Teams",
+    "taskOutlook": "Outlook для Windows"
+  },
+  "lang": {
+    "native": "Русский",
+    "english": "Russian"
+  }
+}

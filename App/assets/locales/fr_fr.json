@@ -1,0 +1,176 @@
+{
+  "updates": {
+    "updateTitle": "Nouvelle mise à jour disponible",
+    "downloadUpdateTo": "Télécharger la mise à jour vers",
+    "updateMessage": "Une mise à jour v{{version}} est disponible.\nVoulez-vous la télécharger ?"
+  },
+  "nav": {
+    "themeToggle": "Changer de thème",
+    "langToggle": "Changer de langue",
+    "minimize": "Réduire",
+    "close": "Fermer"
+  },
+  "form": {
+    "officeVersion": "Version d'Office",
+    "edition": "Édition",
+    "infoEdition": "LV - Licence en volume\nLC - Licence commerciale",
+    "apps": "Applications",
+    "projectEdition": "Édition de Project",
+    "visioEdition": "Édition de Visio",
+    "outlookType": "Type d'Outlook",
+    "teamsType": "Type de Teams",
+    "primaryLang": "Langue principale",
+    "additionalLang": "Langues supplémentaires",
+    "matchOS": "Correspondre au système d'exploitation",
+    "additionalProducts": "Produits supplémentaires"
+  },
+  "actions": {
+    "startButton": "Lancer l'installateur Office",
+    "importTitle": "Importer et exécuter la configuration XML",
+    "importFile": "Importer le fichier de configuration",
+    "exportTitle": "Exporter la configuration XML",
+    "exportFile": "Exporter le fichier de configuration"
+  },
+  "common": {
+    "select": "-- Sélectionner --",
+    "none": "Aucun"
+  },
+  "products": {
+    "office365": "Office 365",
+    "office2024": "Office 2024",
+    "office2021": "Office 2021",
+    "office2019": "Office 2019",
+    "office2016": "Office 2016",
+    "enterprise": "Enterprise",
+    "enterpriseNoTeams": "Enterprise (sans Teams)",
+    "business": "Business",
+    "businessNoTeams": "Business (sans Teams)",
+    "smallBusiness": "Small Business Premium",
+    "homePrem": "Home Premium",
+    "educationPrem": "Education",
+    "languagePack": "Pack de langue",
+    "officeRuntime": "Office 365 Access Runtime",
+    "skypeForBusinessBasic2019": "Skype for Business Basic 2019"
+  },
+  "editions": {
+    "ltscProPlusVl": "LTSC Professional Plus - LV, activé",
+    "proPlusVl": "Professional Plus - LV, activé",
+    "ltscStandVl": "LTSC Standard - LV, activé",
+    "standVl": "Standard - LV, activé",
+    "proPlusRl": "Professional Plus - LC",
+    "proRl": "Professional - LC",
+    "standRl": "Standard - LC",
+    "personalRl": "Personal - LC",
+    "homeStudentRl": "Home and Student - LC",
+    "homeRl": "Home - LC"
+  },
+  "project": {
+    "projectOnlineDesktopClient": "Project Online Desktop Client",
+    "projectPro2024Vl": "Professional 2024 - LV, activé",
+    "projectStand2024Vl": "Standard 2024 - LV, activé",
+    "projectPro2021Vl": "Professional 2021 - LV, activé",
+    "projectStand2021Vl": "Standard 2021 - LV, activé",
+    "projectPro2019Vl": "Professional 2019 - LV, activé",
+    "projectStand2019Vl": "Standard 2019 - LV, activé",
+    "projectPro2016Vl": "Professional 2016 - LV, activé",
+    "projectStand2016Vl": "Standard 2016 - LV, activé"
+  },
+  "visio": {
+    "visioPlan2": "Visio Plan 2",
+    "visioLtscPro2024Vl": "LTSC Professional 2024 - LV, activé",
+    "visioLtscStand2024Vl": "LTSC Standard 2024 - LV, activé",
+    "visioLtscPro2021Vl": "LTSC Professional 2021 - LV, activé",
+    "visioLtscStand2021Vl": "LTSC Standard 2021 - LV, activé",
+    "visioLtscPro2019Vl": "LTSC Professional 2019 - LV, activé",
+    "visioLtscStand2019Vl": "LTSC Standard 2019 - LV, activé",
+    "visioPro2016Vl": "Professional 2016 - LV, activé",
+    "visioStand2016Vl": "Standard 2016 - LV, activé"
+  },
+  "options": {
+    "lyncTooltip": "Skype for Business",
+    "grooveTooltip": "OneDrive for Business",
+    "outlookClassic": "Classique",
+    "outlookNew": "Nouveau",
+    "outlookBoth": "Les deux",
+    "teamsAddin": "Complément",
+    "teamsBuiltin": "Intégré",
+    "teamsBoth": "Les deux"
+  },
+  "messages": {
+    "installError": "L'installateur n'a pas pu démarrer ou s'est terminé avec une erreur.",
+    "importError": "Impossible d'importer le fichier de configuration XML.",
+    "exportError": "Impossible d'exporter le fichier de configuration XML.",
+    "busyPleaseWait": "Veuillez patienter...",
+    "installSuccess": "L'installateur Office a démarré avec succès.\nMerci d'utiliser l'application.",
+    "operationActive": "Une autre opération d'installation ou de mise à jour est déjà en cours.",
+    "installerTitle": "Installateur Office",
+    "noActionsSelected": "Aucune action d'installation sélectionnée",
+    "workflowCompleted": "Flux de travail de l'installateur terminé.",
+    "canceled": "Annulé.",
+    "importedTitle": "Configuration Office importée",
+    "importedCompleted": "La configuration importée est terminée.",
+    "updateLaunched": "Mise à jour lancée.",
+    "updateCanceled": "Le téléchargement de la mise à jour a été annulé."
+  },
+  "update": {
+    "failedTitle": "Échec du téléchargement de la mise à jour",
+    "failedMsg": "Impossible de télécharger la mise à jour.",
+    "progressTitle": "Téléchargement de la mise à jour...",
+    "progressTitleVersion": "Téléchargement de la version v{{version}}..."
+  },
+  "ui": {
+    "btnCancel": "Annuler",
+    "canceling": "Annulation...",
+    "searchPrimary": "Rechercher la langue principale",
+    "searchAdditional": "Rechercher des langues supplémentaires",
+    "clearSearch": "Effacer la recherche",
+    "languageLabel": "Langue",
+    "progressLabel": "Progression"
+  },
+  "files": {
+    "xmlFilesLabel": "Fichiers XML",
+    "allFilesLabel": "Tous les fichiers",
+    "executableFilesLabel": "Fichiers exécutables"
+  },
+  "links": {
+    "author": "Par MaximeriX"
+  },
+  "admin": {
+    "accessTitle": "Accès administrateur requis",
+    "rightsExtract": "Des droits administrateur sont requis pour extraire les fichiers d'installation d'Office.",
+    "rightsInstall": "Des droits administrateur sont requis pour installer Microsoft Office."
+  },
+  "progress": {
+    "downloadingOdt": "Téléchargement d'Office Deployment Tool",
+    "extractingOdt": "Extraction d'Office Deployment Tool...",
+    "preparingOffice": "Préparation de l'installateur Microsoft Office...",
+    "installingOffice": "Installation de Microsoft Office...",
+    "downloadingTeams": "Téléchargement de l'installateur Microsoft Teams",
+    "runningTeams": "L'installateur Microsoft Teams est en cours d'exécution...",
+    "downloadingOutlook": "Téléchargement de l'installateur Outlook pour Windows",
+    "runningOutlook": "L'installateur Outlook pour Windows est en cours d'exécution...",
+    "preparingTask": "Préparation de {{name}}...",
+    "preparing": "Préparation...",
+    "canceling": "Annulation...",
+    "downloadingLabel": "Téléchargement de {{label}}...",
+    "downloadedLabel": "{{label}} téléchargé",
+    "followingRedirect": "Suivi de la redirection pour {{label}}",
+    "retryingLaunch": "Nouvelle tentative de lancement...",
+    "extractingOdtLog": "Extraction d'Office Deployment Tool",
+    "startingOffice": "Démarrage de l'installateur Microsoft Office",
+    "startingTeams": "Démarrage de l'installateur Microsoft Teams",
+    "startingOutlook": "Démarrage de l'installateur Outlook pour Windows",
+    "startingUpdate": "Démarrage de la mise à jour téléchargée",
+    "startingUpdateShort": "Démarrage de la mise à jour...",
+    "stepFormat": "Étape {{index}}/{{total}} : {{name}}"
+  },
+  "tasks": {
+    "taskOffice": "Microsoft Office",
+    "taskTeams": "Microsoft Teams",
+    "taskOutlook": "Outlook pour Windows"
+  },
+  "lang": {
+    "native": "Français",
+    "english": "French"
+  }
+}

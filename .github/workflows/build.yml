@@ -1,0 +1,81 @@
+name: Build App
+
+on:
+  push:
+    paths:
+      - ".github/workflows/**"
+      - "App/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Windows executable
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        working-directory: App
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: App/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Find executable
+        id: exe
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem -Path "build/dist" -Filter "*.exe" -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+
+          if (-not $exe) {
+            throw "No .exe file found in App/build/dist"
+          }
+
+          "path=$($exe.FullName)" >> $env:GITHUB_OUTPUT
+          "name=$($exe.Name)" >> $env:GITHUB_OUTPUT
+
+      - name: Read app version
+        id: app
+        shell: pwsh
+        run: |
+          $version = node -p "require('./package.json').version"
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Create draft release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXE_PATH: ${{ steps.exe.outputs.path }}
+          APP_VERSION: ${{ steps.app.outputs.version }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          $tag = "v$env:APP_VERSION"
+          if (gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null) {
+            $tag = "v$env:APP_VERSION-beta"
+          }
+
+          $title = "Simple Office Installer v$env:APP_VERSION"
+          $notes = "Draft build from commit $env:COMMIT_SHA."
+
+          gh release create $tag $env:EXE_PATH `
+            --draft `
+            --target $env:COMMIT_SHA `
+            --title $title `
+            --notes $notes `
+            --repo $env:GITHUB_REPOSITORY
