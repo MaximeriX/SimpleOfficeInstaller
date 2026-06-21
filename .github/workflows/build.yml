@@ -2,6 +2,8 @@ name: Build App
 
 on:
   push:
+    branches:
+      - main
     paths:
       - ".github/workflows/**"
       - "App/**"
@@ -57,7 +59,7 @@ jobs:
           $version = node -p "require('./package.json').version"
           "version=$version" >> $env:GITHUB_OUTPUT
 
-      - name: Create draft release
+      - name: Upload to draft release
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -65,6 +67,21 @@ jobs:
           APP_VERSION: ${{ steps.app.outputs.version }}
           COMMIT_SHA: ${{ github.sha }}
         run: |
+          $draftRelease = gh release list `
+            --repo $env:GITHUB_REPOSITORY `
+            --limit 100 `
+            --json tagName,isDraft,name |
+            ConvertFrom-Json |
+            Where-Object { $_.isDraft } |
+            Select-Object -First 1
+
+          if ($draftRelease) {
+            gh release upload $draftRelease.tagName $env:EXE_PATH `
+              --clobber `
+              --repo $env:GITHUB_REPOSITORY
+            exit 0
+          }
+
           $tag = "v$env:APP_VERSION"
           if (gh release view $tag --repo $env:GITHUB_REPOSITORY *> $null) {
             $tag = "v$env:APP_VERSION-beta"
