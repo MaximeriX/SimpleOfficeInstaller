@@ -1,6 +1,7 @@
 {
   "name": "SimpleOfficeInstaller",
-  "version": "1.1.0",
+  "productName": "Simple Office Installer",
+  "version": "1.1.1",
   "main": "index.js",
   "private": true,
   "homepage": "https://maximerix.dev/soi",
