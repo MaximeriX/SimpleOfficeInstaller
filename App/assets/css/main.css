@@ -232,11 +232,11 @@ nav p {
 }
 
 .nav-language .select-menu {
+  --menu-open-max-height: 305px;
   z-index: 60;
   left: auto;
   right: 0;
   width: 172px;
-  max-height: 305px;
   border-color: #555;
 }
 
@@ -387,17 +387,17 @@ main {
 }
 
 .select-menu {
+  --menu-open-max-height: 185px;
   position: absolute;
   z-index: 20;
   top: calc(100% + 2px);
   left: 0;
   right: auto;
-  display: none;
   min-width: 100%;
-  width: max-content;
+  width: 100%;
   max-width: min(400px, calc(100vw - 24px));
-  max-height: 185px;
-  overflow-y: auto;
+  max-height: 0;
+  overflow: hidden;
   border: 1.5px solid #1f2937;
   border-radius: 5px;
   background: #ffffff;
@@ -412,17 +412,19 @@ main {
 }
 
 .select.open .select-menu {
-  display: block;
+  width: max-content;
+  max-height: var(--menu-open-max-height);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+  overflow-y: auto;
 }
 
 .select.drop-up .select-menu {
   top: auto;
   bottom: calc(100% + 2px);
-  transform: translateY(0px);
+  transform: translateY(4px);
   transform-origin: bottom center;
   box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.18);
 }
@@ -430,6 +432,18 @@ main {
 .field.edition .select-menu {
   left: auto;
   right: 0;
+}
+
+.field.additional-products .select-menu {
+  top: auto;
+  bottom: calc(100% + 2px);
+  transform: translateY(4px);
+  transform-origin: bottom center;
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.field.additional-products .select.open .select-menu {
+  transform: translateY(0);
 }
 
 .select-option {
@@ -443,6 +457,8 @@ main {
   cursor: pointer;
   display: block;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   transition: background-color var(--ui-transition) ease, color var(--ui-transition) ease;
 }

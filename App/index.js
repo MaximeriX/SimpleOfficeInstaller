@@ -1323,15 +1323,6 @@ function registerIpc() {
 
     return { ok: cancelProgressOperation(operationId) };
   });
-
-  handleTrustedIpc('progress:dismiss', async () => {
-    if (ActiveOperations.size > 0) {
-      return { ok: false };
-    }
-
-    setProgressWindowMode(null, false);
-    return { ok: true };
-  });
 }
 
 app.whenReady().then(async () => {

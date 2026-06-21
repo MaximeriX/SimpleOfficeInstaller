@@ -4,5 +4,4 @@
   const root = document.documentElement;
 
   root.classList.toggle('dark', isDarkTheme);
-  root.classList.toggle('light', !isDarkTheme);
 })();

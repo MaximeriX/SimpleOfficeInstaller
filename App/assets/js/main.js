@@ -111,7 +111,6 @@
   function applyTheme(options = {}) {
     const { refreshIcons = true } = options;
     document.documentElement.classList.toggle('dark', isDarkTheme);
-    document.documentElement.classList.toggle('light', !isDarkTheme);
     window.soi?.window?.setBackgroundColor(isDarkTheme ? '#0c0c0e' : '#f6f7f9').catch(() => {});
 
     const icon = query('.theme-icon');
@@ -134,12 +133,37 @@
     dropdown.button.setAttribute('aria-expanded', 'false');
   }
 
+  function getDropdownHeight(dropdown) {
+    const computed = window.getComputedStyle(dropdown.list);
+    const openMaxHeight = computed.getPropertyValue('--menu-open-max-height').trim();
+    const clone = dropdown.list.cloneNode(true);
+    clone.style.position = 'fixed';
+    clone.style.left = '-10000px';
+    clone.style.top = '0';
+    clone.style.right = 'auto';
+    clone.style.bottom = 'auto';
+    clone.style.display = 'block';
+    clone.style.visibility = 'hidden';
+    clone.style.pointerEvents = 'none';
+    clone.style.transform = 'none';
+    clone.style.opacity = '1';
+    clone.style.maxHeight = openMaxHeight || computed.maxHeight;
+    clone.style.overflowY = 'auto';
+
+    document.body.appendChild(clone);
+    const height = clone.getBoundingClientRect().height;
+    clone.remove();
+
+    return height;
+  }
+
   function positionDropdown(dropdown) {
     const margin = 8;
     const rect = dropdown.wrapper.getBoundingClientRect();
     const spaceBelow = window.innerHeight - rect.bottom - margin;
     const spaceAbove = rect.top - margin;
-    const openUp = spaceBelow < 185 && spaceAbove > spaceBelow;
+    const menuHeight = getDropdownHeight(dropdown);
+    const openUp = spaceBelow < menuHeight && spaceAbove > spaceBelow;
 
     dropdown.wrapper.classList.toggle('drop-up', openUp);
   }

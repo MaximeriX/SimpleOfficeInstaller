@@ -27,7 +27,6 @@ contextBridge.exposeInMainWorld('soi', {
   },
   progress: {
     cancel: (operationId) => ipcRenderer.invoke('progress:cancel', operationId),
-    dismiss: () => ipcRenderer.invoke('progress:dismiss'),
     onUpdate: (callback) => {
       const listener = (_event, payload) => callback(payload);
       ipcRenderer.on('progress:update', listener);

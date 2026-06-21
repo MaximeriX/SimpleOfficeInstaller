@@ -465,7 +465,29 @@ document.querySelector('.import-button').addEventListener('click', async () => {
   }
 });
 
-registerSelectChange('edition', function() {
+function syncDependentAppSelects() {
+  toggleSubOptions(getAppCheckbox('project'), 'project-options');
+  toggleSubOptions(getAppCheckbox('visio'), 'visio-options');
+
+  const outlookType = document.getElementById('outlook-type');
+  if (getAppCheckbox('outlook').checked) {
+    outlookType.disabled = false;
+  } else {
+    outlookType.value = '';
+    outlookType.disabled = true;
+  }
+
+  const teamsType = document.getElementById('teams-type');
+  if (getAppCheckbox('teams').checked) {
+    teamsType.disabled = false;
+  } else {
+    teamsType.value = '';
+    teamsType.disabled = true;
+  }
+}
+
+function syncAppCheckboxAvailability(options = {}) {
+  const { preserveSelections = false } = options;
   const checkboxes = AppCheckboxes;
   const accessInput = getAppCheckbox('access');
   const lyncInput = getAppCheckbox('lync');
@@ -475,29 +497,49 @@ registerSelectChange('edition', function() {
   const publisherInput = getAppCheckbox('publisher');
   const teamsInput = getAppCheckbox('teams');
 
-  resetSubOptionSelects();
+  if (!preserveSelections) {
+    resetSubOptionSelects();
+  }
+
+  const selectedEditionValue = document.getElementById('edition').value;
   checkboxes.forEach(checkbox => {
-    checkbox.disabled = !this.value;
-    checkbox.checked = false;
+    checkbox.disabled = !selectedEditionValue;
+    if (!preserveSelections) {
+      checkbox.checked = false;
+    }
   });
 
   const selectedOfficeVersion = document.getElementById('version').value;
   const selectedEdition = document.getElementById('edition').value;
 
-  accessInput.checked = false;
+  if (!preserveSelections) {
+    accessInput.checked = false;
+  }
   accessInput.disabled = false;
-  lyncInput.checked = false;
+  if (!preserveSelections) {
+    lyncInput.checked = false;
+  }
   lyncInput.disabled = false;
-  grooveInput.checked = false
+  if (!preserveSelections) {
+    grooveInput.checked = false;
+  }
   grooveInput.disabled = false
-  publisherInput.checked = false;
+  if (!preserveSelections) {
+    publisherInput.checked = false;
+  }
   publisherInput.disabled = false;
   teamsInput.disabled = false;
-  teamsInput.checked = false;
+  if (!preserveSelections) {
+    teamsInput.checked = false;
+  }
   onenoteInput.disabled = false;
-  onenoteInput.checked = false;
+  if (!preserveSelections) {
+    onenoteInput.checked = false;
+  }
   powerpointInput.disabled = false;
-  powerpointInput.checked = false;
+  if (!preserveSelections) {
+    powerpointInput.checked = false;
+  }
 
   if (selectedOfficeVersion === 'office-365') {
     grooveInput.disabled = false;
@@ -580,7 +622,11 @@ registerSelectChange('edition', function() {
       lyncInput.disabled = true;
     }
   }
-});
+
+  syncDependentAppSelects();
+}
+
+registerSelectChange('edition', syncAppCheckboxAvailability);
 
 function updateEditions() {
   const versionSelect = document.getElementById('version');
@@ -724,6 +770,9 @@ getAppCheckbox('visio').addEventListener('change', function() {
   toggleSubOptions(this, 'visio-options');
   window.dispatchEvent(new CustomEvent('soi:selects-updated'));
 });
+
+toggleSubOptions(getAppCheckbox('project'), 'project-options');
+toggleSubOptions(getAppCheckbox('visio'), 'visio-options');
 
 getAppCheckbox('outlook').addEventListener('change', function() {
   if (!this.checked) {
@@ -1040,6 +1089,7 @@ function refreshLocalizedOptions() {
   setSelectValueIfAvailable('version', selected.version);
   updateEditions();
   setSelectValueIfAvailable('edition', selected.edition);
+  syncAppCheckboxAvailability({ preserveSelections: true });
   setSelectValueIfAvailable('additional-products', selected.additionalProducts);
   updateProjectEditions();
   updateVisioEditions();
@@ -1049,6 +1099,7 @@ function refreshLocalizedOptions() {
   setSelectValueIfAvailable('visio-edition', selected.visio);
   setSelectValueIfAvailable('outlook-type', selected.outlook);
   setSelectValueIfAvailable('teams-type', selected.teams);
+  syncDependentAppSelects();
 }
 
 document.getElementById('version').addEventListener('change', () => {
